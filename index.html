@@ -38,15 +38,15 @@
     }
   </style>
 </head>
-<body class="p-3 md:p-5 antialiased selection:bg-sky-500 selection:text-white">
-  <div class="max-w-[1560px] mx-auto space-y-4">
-    <!-- TOP NAVIGATION TABS: GROUP 2 (DEFAULT) vs GROUP 1 -->
-    <nav class="bg-slate-900/95 border border-slate-800 rounded-2xl p-2.5 flex flex-wrap items-center justify-between gap-3 shadow-2xl backdrop-blur sticky top-2 z-50">
-      <div class="flex items-center gap-2.5 px-2">
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased selection:bg-sky-500 selection:text-white">
+  <!-- TOP STICKY APP BAR (FIXED FLUSH TO SCREEN TOP) -->
+  <header class="sticky top-0 z-50 bg-slate-950/95 border-b border-slate-800 backdrop-blur-md px-3 sm:px-5 py-2.5 shadow-2xl">
+    <div class="max-w-[1560px] mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
         <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
         <span class="text-xs font-black uppercase tracking-wider text-slate-200">ECE 005 / ME3151 &bull; Regulated DC Power Supply Laboratory</span>
       </div>
-      <div class="flex items-center gap-2 bg-slate-950 p-1.5 rounded-xl border border-slate-800">
+      <div class="flex items-center gap-2 bg-slate-900 p-1.5 rounded-xl border border-slate-800">
         <button id="nav-btn-g2" onclick="switchGroupTab('group2')" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/20">
           &#128300; Group 2: Dual Parallel LM317T &amp; Diode Physics
         </button>
@@ -54,7 +54,10 @@
           &#9889; Group 1: Single LM317T Regulated PSU (1.25V&ndash;12V)
         </button>
       </div>
-    </nav>
+    </div>
+  </header>
+
+  <main class="max-w-[1560px] mx-auto p-3 sm:p-5 space-y-4">
     <!-- ========================================================================= -->
     <!-- GROUP 1 CONTAINER (INTERACTIVE CANVAS & SIMULATION - SIMPLE & CLEAR) -->
     <!-- ========================================================================= -->
@@ -900,7 +903,7 @@
     </section>
 
     </div><!-- End group2-container -->
-  </div><!-- End max-w-[1560px] -->
+  </main><!-- End main wrapper -->
   <script>
     // =========================================================================
     // GROUP SWITCHING STATE (GROUP 2 DEFAULT ACTIVE)
@@ -1121,200 +1124,842 @@
     // =========================================================================
     function drawG1Circuit() {
       if (!g1Ctx || !g1Canvas) return;
-      g1Ctx.clearRect(0, 0, g1Canvas.width, g1Canvas.height);
+      const W = g1Canvas.width;
+      const H = g1Canvas.height;
+      g1Ctx.clearRect(0, 0, W, H);
 
-      g1Ctx.strokeStyle = 'rgba(30, 41, 59, 0.4)';
+      // Blueprint Engineering Grid
+      g1Ctx.strokeStyle = 'rgba(30, 41, 59, 0.45)';
       g1Ctx.lineWidth = 1;
-      for (let x = 0; x < g1Canvas.width; x += 30) {
-        g1Ctx.beginPath(); g1Ctx.moveTo(x, 0); g1Ctx.lineTo(x, g1Canvas.height); g1Ctx.stroke();
+      for (let x = 0; x < W; x += 28) {
+        g1Ctx.beginPath(); g1Ctx.moveTo(x, 0); g1Ctx.lineTo(x, H); g1Ctx.stroke();
       }
-      for (let y = 0; y < g1Canvas.height; y += 30) {
-        g1Ctx.beginPath(); g1Ctx.moveTo(0, y); g1Ctx.lineTo(g1Canvas.width, y); g1Ctx.stroke();
+      for (let y = 0; y < H; y += 28) {
+        g1Ctx.beginPath(); g1Ctx.moveTo(0, y); g1Ctx.lineTo(W, y); g1Ctx.stroke();
       }
 
+      // 6 Labeled Stage Blocks (Subtle Background Cards)
       const stages = [
-        { x: 30, y: 50, w: 180, h: 560, title: "1. WALL POWER", sub: "220V Input & Fuse", color: "#0284c7" },
-        { x: 230, y: 50, w: 200, h: 560, title: "2. TRANSFORMER", sub: "Steps down to safe 18V", color: "#06b6d4" },
-        { x: 450, y: 50, w: 220, h: 560, title: "3. 4 DIODES (BRIDGE)", sub: "AC to DC (One-Way)", color: "#10b981" },
-        { x: 690, y: 50, w: 180, h: 560, title: "4. WATER TANK", sub: "2200 \u00B5F Smooths Bumps", color: "#f59e0b" },
-        { x: 890, y: 50, w: 220, h: 560, title: "5. VOLTAGE KNOB", sub: "LM317 Sets Output", color: "#a855f7" },
-        { x: 1130, y: 50, w: 180, h: 560, title: "6. OUTPUT SCREEN", sub: "Volts & Banana Jacks", color: "#ef4444" }
+        { x: 18,   y: 40, w: 188, h: 580, title: "1. WALL POWER",        sub: "220V Input & Protection",     color: "#0284c7" },
+        { x: 216,  y: 40, w: 210, h: 580, title: "2. TRANSFORMER",       sub: "Steps Down to Safe 18V AC",   color: "#06b6d4" },
+        { x: 436,  y: 40, w: 236, h: 580, title: "3. 4 DIODES (BRIDGE)",  sub: "Full-Wave AC to DC Rectifier", color: "#10b981" },
+        { x: 682,  y: 40, w: 200, h: 580, title: "4. WATER TANK",        sub: "2200 \u00B5F Smooths Bumps",  color: "#f59e0b" },
+        { x: 892,  y: 40, w: 230, h: 580, title: "5. VOLTAGE KNOB",      sub: "LM317 Sets Output (1.25-12V)",color: "#a855f7" },
+        { x: 1132, y: 40, w: 190, h: 580, title: "6. OUTPUT SCREEN",     sub: "Voltmeter & Banana Jacks",    color: "#ef4444" }
       ];
 
       stages.forEach(st => {
-        g1Ctx.fillStyle = 'rgba(15, 23, 42, 0.6)';
+        g1Ctx.fillStyle = 'rgba(15, 23, 42, 0.55)';
         g1Ctx.fillRect(st.x, st.y, st.w, st.h);
-        g1Ctx.strokeStyle = st.color + '44';
+        g1Ctx.strokeStyle = st.color + '40';
         g1Ctx.lineWidth = 1.5;
         g1Ctx.strokeRect(st.x, st.y, st.w, st.h);
 
         g1Ctx.fillStyle = st.color;
-        g1Ctx.font = 'bold 12px ui-sans-serif, system-ui';
+        g1Ctx.font = 'bold 11px ui-sans-serif, system-ui';
         g1Ctx.fillText(st.title, st.x + 12, st.y + 24);
         g1Ctx.fillStyle = '#94a3b8';
-        g1Ctx.font = '10px ui-sans-serif, system-ui';
+        g1Ctx.font = '9.5px ui-sans-serif, system-ui';
         g1Ctx.fillText(st.sub, st.x + 12, st.y + 40);
       });
 
-      // 1. AC Plug & Fuse
-      g1Ctx.strokeStyle = '#38bdf8';
-      g1Ctx.lineWidth = 3;
-      g1Ctx.strokeRect(55, 210, 30, 40);
+      // Helper for clean wire junction dots
+      function drawDot(x, y, col = '#38bdf8') {
+        g1Ctx.fillStyle = col;
+        g1Ctx.beginPath();
+        g1Ctx.arc(x, y, 4, 0, Math.PI * 2);
+        g1Ctx.fill();
+      }
+
+      // Helper for ground symbol (3 horizontal tapering lines)
+      function drawGround(x, y, col = '#0284c7') {
+        g1Ctx.strokeStyle = col;
+        g1Ctx.lineWidth = 2.5;
+        g1Ctx.beginPath();
+        g1Ctx.moveTo(x - 14, y); g1Ctx.lineTo(x + 14, y);
+        g1Ctx.moveTo(x - 9, y + 5); g1Ctx.lineTo(x + 9, y + 5);
+        g1Ctx.moveTo(x - 4, y + 10); g1Ctx.lineTo(x + 4, y + 10);
+        g1Ctx.stroke();
+      }
+
+      // =======================================================================
+      // MAIN POWER BUS WIRES (CONTINUOUS & CONNECTED)
+      // =======================================================================
+      const yRailPos = 220; // Positive DC Rail
+      const yRailGnd = 500; // Negative DC Ground Rail
+
+      // Red Positive DC Rail: starts at Bridge DC+ (540, 220) -> all the way to Red Binding Post (1285, 220)
+      g1Ctx.strokeStyle = '#ef4444';
+      g1Ctx.lineWidth = 3.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(540, yRailPos);
+      g1Ctx.lineTo(925, yRailPos); // Into LM317 VIN
+      g1Ctx.moveTo(995, yRailPos); // Out of LM317 VOUT
+      g1Ctx.lineTo(1285, yRailPos); // Into (+) Red Terminal
+      g1Ctx.stroke();
+
+      // Blue Ground Return Rail: starts at Bridge DC- (540, 500) -> all the way to Black Binding Post (1285, 500)
+      g1Ctx.strokeStyle = '#0284c7';
+      g1Ctx.lineWidth = 3.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(540, yRailGnd);
+      g1Ctx.lineTo(1285, yRailGnd);
+      g1Ctx.stroke();
+
+      // Ground symbols along ground rail
+      drawGround(540, yRailGnd + 16, '#0284c7');
+      drawGround(970, yRailGnd + 16, '#0284c7');
+      drawGround(1285, yRailGnd + 16, '#0284c7');
+
+      // Rail labels
+      g1Ctx.fillStyle = '#ef4444';
+      g1Ctx.font = 'bold 11px monospace';
+      g1Ctx.fillText('(+) POSITIVE DC BUS (1.25V \u2013 12.0V)', 685, yRailPos - 12);
       g1Ctx.fillStyle = '#38bdf8';
       g1Ctx.font = 'bold 11px monospace';
-      g1Ctx.fillText('220V~', 50, 270);
+      g1Ctx.fillText('(-) COMMON GROUND BUS (0V RETURN)', 685, yRailGnd + 34);
 
-      g1Ctx.strokeStyle = '#cbd5e1';
-      g1Ctx.strokeRect(105, 222, 35, 16);
-      g1Ctx.fillStyle = '#cbd5e1';
-      g1Ctx.fillText('FUSE 2A', 100, 214);
+      // =======================================================================
+      // STAGE 1: AC WALL POWER, FUSE, AND ON/OFF SWITCH
+      // =======================================================================
+      const xPlug = 45;
+      const yLive = 220;
+      const yNeut = 320;
 
-      g1Ctx.strokeStyle = '#38bdf8';
-      g1Ctx.beginPath(); g1Ctx.moveTo(155, 230); g1Ctx.lineTo(180, 215); g1Ctx.stroke();
-      g1Ctx.fillText('ON/OFF', 150, 205);
-
-      // 2. Transformer
-      g1Ctx.strokeStyle = '#06b6d4';
-      g1Ctx.lineWidth = 3;
-      g1Ctx.beginPath();
-      for (let i = 0; i < 4; i++) g1Ctx.arc(280, 210 + i * 20, 10, -Math.PI / 2, Math.PI / 2, false);
-      g1Ctx.stroke();
-      g1Ctx.strokeStyle = '#94a3b8';
-      g1Ctx.lineWidth = 2;
-      g1Ctx.beginPath(); g1Ctx.moveTo(300, 195); g1Ctx.lineTo(300, 290); g1Ctx.stroke();
-      g1Ctx.beginPath(); g1Ctx.moveTo(306, 195); g1Ctx.lineTo(306, 290); g1Ctx.stroke();
-      g1Ctx.strokeStyle = '#06b6d4';
-      g1Ctx.lineWidth = 3;
-      g1Ctx.beginPath();
-      for (let i = 0; i < 4; i++) g1Ctx.arc(326, 210 + i * 20, 10, Math.PI / 2, -Math.PI / 2, false);
-      g1Ctx.stroke();
-      g1Ctx.fillStyle = '#06b6d4';
-      g1Ctx.fillText('Safe 18V AC', 300, 315);
-
-      // 3. 4 Diodes Bridge
-      const bx = 560, by = 240;
-      const drawSimpleDiode = (x, y, angle, label, active) => {
-        g1Ctx.save();
-        g1Ctx.translate(x, y);
-        g1Ctx.rotate(angle);
-        g1Ctx.fillStyle = active ? '#34d399' : '#334155';
-        g1Ctx.strokeStyle = active ? '#34d399' : '#64748b';
-        g1Ctx.lineWidth = 2;
-        g1Ctx.beginPath();
-        g1Ctx.moveTo(-12, -8); g1Ctx.lineTo(-12, 8); g1Ctx.lineTo(10, 0); g1Ctx.closePath();
-        g1Ctx.fill(); g1Ctx.stroke();
-        g1Ctx.beginPath(); g1Ctx.moveTo(10, -10); g1Ctx.lineTo(10, 10); g1Ctx.stroke();
-        g1Ctx.fillStyle = active ? '#a7f3d0' : '#94a3b8';
-        g1Ctx.font = 'bold 10px monospace';
-        g1Ctx.fillText(label, -8, -14);
-        g1Ctx.restore();
-      };
-
-      const d1Act = (g1Mode === 'normal' || g1Mode === 'acpos');
-      const d2Act = (g1Mode === 'normal' || g1Mode === 'acneg');
-      const d3Act = (g1Mode === 'normal' || g1Mode === 'acneg');
-      const d4Act = (g1Mode === 'normal' || g1Mode === 'acpos');
-
-      drawSimpleDiode(bx - 35, by - 35, 0, 'D1', d1Act);
-      drawSimpleDiode(bx + 35, by - 35, 0, 'D2', d2Act);
-      drawSimpleDiode(bx - 35, by + 35, Math.PI, 'D3', d3Act);
-      drawSimpleDiode(bx + 35, by + 35, Math.PI, 'D4', d4Act);
-
-      g1Ctx.fillStyle = '#ef4444'; g1Ctx.font = 'bold 12px monospace'; g1Ctx.fillText('(+) DC Power', bx + 55, by - 50);
-      g1Ctx.fillStyle = '#38bdf8'; g1Ctx.fillText('(-) Ground', bx + 55, by + 60);
-
-      // 4. Capacitor Tank (C1)
-      const cx1 = 760;
-      g1Ctx.strokeStyle = '#f59e0b'; g1Ctx.lineWidth = 2.5;
-      g1Ctx.strokeRect(cx1 - 14, 205, 28, 50);
-      g1Ctx.fillStyle = '#f59e0b';
-      g1Ctx.font = 'bold 11px monospace';
-      g1Ctx.fillText('C1 Tank', cx1 - 22, 275);
-      g1Ctx.fillText(g1CapVal + ' \u00B5F', cx1 - 20, 290);
-
-      // 5. Voltage Knob (LM317)
-      const regX = 950, regY = 200;
-      g1Ctx.fillStyle = '#1e1b4b';
-      g1Ctx.fillRect(regX, regY, 80, 55);
-      g1Ctx.strokeStyle = '#a855f7';
-      g1Ctx.lineWidth = 2.5;
-      g1Ctx.strokeRect(regX, regY, 80, 55);
-
-      g1Ctx.strokeStyle = '#cbd5e1';
-      g1Ctx.lineWidth = 2;
-      for (let i = 0; i < 5; i++) {
-        g1Ctx.beginPath(); g1Ctx.moveTo(regX + 10 + i * 14, regY); g1Ctx.lineTo(regX + 10 + i * 14, regY - 18); g1Ctx.stroke();
-      }
-      g1Ctx.fillStyle = '#a855f7';
-      g1Ctx.font = 'bold 11px monospace';
-      g1Ctx.fillText('LM317 CHIP', regX + 8, regY + 28);
-      g1Ctx.font = '9px monospace';
-      g1Ctx.fillText('VOLTAGE VALVE', regX + 6, regY + 44);
-
-      g1Ctx.strokeStyle = '#c084fc';
-      g1Ctx.beginPath(); g1Ctx.arc(regX + 40, regY + 110, 20, 0, Math.PI * 2); g1Ctx.stroke();
-      g1Ctx.beginPath(); g1Ctx.moveTo(regX + 40, regY + 110); g1Ctx.lineTo(regX + 54, regY + 98); g1Ctx.stroke();
-      g1Ctx.fillStyle = '#c084fc';
-      g1Ctx.fillText('Knob (RV1)', regX + 15, regY + 145);
-
-      // 6. Output Screen & Terminals
-      const outX = 1180;
-      g1Ctx.fillStyle = '#020617';
-      g1Ctx.fillRect(outX - 25, 190, 70, 45);
-      g1Ctx.strokeStyle = '#10b981';
-      g1Ctx.lineWidth = 2;
-      g1Ctx.strokeRect(outX - 25, 190, 70, 45);
-      g1Ctx.fillStyle = '#34d399';
-      g1Ctx.font = 'bold 14px monospace';
-      g1Ctx.fillText(g1PotVoltage.toFixed(1) + 'V', outX - 18, 220);
-
-      g1Ctx.fillStyle = '#ef4444';
-      g1Ctx.fillRect(outX + 25, 330, 16, 24);
+      // AC Plug Body
       g1Ctx.fillStyle = '#0f172a';
-      g1Ctx.fillRect(outX + 25, 380, 16, 24);
-      g1Ctx.strokeStyle = '#fff';
-      g1Ctx.strokeRect(outX + 25, 330, 16, 24);
-      g1Ctx.strokeRect(outX + 25, 380, 16, 24);
-      g1Ctx.fillStyle = '#fff';
+      g1Ctx.strokeStyle = '#38bdf8';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.fillRect(xPlug - 15, yLive - 20, 32, (yNeut - yLive) + 40);
+      g1Ctx.strokeRect(xPlug - 15, yLive - 20, 32, (yNeut - yLive) + 40);
+      g1Ctx.fillStyle = '#38bdf8';
       g1Ctx.font = 'bold 10px monospace';
-      g1Ctx.fillText('RED (+)', outX - 18, 345);
-      g1Ctx.fillText('BLACK (-)', outX - 28, 395);
+      g1Ctx.fillText('220V~', xPlug - 13, (yLive + yNeut) / 2 - 4);
+      g1Ctx.font = '8px monospace';
+      g1Ctx.fillText('60Hz', xPlug - 10, (yLive + yNeut) / 2 + 8);
 
-      // Positive Rail
+      // Hot Wire from Plug to Fuse
+      g1Ctx.strokeStyle = '#38bdf8';
+      g1Ctx.lineWidth = 3;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xPlug + 17, yLive);
+      g1Ctx.lineTo(75, yLive);
+      g1Ctx.stroke();
+
+      // F1 Cartridge Fuse (2A)
+      const xFuse = 75;
+      g1Ctx.strokeStyle = '#cbd5e1';
+      g1Ctx.lineWidth = 2;
+      g1Ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+      g1Ctx.fillRect(xFuse, yLive - 9, 38, 18);
+      g1Ctx.strokeRect(xFuse, yLive - 9, 38, 18);
+      // Metal end caps
+      g1Ctx.fillStyle = '#94a3b8';
+      g1Ctx.fillRect(xFuse, yLive - 9, 6, 18);
+      g1Ctx.fillRect(xFuse + 32, yLive - 9, 6, 18);
+      // Fusible wire inside
+      g1Ctx.strokeStyle = '#fbbf24';
+      g1Ctx.lineWidth = 1.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xFuse + 6, yLive);
+      g1Ctx.lineTo(xFuse + 19, yLive - 3);
+      g1Ctx.lineTo(xFuse + 32, yLive);
+      g1Ctx.stroke();
+      g1Ctx.fillStyle = '#cbd5e1';
+      g1Ctx.font = 'bold 9px monospace';
+      g1Ctx.fillText('FUSE 2A', xFuse + 2, yLive - 14);
+
+      // Wire from Fuse to Switch
+      g1Ctx.strokeStyle = '#38bdf8';
+      g1Ctx.lineWidth = 3;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xFuse + 38, yLive);
+      g1Ctx.lineTo(135, yLive);
+      g1Ctx.stroke();
+
+      // Power Switch SW1
+      const xSw = 135;
+      drawDot(xSw, yLive, '#38bdf8');
+      drawDot(xSw + 28, yLive, '#38bdf8');
+      // Closed contact blade
+      g1Ctx.strokeStyle = '#38bdf8';
+      g1Ctx.lineWidth = 3;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xSw, yLive);
+      g1Ctx.lineTo(xSw + 28, yLive);
+      g1Ctx.stroke();
+      g1Ctx.fillStyle = '#38bdf8';
+      g1Ctx.font = 'bold 9px monospace';
+      g1Ctx.fillText('SW1 (ON)', xSw - 4, yLive - 14);
+
+      // Wire from Switch to Transformer Primary Top
+      g1Ctx.strokeStyle = '#38bdf8';
+      g1Ctx.lineWidth = 3;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xSw + 28, yLive);
+      g1Ctx.lineTo(210, yLive);
+      g1Ctx.stroke();
+
+      // Neutral Wire from Plug straight to Transformer Primary Bottom
+      g1Ctx.strokeStyle = '#38bdf8';
+      g1Ctx.lineWidth = 3;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xPlug + 17, yNeut);
+      g1Ctx.lineTo(210, yNeut);
+      g1Ctx.stroke();
+      g1Ctx.fillStyle = '#94a3b8';
+      g1Ctx.font = '8.5px monospace';
+      g1Ctx.fillText('NEUTRAL RETURN', 78, yNeut + 16);
+
+      // =======================================================================
+      // STAGE 2: STEP-DOWN TRANSFORMER T1 (220V AC -> 18V AC)
+      // =======================================================================
+      const xCore = 248;
+      // Primary Coil Coils
+      g1Ctx.strokeStyle = '#0284c7';
+      g1Ctx.lineWidth = 3.5;
+      g1Ctx.beginPath();
+      for (let y = yLive; y < yNeut; y += 20) {
+        g1Ctx.arc(215, y + 10, 10, -Math.PI / 2, Math.PI / 2);
+      }
+      g1Ctx.stroke();
+      drawDot(210, yLive, '#0284c7');
+      drawDot(210, yNeut, '#0284c7');
+
+      // Iron Core Laminations
+      g1Ctx.strokeStyle = '#64748b';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xCore - 3, yLive - 25); g1Ctx.lineTo(xCore - 3, yNeut + 25);
+      g1Ctx.moveTo(xCore + 3, yLive - 25); g1Ctx.lineTo(xCore + 3, yNeut + 25);
+      g1Ctx.stroke();
+      g1Ctx.fillStyle = '#94a3b8';
+      g1Ctx.font = 'bold 9.5px monospace';
+      g1Ctx.fillText('IRON CORE (T1)', xCore - 38, yLive - 32);
+
+      // Secondary Coil (Output 18V AC)
+      g1Ctx.strokeStyle = '#06b6d4';
+      g1Ctx.lineWidth = 3.5;
+      g1Ctx.beginPath();
+      for (let y = yLive; y < yNeut; y += 25) {
+        g1Ctx.arc(280, y + 12.5, 12.5, Math.PI / 2, -Math.PI / 2);
+      }
+      g1Ctx.stroke();
+      drawDot(280, yLive, '#06b6d4');
+      drawDot(280, yNeut, '#06b6d4');
+      g1Ctx.fillStyle = '#06b6d4';
+      g1Ctx.font = 'bold 11px monospace';
+      g1Ctx.fillText('SAFE 18V AC RMS', 250, yNeut + 26);
+      g1Ctx.font = '8.5px monospace';
+      g1Ctx.fillStyle = '#94a3b8';
+      g1Ctx.fillText('(~25.5V PEAK)', 265, yNeut + 38);
+
+      // Wires from Secondary to Bridge AC inputs
+      // Top Secondary Wire: (280, 220) -> (360, 220) -> (360, 270) -> (450, 270) (AC1)
+      g1Ctx.strokeStyle = '#06b6d4';
+      g1Ctx.lineWidth = 3;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(280, yLive);
+      g1Ctx.lineTo(360, yLive);
+      g1Ctx.lineTo(360, 270);
+      g1Ctx.lineTo(450, 270);
+      g1Ctx.stroke();
+
+      // Bottom Secondary Wire: (280, 320) -> (340, 320) -> (340, 370) -> (590, 370) -> (590, 270) -> (540, 270) (AC2)
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(280, yNeut);
+      g1Ctx.lineTo(340, yNeut);
+      g1Ctx.lineTo(340, 370);
+      g1Ctx.lineTo(590, 370);
+      g1Ctx.lineTo(590, 270);
+      g1Ctx.lineTo(540, 270);
+      g1Ctx.stroke();
+
+      // =======================================================================
+      // STAGE 3: FULL-WAVE BRIDGE RECTIFIER (4x 1N4007 DIODES)
+      // =======================================================================
+      const xBrCen = 495;
+      const yBrCen = 270;
+      const brRadius = 45;
+
+      const pAc1 = { x: xBrCen - brRadius, y: yBrCen };       // Left  (450, 270)
+      const pAc2 = { x: xBrCen + brRadius, y: yBrCen };       // Right (540, 270)
+      const pDcPos = { x: xBrCen, y: yBrCen - brRadius };     // Top   (495, 225)
+      const pDcNeg = { x: xBrCen, y: yBrCen + brRadius };     // Bottom(495, 315)
+
+      // Bridge Diamond Outer Body
+      g1Ctx.fillStyle = '#0f172a';
+      g1Ctx.strokeStyle = '#334155';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(pAc1.x, pAc1.y);
+      g1Ctx.lineTo(pDcPos.x, pDcPos.y);
+      g1Ctx.lineTo(pAc2.x, pAc2.y);
+      g1Ctx.lineTo(pDcNeg.x, pDcNeg.y);
+      g1Ctx.closePath();
+      g1Ctx.fill();
+      g1Ctx.stroke();
+
+      // Bridge Connectors to Rails
+      // DC+ to Positive Rail
+      g1Ctx.strokeStyle = '#ef4444';
+      g1Ctx.lineWidth = 3.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(pDcPos.x, pDcPos.y);
+      g1Ctx.lineTo(pDcPos.x, yRailPos);
+      g1Ctx.lineTo(540, yRailPos);
+      g1Ctx.stroke();
+      drawDot(pDcPos.x, yRailPos, '#ef4444');
+      g1Ctx.fillStyle = '#ef4444';
+      g1Ctx.font = 'bold 10px monospace';
+      g1Ctx.fillText('(+) DC OUT', pDcPos.x - 24, yRailPos - 12);
+
+      // DC- to Ground Rail
+      g1Ctx.strokeStyle = '#0284c7';
+      g1Ctx.lineWidth = 3.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(pDcNeg.x, pDcNeg.y);
+      g1Ctx.lineTo(pDcNeg.x, yRailGnd);
+      g1Ctx.lineTo(540, yRailGnd);
+      g1Ctx.stroke();
+      drawDot(pDcNeg.x, yRailGnd, '#0284c7');
+      g1Ctx.fillStyle = '#38bdf8';
+      g1Ctx.font = 'bold 10px monospace';
+      g1Ctx.fillText('(-) DC RETURN', pDcNeg.x - 30, yRailGnd - 12);
+
+      // Clean Diode Drawing Symbol with UPRIGHT labels
+      function drawBridgeDiode(fromX, fromY, toX, toY, label, isConducting, labelOffset) {
+        const midX = (fromX + toX) / 2;
+        const midY = (fromY + toY) / 2;
+        const angle = Math.atan2(toY - fromY, toX - fromX);
+
+        g1Ctx.save();
+        g1Ctx.translate(midX, midY);
+        g1Ctx.rotate(angle);
+
+        const col = isConducting ? '#34d399' : '#64748b';
+        g1Ctx.fillStyle = isConducting ? '#10b981' : '#334155';
+        g1Ctx.strokeStyle = col;
+        g1Ctx.lineWidth = 2.2;
+
+        // Diode Triangle (Anode -> Cathode)
+        g1Ctx.beginPath();
+        g1Ctx.moveTo(-9, -7);
+        g1Ctx.lineTo(-9, 7);
+        g1Ctx.lineTo(7, 0);
+        g1Ctx.closePath();
+        g1Ctx.fill();
+        g1Ctx.stroke();
+
+        // Cathode Bar
+        g1Ctx.beginPath();
+        g1Ctx.moveTo(7, -8);
+        g1Ctx.lineTo(7, 8);
+        g1Ctx.stroke();
+        g1Ctx.restore();
+
+        // Label drawn UPRIGHT at fixed canvas coordinate (NEVER rotated!)
+        g1Ctx.fillStyle = isConducting ? '#34d399' : '#94a3b8';
+        g1Ctx.font = 'bold 9px monospace';
+        g1Ctx.fillText(label, midX + labelOffset.x, midY + labelOffset.y);
+      }
+
+      // Conduction Logic
+      const isPos = (g1Mode === 'acpos') || (g1Mode === 'normal' && Math.floor(g1AnimTime * 2) % 2 === 0);
+      const isNeg = (g1Mode === 'acneg') || (g1Mode === 'normal' && !isPos);
+
+      // D1: pAc1 -> pDcPos
+      drawBridgeDiode(pAc1.x, pAc1.y, pDcPos.x, pDcPos.y, 'D1', isPos, { x: -28, y: -6 });
+      // D2: pAc2 -> pDcPos
+      drawBridgeDiode(pAc2.x, pAc2.y, pDcPos.x, pDcPos.y, 'D2', isNeg, { x: 10, y: -6 });
+      // D3: pDcNeg -> pAc1
+      drawBridgeDiode(pDcNeg.x, pDcNeg.y, pAc1.x, pAc1.y, 'D3', isNeg, { x: -28, y: 14 });
+      // D4: pDcNeg -> pAc2
+      drawBridgeDiode(pDcNeg.x, pDcNeg.y, pAc2.x, pAc2.y, 'D4', isPos, { x: 10, y: 14 });
+
+      drawDot(pAc1.x, pAc1.y, '#06b6d4');
+      drawDot(pAc2.x, pAc2.y, '#06b6d4');
+      drawDot(pDcPos.x, pDcPos.y, '#ef4444');
+      drawDot(pDcNeg.x, pDcNeg.y, '#0284c7');
+
+      g1Ctx.fillStyle = '#34d399';
+      g1Ctx.font = 'bold 11px monospace';
+      g1Ctx.fillText('+23.9V RAW DC', 555, yRailPos - 12);
+
+      // =======================================================================
+      // STAGE 4: "WATER TANK" FILTER CAPACITOR C1 & CERAMIC C2
+      // =======================================================================
+      const xC1 = 740;
+      const yC1Top = 290;
+      const yC1Bot = 430;
+
+      // Connecting wires from Positive Rail to C1 top & from C1 bottom to Ground
       g1Ctx.strokeStyle = '#ef4444';
       g1Ctx.lineWidth = 3;
       g1Ctx.beginPath();
-      g1Ctx.moveTo(bx + 55, by - 40); g1Ctx.lineTo(regX, by - 40);
-      g1Ctx.moveTo(regX + 80, by - 40); g1Ctx.lineTo(outX + 25, by - 40);
+      g1Ctx.moveTo(xC1, yRailPos);
+      g1Ctx.lineTo(xC1, yC1Top);
+      g1Ctx.stroke();
+      drawDot(xC1, yRailPos, '#ef4444');
+
+      g1Ctx.strokeStyle = '#0284c7';
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xC1, yC1Bot);
+      g1Ctx.lineTo(xC1, yRailGnd);
+      g1Ctx.stroke();
+      drawDot(xC1, yRailGnd, '#0284c7');
+
+      // C1 Cylinder "Water Tank"
+      const wTank = 46;
+      const hTank = yC1Bot - yC1Top;
+      g1Ctx.fillStyle = '#0f172a';
+      g1Ctx.strokeStyle = '#f59e0b';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.fillRect(xC1 - wTank / 2, yC1Top, wTank, hTank);
+      g1Ctx.strokeRect(xC1 - wTank / 2, yC1Top, wTank, hTank);
+
+      // Animated Liquid / Charge Reservoir Fill
+      const is2200 = (g1CapVal === 2200);
+      const fillPct = is2200 ? 0.82 : 0.45;
+      const fluidH = hTank * fillPct;
+      const fluidY = yC1Bot - fluidH;
+      const gradFluid = g1Ctx.createLinearGradient(0, fluidY, 0, yC1Bot);
+      gradFluid.addColorStop(0, is2200 ? '#38bdf8' : '#f59e0b');
+      gradFluid.addColorStop(1, '#0284c7');
+      g1Ctx.fillStyle = gradFluid;
+      g1Ctx.fillRect(xC1 - wTank / 2 + 2, fluidY, wTank - 4, fluidH - 2);
+
+      // Water Ripple Surface
+      g1Ctx.strokeStyle = is2200 ? '#7dd3fc' : '#fbbf24';
+      g1Ctx.lineWidth = 2;
+      g1Ctx.beginPath();
+      const waveAmp = is2200 ? 1.5 : 4.5;
+      for (let wx = xC1 - wTank / 2 + 2; wx <= xC1 + wTank / 2 - 2; wx += 2) {
+        const wy = fluidY + Math.sin((wx * 0.3) + (g1AnimTime * 8)) * waveAmp;
+        wx === (xC1 - wTank / 2 + 2) ? g1Ctx.moveTo(wx, wy) : g1Ctx.lineTo(wx, wy);
+      }
       g1Ctx.stroke();
 
-      // Ground Rail
+      // C1 Labels
+      g1Ctx.fillStyle = '#ffffff';
+      g1Ctx.font = 'bold 10px monospace';
+      g1Ctx.fillText('C1 TANK', xC1 - 22, yC1Top + 22);
+      g1Ctx.font = 'bold 9px monospace';
+      g1Ctx.fillStyle = is2200 ? '#38bdf8' : '#fbbf24';
+      g1Ctx.fillText(`${g1CapVal} \u00B5F`, xC1 - 20, yC1Top + 36);
+      g1Ctx.fillStyle = '#94a3b8';
+      g1Ctx.font = '8px monospace';
+      g1Ctx.fillText('50V ELECT.', xC1 - 23, yC1Top + 48);
+      g1Ctx.fillStyle = is2200 ? '#34d399' : '#f59e0b';
+      g1Ctx.font = 'bold 8.5px monospace';
+      g1Ctx.fillText(is2200 ? 'SMOOTH' : 'BUMPY', xC1 - 18, yC1Bot - 8);
+
+      // C2 Ceramic Capacitor (0.1 uF)
+      const xC2 = 830;
+      g1Ctx.strokeStyle = '#ef4444';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xC2, yRailPos);
+      g1Ctx.lineTo(xC2, 340);
+      g1Ctx.stroke();
+      drawDot(xC2, yRailPos, '#ef4444');
+
       g1Ctx.strokeStyle = '#0284c7';
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xC2, 360);
+      g1Ctx.lineTo(xC2, yRailGnd);
+      g1Ctx.stroke();
+      drawDot(xC2, yRailGnd, '#0284c7');
+
+      // Ceramic Capacitor Parallel Plates
+      g1Ctx.strokeStyle = '#38bdf8';
+      g1Ctx.lineWidth = 3.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xC2 - 12, 340); g1Ctx.lineTo(xC2 + 12, 340);
+      g1Ctx.moveTo(xC2 - 12, 360); g1Ctx.lineTo(xC2 + 12, 360);
+      g1Ctx.stroke();
+      g1Ctx.fillStyle = '#38bdf8';
+      g1Ctx.font = 'bold 9px monospace';
+      g1Ctx.fillText('C2: 0.1 \u00B5F', xC2 - 24, 330);
+      g1Ctx.fillStyle = '#94a3b8';
+      g1Ctx.font = '7.5px monospace';
+      g1Ctx.fillText('HF NOISE', xC2 - 20, 375);
+
+      // =======================================================================
+      // STAGE 5: LM317T REGULATOR & VOLTAGE DIVIDER (R1 & RV1 KNOB)
+      // =======================================================================
+      const xReg = 960;
+      const yReg = yRailPos;
+
+      // LM317 IC Body
+      g1Ctx.fillStyle = '#1e1b4b';
+      g1Ctx.strokeStyle = '#a855f7';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.fillRect(xReg - 35, yReg - 25, 70, 50);
+      g1Ctx.strokeRect(xReg - 35, yReg - 25, 70, 50);
+
+      // Aluminum Heatsink bolted to the back (rising above rail)
+      const hsWatts = (23.9 - g1PotVoltage) * 1.0;
+      g1Ctx.strokeStyle = '#94a3b8';
+      g1Ctx.lineWidth = 2.2;
+      for (let i = 0; i < 5; i++) {
+        const fx = xReg - 28 + i * 14;
+        g1Ctx.beginPath();
+        g1Ctx.moveTo(fx, yReg - 25);
+        g1Ctx.lineTo(fx, yReg - 52);
+        g1Ctx.stroke();
+      }
+      // Heat waves radiating if dissipating significant power
+      if (hsWatts > 8) {
+        g1Ctx.strokeStyle = hsWatts > 15 ? 'rgba(239, 68, 68, 0.7)' : 'rgba(245, 158, 11, 0.6)';
+        g1Ctx.lineWidth = 1.5;
+        for (let i = 0; i < 3; i++) {
+          const hx = xReg - 18 + i * 18;
+          g1Ctx.beginPath();
+          g1Ctx.moveTo(hx, yReg - 55);
+          g1Ctx.quadraticCurveTo(hx + 4, yReg - 65, hx, yReg - 72);
+          g1Ctx.stroke();
+        }
+      }
+      g1Ctx.fillStyle = '#cbd5e1';
+      g1Ctx.font = 'bold 8px monospace';
+      g1Ctx.fillText('HEATSINK', xReg - 20, yReg - 56);
+
+      // LM317 Chip Labels
+      g1Ctx.fillStyle = '#a855f7';
+      g1Ctx.font = 'bold 11px monospace';
+      g1Ctx.fillText('LM317T', xReg - 22, yReg - 6);
+      g1Ctx.font = '8px monospace';
+      g1Ctx.fillStyle = '#c084fc';
+      g1Ctx.fillText('REGULATOR', xReg - 23, yReg + 8);
+      g1Ctx.fillStyle = '#94a3b8';
+      g1Ctx.font = '7.5px monospace';
+      g1Ctx.fillText('VIN(3)', xReg - 32, yReg + 20);
+      g1Ctx.fillText('VOUT(2)', xReg + 2, yReg + 20);
+
+      // Wire Connections to LM317 Pins
+      drawDot(xReg - 35, yReg, '#ef4444'); // VIN Pin 3
+      drawDot(xReg + 35, yReg, '#ef4444'); // VOUT Pin 2
+      const yAdjNode = 340;
+      drawDot(xReg, yReg + 25, '#fbbf24'); // ADJ Pin 1
+
+      // ADJ Pin wire drops from Pin 1 (xReg, yReg + 25) down to ADJ node (xReg, yAdjNode)
+      g1Ctx.strokeStyle = '#fbbf24';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xReg, yReg + 25);
+      g1Ctx.lineTo(xReg, yAdjNode);
+      g1Ctx.stroke();
+      g1Ctx.fillStyle = '#fbbf24';
+      g1Ctx.font = 'bold 8.5px monospace';
+      g1Ctx.fillText('PIN 1: ADJ', xReg + 6, yReg + 36);
+
+      // Protection Diode D5 (Reverse Clamp: VOUT -> VIN)
+      g1Ctx.strokeStyle = '#38bdf8';
+      g1Ctx.lineWidth = 2;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(1020, yRailPos);
+      g1Ctx.lineTo(1020, 150);
+      g1Ctx.lineTo(910, 150);
+      g1Ctx.lineTo(910, yRailPos);
+      g1Ctx.stroke();
+      drawDot(1020, yRailPos, '#ef4444');
+      drawDot(910, yRailPos, '#ef4444');
+      // Diode D5 symbol pointing left (Anode at VOUT, Cathode at VIN)
+      const xD5 = 965, yD5 = 150;
+      g1Ctx.fillStyle = '#0f172a';
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xD5 + 7, yD5 - 6); g1Ctx.lineTo(xD5 + 7, yD5 + 6); g1Ctx.lineTo(xD5 - 7, yD5); g1Ctx.closePath();
+      g1Ctx.fill(); g1Ctx.stroke();
+      g1Ctx.beginPath(); g1Ctx.moveTo(xD5 - 7, yD5 - 7); g1Ctx.lineTo(xD5 - 7, yD5 + 7); g1Ctx.stroke();
+      g1Ctx.fillStyle = '#38bdf8';
+      g1Ctx.font = 'bold 8.5px monospace';
+      g1Ctx.fillText('D5 (1N4007)', xD5 - 28, yD5 - 10);
+
+      // Resistor R1 (240 Ohm between VOUT and ADJ)
+      const xR1 = 1045;
+      g1Ctx.strokeStyle = '#ef4444';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xR1, yRailPos);
+      g1Ctx.lineTo(xR1, 260);
+      g1Ctx.stroke();
+      drawDot(xR1, yRailPos, '#ef4444');
+
+      // R1 body
+      g1Ctx.fillStyle = '#0f172a';
+      g1Ctx.strokeStyle = '#f59e0b';
+      g1Ctx.lineWidth = 2;
+      g1Ctx.fillRect(xR1 - 10, 260, 20, 45);
+      g1Ctx.strokeRect(xR1 - 10, 260, 20, 45);
+      g1Ctx.fillStyle = '#f59e0b';
+      g1Ctx.font = 'bold 8px monospace';
+      g1Ctx.fillText('R1', xR1 - 6, 280);
+      g1Ctx.fillText('240\u03A9', xR1 - 11, 295);
+
+      // Wire from R1 bottom to ADJ node
+      g1Ctx.strokeStyle = '#fbbf24';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xR1, 305);
+      g1Ctx.lineTo(xR1, yAdjNode);
+      g1Ctx.lineTo(xReg, yAdjNode);
+      g1Ctx.stroke();
+      drawDot(xR1, yAdjNode, '#fbbf24');
+      drawDot(xReg, yAdjNode, '#fbbf24');
+
+      // Protection Diode D6 (ADJ to VOUT)
+      const xD6 = 1010, yD6 = 300;
+      g1Ctx.strokeStyle = '#cbd5e1';
+      g1Ctx.lineWidth = 1.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xReg + 15, yAdjNode);
+      g1Ctx.lineTo(xD6, yD6 + 15);
+      g1Ctx.lineTo(xD6, yD6 - 15);
+      g1Ctx.lineTo(xR1 - 15, yRailPos + 10);
+      g1Ctx.stroke();
+      g1Ctx.fillStyle = '#94a3b8';
+      g1Ctx.font = '7.5px monospace';
+      g1Ctx.fillText('D6', xD6 + 4, yD6 + 4);
+
+      // RV1 Potentiometer Knob (between ADJ node and Ground)
+      const xRV1 = xReg;
+      // Wire from ADJ node to RV1
+      g1Ctx.strokeStyle = '#fbbf24';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xRV1, yAdjNode);
+      g1Ctx.lineTo(xRV1, 385);
+      g1Ctx.stroke();
+
+      // RV1 Resistor body
+      g1Ctx.fillStyle = '#0f172a';
+      g1Ctx.strokeStyle = '#c084fc';
+      g1Ctx.lineWidth = 2;
+      g1Ctx.fillRect(xRV1 - 12, 385, 24, 45);
+      g1Ctx.strokeRect(xRV1 - 12, 385, 24, 45);
+      g1Ctx.fillStyle = '#c084fc';
+      g1Ctx.font = 'bold 8.5px monospace';
+      g1Ctx.fillText('RV1', xRV1 - 8, 404);
+      g1Ctx.fillText('5k\u03A9', xRV1 - 8, 418);
+
+      // Wiper Arrow
+      g1Ctx.strokeStyle = '#fbbf24';
+      g1Ctx.lineWidth = 2;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xRV1 + 18, 407);
+      g1Ctx.lineTo(xRV1 + 12, 407);
+      g1Ctx.stroke();
+
+      // Interactive Rotary Dial Knob Graphic
+      const xDial = xRV1 + 55;
+      const yDial = 407;
+      const rDial = 22;
+      g1Ctx.fillStyle = '#0f172a';
+      g1Ctx.strokeStyle = '#a855f7';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.arc(xDial, yDial, rDial, 0, Math.PI * 2);
+      g1Ctx.fill();
+      g1Ctx.stroke();
+
+      // Dial pointer angle matching g1PotVoltage (1.25V -> -135deg, 12V -> +135deg)
+      const voltNorm = (g1PotVoltage - 1.25) / (12.0 - 1.25);
+      const ptrAngle = -Math.PI * 0.75 + voltNorm * (Math.PI * 1.5);
+      g1Ctx.strokeStyle = '#fbbf24';
       g1Ctx.lineWidth = 3;
       g1Ctx.beginPath();
-      g1Ctx.moveTo(bx + 55, 450); g1Ctx.lineTo(outX + 25, 450);
+      g1Ctx.moveTo(xDial, yDial);
+      g1Ctx.lineTo(xDial + Math.cos(ptrAngle) * (rDial - 4), yDial + Math.sin(ptrAngle) * (rDial - 4));
       g1Ctx.stroke();
 
-      // Live Animated Current Dots
+      g1Ctx.fillStyle = '#ffffff';
+      g1Ctx.font = 'bold 8.5px monospace';
+      g1Ctx.fillText('VOLTS KNOB', xDial - 26, yDial + 34);
+
+      // Wire from RV1 bottom to Ground Rail
+      g1Ctx.strokeStyle = '#0284c7';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xRV1, 430);
+      g1Ctx.lineTo(xRV1, yRailGnd);
+      g1Ctx.stroke();
+      drawDot(xRV1, yRailGnd, '#0284c7');
+
+      // =======================================================================
+      // STAGE 6: OUTPUT CAPACITOR C3, VOLTMETER DISPLAY & BANANA TERMINALS
+      // =======================================================================
+      // C3 Output Filter Capacitor (10 uF)
+      const xC3 = 1160;
+      g1Ctx.strokeStyle = '#ef4444';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xC3, yRailPos);
+      g1Ctx.lineTo(xC3, 335);
+      g1Ctx.stroke();
+      drawDot(xC3, yRailPos, '#ef4444');
+
+      g1Ctx.strokeStyle = '#0284c7';
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xC3, 365);
+      g1Ctx.lineTo(xC3, yRailGnd);
+      g1Ctx.stroke();
+      drawDot(xC3, yRailGnd, '#0284c7');
+
+      // C3 symbol
+      g1Ctx.fillStyle = '#0f172a';
+      g1Ctx.strokeStyle = '#10b981';
+      g1Ctx.lineWidth = 2;
+      g1Ctx.fillRect(xC3 - 10, 335, 20, 30);
+      g1Ctx.strokeRect(xC3 - 10, 335, 20, 30);
+      g1Ctx.fillStyle = '#34d399';
+      g1Ctx.font = 'bold 8.5px monospace';
+      g1Ctx.fillText('C3', xC3 - 6, 350);
+      g1Ctx.fillText('10\u00B5F', xC3 - 10, 361);
+
+      // Digital Voltmeter Panel
+      const xMeter = 1205;
+      const yMeter = 145;
+      const wMeter = 75;
+      const hMeter = 42;
+      g1Ctx.fillStyle = '#020617';
+      g1Ctx.strokeStyle = '#10b981';
+      g1Ctx.lineWidth = 2;
+      g1Ctx.fillRect(xMeter, yMeter, wMeter, hMeter);
+      g1Ctx.strokeRect(xMeter, yMeter, wMeter, hMeter);
+
+      // Glowing LED readout
+      g1Ctx.fillStyle = '#34d399';
+      g1Ctx.font = 'bold 15px monospace';
+      g1Ctx.fillText(`${g1PotVoltage.toFixed(2)}V`, xMeter + 10, yMeter + 26);
+      g1Ctx.fillStyle = '#64748b';
+      g1Ctx.font = '7.5px monospace';
+      g1Ctx.fillText('DIGITAL PANEL', xMeter + 6, yMeter + 38);
+
+      // Meter Sense Leads connected to rails
+      g1Ctx.strokeStyle = '#ef4444';
+      g1Ctx.lineWidth = 1.8;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xMeter + 20, yMeter + hMeter);
+      g1Ctx.lineTo(xMeter + 20, yRailPos);
+      g1Ctx.stroke();
+      drawDot(xMeter + 20, yRailPos, '#ef4444');
+
+      g1Ctx.strokeStyle = '#0284c7';
+      g1Ctx.lineWidth = 1.8;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xMeter + 55, yMeter + hMeter);
+      g1Ctx.lineTo(xMeter + 55, yRailGnd);
+      g1Ctx.stroke();
+      drawDot(xMeter + 55, yRailGnd, '#0284c7');
+
+      // Banana Binding Post Output Terminals
+      const xTerm = 1290;
+      // Positive Terminal (Red Post)
+      g1Ctx.fillStyle = '#ef4444';
+      g1Ctx.strokeStyle = '#ffffff';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.fillRect(xTerm - 10, yRailPos - 16, 20, 32);
+      g1Ctx.strokeRect(xTerm - 10, yRailPos - 16, 20, 32);
+      g1Ctx.fillStyle = '#ffffff';
+      g1Ctx.font = 'bold 13px sans-serif';
+      g1Ctx.fillText('+', xTerm - 4, yRailPos + 5);
+      g1Ctx.fillStyle = '#ef4444';
+      g1Ctx.font = 'bold 9.5px monospace';
+      g1Ctx.fillText('RED (+)', xTerm - 18, yRailPos - 22);
+
+      // Ground Terminal (Black Post)
+      g1Ctx.fillStyle = '#0f172a';
+      g1Ctx.strokeStyle = '#38bdf8';
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.fillRect(xTerm - 10, yRailGnd - 16, 20, 32);
+      g1Ctx.strokeRect(xTerm - 10, yRailGnd - 16, 20, 32);
       g1Ctx.fillStyle = '#38bdf8';
-      const numDots = 20;
-      for (let i = 0; i < numDots; i++) {
-        const offset = ((g1AnimTime * 80 + (i * 60)) % 1200);
-        const px = bx + 60 + offset * 0.55;
-        if (px < outX + 25) {
-          g1Ctx.beginPath();
-          g1Ctx.arc(px, by - 40, 4, 0, Math.PI * 2);
-          g1Ctx.fill();
-          g1Ctx.beginPath();
-          g1Ctx.arc(outX + 25 - (px - (bx + 60)), 450, 4, 0, Math.PI * 2);
-          g1Ctx.fill();
+      g1Ctx.font = 'bold 14px sans-serif';
+      g1Ctx.fillText('-', xTerm - 3, yRailGnd + 5);
+      g1Ctx.fillStyle = '#38bdf8';
+      g1Ctx.font = 'bold 9.5px monospace';
+      g1Ctx.fillText('BLACK (-)', xTerm - 24, yRailGnd + 30);
+
+      // Output Load across Red and Black terminals
+      g1Ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+      g1Ctx.setLineDash([4, 4]);
+      g1Ctx.lineWidth = 2;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xTerm, yRailPos + 16);
+      g1Ctx.lineTo(xTerm, yRailGnd - 16);
+      g1Ctx.stroke();
+      g1Ctx.setLineDash([]);
+      g1Ctx.fillStyle = '#38bdf8';
+      g1Ctx.font = 'bold 8.5px monospace';
+      g1Ctx.fillText('LOAD: 1.0A', xTerm - 24, (yRailPos + yRailGnd) / 2);
+
+      // =======================================================================
+      // LIVE ANIMATED ELECTRON PARTICLES (FULL CLOSED-LOOP FLOW)
+      // =======================================================================
+      // Loop 1: Primary AC Loop (Plug -> Fuse -> Switch -> Primary Coil -> Neutral)
+      const nAcPrim = 8;
+      for (let i = 0; i < nAcPrim; i++) {
+        const t = ((g1AnimTime * 1.5 + (i / nAcPrim)) % 1);
+        let px = 0, py = 0;
+        if (t < 0.5) {
+          px = 55 + (t / 0.5) * (210 - 55);
+          py = yLive;
+        } else {
+          px = 210 - ((t - 0.5) / 0.5) * (210 - 55);
+          py = yNeut;
         }
+        g1Ctx.fillStyle = '#38bdf8';
+        g1Ctx.beginPath();
+        g1Ctx.arc(px, py, 3.5, 0, Math.PI * 2);
+        g1Ctx.fill();
+      }
+
+      // Loop 2: Main DC Forward Rail Particles (Bridge DC+ -> LM317 -> VOUT -> Red Terminal)
+      const nDcPos = 16;
+      for (let i = 0; i < nDcPos; i++) {
+        const offset = ((g1AnimTime * 120 + (i * 50)) % (1285 - 540));
+        const px = 540 + offset;
+        g1Ctx.fillStyle = '#ef4444';
+        g1Ctx.beginPath();
+        g1Ctx.arc(px, yRailPos, 4, 0, Math.PI * 2);
+        g1Ctx.fill();
+      }
+
+      // Loop 3: Main DC Return Ground Particles (Black Terminal -> RV1 -> C1 -> Bridge DC-)
+      const nDcGnd = 16;
+      for (let i = 0; i < nDcGnd; i++) {
+        const offset = ((g1AnimTime * 120 + (i * 50)) % (1285 - 540));
+        const px = 1285 - offset;
+        g1Ctx.fillStyle = '#38bdf8';
+        g1Ctx.beginPath();
+        g1Ctx.arc(px, yRailGnd, 4, 0, Math.PI * 2);
+        g1Ctx.fill();
+      }
+
+      // Loop 4: C1 Filter Charging Particles (Positive Rail -> C1 -> Ground Rail)
+      const nCap = 4;
+      for (let i = 0; i < nCap; i++) {
+        const t = ((g1AnimTime * 1.2 + (i / nCap)) % 1);
+        const py = yRailPos + t * (yRailGnd - yRailPos);
+        g1Ctx.fillStyle = '#f59e0b';
+        g1Ctx.beginPath();
+        g1Ctx.arc(xC1, py, 3.5, 0, Math.PI * 2);
+        g1Ctx.fill();
+      }
+
+      // Loop 5: Divider Current through R1 & RV1 (VOUT -> R1 -> RV1 -> Ground Rail)
+      const nDiv = 4;
+      for (let i = 0; i < nDiv; i++) {
+        const t = ((g1AnimTime * 1.0 + (i / nDiv)) % 1);
+        const py = yRailPos + t * (yRailGnd - yRailPos);
+        g1Ctx.fillStyle = '#c084fc';
+        g1Ctx.beginPath();
+        g1Ctx.arc(xRV1, py, 3.5, 0, Math.PI * 2);
+        g1Ctx.fill();
       }
     }
 
-    // =========================================================================
-    // DUAL CHANNEL SCOPE (GROUP 1)
-    // =========================================================================
     function drawG1Scope() {
       if (!g1ScopeCtx || !g1Scope) return;
       g1ScopeCtx.clearRect(0, 0, g1Scope.width, g1Scope.height);
