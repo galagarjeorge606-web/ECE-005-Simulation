@@ -1073,12 +1073,15 @@
       }
 
       // Helper for EasyEDA Vertical Diode (Pointing UP)
-      // Draws the diode with full terminal lead pins connecting from yTopPin to yBotPin
-      function drawEasyEDADiode(x, yTopPin, yBotPin, yCathode, label, isConducting) {
+      // Draws the diode with symmetric 25px lead pins and hollow opaque body
+      function drawEasyEDADiode(x, yCathode, label, isConducting) {
         const dColor = isConducting ? '#34d399' : cComp;
-        const triHeight = 22;
+        const triHeight = 20;
         const triWidth = 11;
+        const stemLen = 25;
         const yAnode = yCathode + triHeight;
+        const yTopPin = yCathode - stemLen;
+        const yBotPin = yAnode + stemLen;
 
         g1Ctx.strokeStyle = dColor;
         g1Ctx.lineWidth = 2.5;
@@ -1111,8 +1114,8 @@
         g1Ctx.lineTo(x, yBotPin);
         g1Ctx.stroke();
 
-        // 5. Component designation label to the right
-        g1Ctx.fillStyle = isConducting ? '#34d399' : cText;
+        // 5. Component designation label to the right (EasyEDA Blue)
+        g1Ctx.fillStyle = isConducting ? '#34d399' : '#38bdf8';
         g1Ctx.font = 'bold 11px ui-monospace, monospace';
         g1Ctx.fillText(label, x + 16, yCathode + 14);
       }
@@ -1153,11 +1156,10 @@
         g1Ctx.quadraticCurveTo(x, yMid + 8, x + 14, yMid + 2);
         g1Ctx.stroke();
 
-        // Component designation & value labels to the right
-        g1Ctx.fillStyle = cText;
+        // Component designation & value labels to the right (EasyEDA Blue)
+        g1Ctx.fillStyle = '#38bdf8';
         g1Ctx.font = 'bold 11px ui-monospace, monospace';
         g1Ctx.fillText(desig, x + 20, yMid - 2);
-        g1Ctx.fillStyle = cVal;
         g1Ctx.font = '10px ui-monospace, monospace';
         g1Ctx.fillText(valText, x + 20, yMid + 14);
       }
@@ -1170,25 +1172,24 @@
 
         // Top & bottom leads
         g1Ctx.beginPath();
-        g1Ctx.moveTo(x, yTop); g1Ctx.lineTo(x, yMid - 8);
-        g1Ctx.moveTo(x, yMid + 8); g1Ctx.lineTo(x, yBot);
+        g1Ctx.moveTo(x, yTop); g1Ctx.lineTo(x, yMid - 5);
+        g1Ctx.moveTo(x, yMid + 5); g1Ctx.lineTo(x, yBot);
         g1Ctx.stroke();
 
         // Two parallel plates
         g1Ctx.strokeStyle = cComp;
         g1Ctx.lineWidth = 2.5;
         g1Ctx.beginPath();
-        g1Ctx.moveTo(x - 13, yMid - 8); g1Ctx.lineTo(x + 13, yMid - 8);
-        g1Ctx.moveTo(x - 13, yMid + 8); g1Ctx.lineTo(x + 13, yMid + 8);
+        g1Ctx.moveTo(x - 14, yMid - 5); g1Ctx.lineTo(x + 14, yMid - 5);
+        g1Ctx.moveTo(x - 14, yMid + 5); g1Ctx.lineTo(x + 14, yMid + 5);
         g1Ctx.stroke();
 
-        // Labels
-        g1Ctx.fillStyle = cText;
+        // Labels (EasyEDA Blue)
+        g1Ctx.fillStyle = '#38bdf8';
         g1Ctx.font = 'bold 11px ui-monospace, monospace';
-        g1Ctx.fillText(desig, x + 18, yMid - 4);
-        g1Ctx.fillStyle = cVal;
+        g1Ctx.fillText(desig, x + 20, yMid - 2);
         g1Ctx.font = '10px ui-monospace, monospace';
-        g1Ctx.fillText(valText, x + 18, yMid + 12);
+        g1Ctx.fillText(valText, x + 20, yMid + 14);
       }
 
       // Helper for EasyEDA 2-Pin Connector Box (H1, H2)
@@ -1215,8 +1216,8 @@
         g1Ctx.fillText('1', x - 4, yCenter - 14);
         g1Ctx.fillText('2', x - 4, yCenter + 24);
 
-        // Component Name above
-        g1Ctx.fillStyle = cComp;
+        // Component Name above (EasyEDA Blue)
+        g1Ctx.fillStyle = '#38bdf8';
         g1Ctx.font = 'bold 12px ui-monospace, monospace';
         g1Ctx.fillText(name, xBox - 2, yBox - 8);
 
@@ -1240,35 +1241,26 @@
       const yH1P2    = 380;  // H1 Pin 2 (Bottom AC lead)
 
       const xD1D2    = 270;  // D1 & D2 vertical branch
-      const yD1      = 270;  // D1 position (between 220 and 320)
-      const yD2      = 450;  // D2 position (between 320 and 520)
-
       const xD4D3    = 390;  // D4 & D3 vertical branch
-      const yD4      = 270;  // D4 position (between 220 and 380)
-      const yD3      = 450;  // D3 position (between 380 and 520)
 
       const xC2      = 520;  // Filter Cap C2 (1000uF / 2200uF)
       const xC1      = 660;  // Ceramic Bypass C1 (0.1uF)
 
-      const xU2      = 800;  // LM317 Box Center (X: 750 to 850)
-      const yU2Top   = 240;
-      const yU2Bot   = 350;
-      const xU2In    = 750;
-      const xU2Out   = 850;
-      const yU2Adj   = 320;
+      // LM317 Box Coordinates & Top-edge Pins (Exact EasyEDA Layout)
+      const xU2Left  = 760;
+      const wU2      = 84;
+      const hU2      = 94;
+      const yU2Top   = 260;
+      const xPin3    = 780;  // Pin 3: IN (Top-left)
+      const xPin2    = 802;  // Pin 2: OUT (Top-center)
+      const xPin1    = 824;  // Pin 1: ADJ (Top-right)
 
-      const xR1      = 970;  // Feedback Resistor R1 (470 / 240)
-      const yR1Top   = 130;
-      const yR1Bot   = 290;
-
+      const xR1      = 970;  // Feedback Resistor R1 (470)
       const xPR1     = 970;  // Potentiometer PR1 (5K)
-      const yPR1Top  = 320;
-      const yPR1Bot  = 520;
+      const yADJNode = 240;  // ADJ node between R1 and PR1
 
-      const xGND     = 800;  // GND Earth symbol on bottom rail
-
+      const xGND     = 730;  // GND Earth symbol on bottom rail below U2
       const xC3      = 1080; // Output Cap C3 (10uF)
-
       const xH2      = 1190; // Output connector H2
       const yH2P1    = 250;
       const yH2P2    = 320;
@@ -1279,7 +1271,7 @@
       g1Ctx.strokeStyle = cWire;
       g1Ctx.lineWidth = 2.5;
 
-      // 1. Bottom Ground Rail (GND) across full circuit: xD1D2 (270) -> xH2 (1190)
+      // 1. Bottom Ground Rail (GND) across full circuit: xD1D2 (270) -> xH2 (1140) -> H2 Pin 2
       g1Ctx.beginPath();
       g1Ctx.moveTo(xD1D2, yRailBot);
       g1Ctx.lineTo(1140, yRailBot);
@@ -1287,16 +1279,17 @@
       g1Ctx.lineTo(xH2 - 22, yH2P2);
       g1Ctx.stroke();
 
-      // 2. Middle Top Rail (VIN Unregulated): xD1D2 (270) -> LM317 IN (750)
+      // 2. Middle Raw DC Rail (+Vin): xD1D2 (270) -> across C2, C1 -> down into U2 Pin 3 (780, 246)
       g1Ctx.beginPath();
       g1Ctx.moveTo(xD1D2, yRailMid);
-      g1Ctx.lineTo(xU2In, yRailMid);
+      g1Ctx.lineTo(xPin3, yRailMid);
+      g1Ctx.lineTo(xPin3, yU2Top - 14);
       g1Ctx.stroke();
 
-      // 3. Topmost VOUT Rail: LM317 OUT (850, 260) -> goes UP to (850, 130) -> runs rightward to xH2 (1140) -> down to H2 Pin 1
+      // 3. Topmost VOUT Rail: LM317 OUT Pin 2 (802, 246) -> UP to (802, 130) -> rightward to 1140 -> down to H2 Pin 1
       g1Ctx.beginPath();
-      g1Ctx.moveTo(xU2Out, 260);
-      g1Ctx.lineTo(850, yRailTop);
+      g1Ctx.moveTo(xPin2, yU2Top - 14);
+      g1Ctx.lineTo(xPin2, yRailTop);
       g1Ctx.lineTo(1140, yRailTop);
       g1Ctx.lineTo(1140, yH2P1);
       g1Ctx.lineTo(xH2 - 22, yH2P1);
@@ -1315,65 +1308,57 @@
       g1Ctx.lineTo(xD4D3, yH1P2);
       g1Ctx.stroke();
 
-      // 5. Vertical Diode Traces: (Pins are integrated into EasyEDA diode symbols)
+      // 5. Diode Column Green Wires:
+      // Left leg: D1 bottom stem (290) -> (270, 320) -> D2 top stem (450)
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xD1D2, 290);
+      g1Ctx.lineTo(xD1D2, 450);
+      g1Ctx.stroke();
+
+      // Right leg: D4 bottom stem (290) -> (390, 380) -> D3 top stem (450)
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xD4D3, 290);
+      g1Ctx.lineTo(xD4D3, 450);
+      g1Ctx.stroke();
 
       // 6. ADJ Feedback Node Wire:
-      // LM317 ADJ (850, 320) -> runs to (970, 320) connecting R1 bottom and PR1 top!
+      // LM317 ADJ Pin 1 (824, 246) -> UP to (824, 240) -> RIGHT to (970, 240)
       g1Ctx.beginPath();
-      g1Ctx.moveTo(xU2Out, yU2Adj);
-      g1Ctx.lineTo(xR1, yU2Adj);
+      g1Ctx.moveTo(xPin1, yU2Top - 14);
+      g1Ctx.lineTo(xPin1, yADJNode);
+      g1Ctx.lineTo(xR1, yADJNode);
       g1Ctx.stroke();
 
-      // 7. Resistor R1 vertical leads:
+      // 7. PR1 Wiper Loop Wire (from left wiper terminal down to bottom GND rail)
+      const wiperY = 375;
       g1Ctx.beginPath();
-      g1Ctx.moveTo(xR1, yRailTop);
-      g1Ctx.lineTo(xR1, 160);
-      g1Ctx.moveTo(xR1, 230);
-      g1Ctx.lineTo(xR1, yU2Adj);
-      g1Ctx.stroke();
-
-      // 8. Potentiometer PR1 leads:
-      g1Ctx.beginPath();
-      g1Ctx.moveTo(xPR1, yU2Adj);
-      g1Ctx.lineTo(xPR1, 350);
-      g1Ctx.moveTo(xPR1, 450);
-      g1Ctx.lineTo(xPR1, yRailBot);
-      g1Ctx.stroke();
-
-      // PR1 Wiper Jumper Loop (EasyEDA standard: pin 3 loops to wiper pin 2):
-      g1Ctx.beginPath();
-      g1Ctx.moveTo(xPR1 - 10, 420); // wiper arrow tip
-      g1Ctx.lineTo(xPR1 - 24, 420);
-      g1Ctx.lineTo(xPR1 - 24, 465);
-      g1Ctx.lineTo(xPR1, 465);
+      g1Ctx.moveTo(xPR1 - 10, wiperY);
+      g1Ctx.lineTo(xPR1 - 24, wiperY);
+      g1Ctx.lineTo(xPR1 - 24, yRailBot);
       g1Ctx.stroke();
 
       // =======================================================================
-      // EASYEDA JUNCTION DOTS (EXACT GREEN NODES)
+      // EASYEDA JUNCTION DOTS (EXACT RED NODES)
       // =======================================================================
-      drawJunction(xD1D2, yRailMid);
-      drawJunction(xD1D2, yH1P1);
-      drawJunction(xD1D2, yRailBot);
+      drawJunction(xD1D2, yRailMid); // (270, 220)
+      drawJunction(xD4D3, yRailMid); // (390, 220)
+      drawJunction(xC2, yRailMid);   // (520, 220)
+      drawJunction(xC1, yRailMid);   // (660, 220)
 
-      drawJunction(xD4D3, yRailMid);
-      drawJunction(xD4D3, yH1P2);
-      drawJunction(xD4D3, yRailBot);
+      drawJunction(xD1D2, yH1P1);    // (270, 320)
+      drawJunction(xD4D3, yH1P2);    // (390, 380)
 
-      drawJunction(xC2, yRailMid);
-      drawJunction(xC2, yRailBot);
+      drawJunction(xD4D3, yRailBot);     // (390, 520)
+      drawJunction(xC2, yRailBot);       // (520, 520)
+      drawJunction(xC1, yRailBot);       // (660, 520)
+      drawJunction(xGND, yRailBot);      // (730, 520)
+      drawJunction(xPR1 - 24, yRailBot); // (946, 520) PR1 wiper GND junction
+      drawJunction(xPR1, yRailBot);      // (970, 520)
+      drawJunction(xC3, yRailBot);       // (1080, 520)
 
-      drawJunction(xC1, yRailMid);
-      drawJunction(xC1, yRailBot);
-
-      drawJunction(xR1, yRailTop);
-      drawJunction(xR1, yU2Adj);
-
-      drawJunction(xC3, yRailTop);
-      drawJunction(xC3, yRailBot);
-
-      drawJunction(xGND, yRailBot);
-      drawJunction(xPR1, yRailBot);
-      drawJunction(xPR1, 465);
+      drawJunction(xR1, yRailTop);   // (970, 130)
+      drawJunction(xC3, yRailTop);   // (1080, 130)
+      drawJunction(xR1, yADJNode);   // (970, 240) ADJ node
 
       // =======================================================================
       // DRAW COMPONENTS (EXACT EASYEDA GRAPHICS)
@@ -1386,19 +1371,13 @@
       const isPosCycle = (g1Mode === 'acpos') || (g1Mode === 'normal' && Math.floor(g1AnimTime * 2) % 2 === 0);
       const isNegCycle = (g1Mode === 'acneg') || (g1Mode === 'normal' && !isPosCycle);
 
-      // Row 1 (D1 & D4 aligned horizontally): Cathodes at 250, tips at 250, bases at 272
-      // D1: Top pin to Vin rail (220), bottom pin to H1 Pin 1 wire (320)
-      drawEasyEDADiode(xD1D2, yRailMid, yH1P1, 250, 'D1', isPosCycle);
+      // Row 1 (D1 & D4 aligned horizontally): Cathodes at 245
+      drawEasyEDADiode(xD1D2, 245, 'D1', isPosCycle);
+      drawEasyEDADiode(xD4D3, 245, 'D4', isNegCycle);
 
-      // D4: Top pin to Vin rail (220), bottom pin to H1 Pin 2 wire (380)
-      drawEasyEDADiode(xD4D3, yRailMid, yH1P2, 250, 'D4', isNegCycle);
-
-      // Row 2 (D2 & D3 aligned horizontally): Cathodes at 448, tips at 448, bases at 470
-      // D2: Top pin to H1 Pin 1 wire (320), bottom pin to GND rail (520)
-      drawEasyEDADiode(xD1D2, yH1P1, yRailBot, 448, 'D2', isNegCycle);
-
-      // D3: Top pin to H1 Pin 2 wire (380), bottom pin to GND rail (520)
-      drawEasyEDADiode(xD4D3, yH1P2, yRailBot, 448, 'D3', isPosCycle);
+      // Row 2 (D2 & D3 aligned horizontally): Cathodes at 475
+      drawEasyEDADiode(xD1D2, 475, 'D2', isNegCycle);
+      drawEasyEDADiode(xD4D3, 475, 'D3', isPosCycle);
 
             // 3. CAPACITOR C2 (Electrolytic Filter Capacitor)
       drawPolarizedCap(xC2, yRailMid, yRailBot, 'C2', `${g1CapVal}\u00B5F`);
@@ -1518,87 +1497,107 @@
       // 4. CAPACITOR C1 (Ceramic High-Frequency Bypass)
       drawCeramicCap(xC1, yRailMid, yRailBot, 'C1', '0.1\u00B5F');
 
-      // 5. REGULATOR U2 (LM317 IC Box)
+      // 5. REGULATOR U2 (LM317 IC Box with Authentic Top-Edge Pinout)
       g1Ctx.fillStyle = '#070b13';
       g1Ctx.strokeStyle = cComp;
       g1Ctx.lineWidth = 2.2;
-      g1Ctx.fillRect(xU2In, yU2Top, xU2Out - xU2In, yU2Bot - yU2Top);
-      g1Ctx.strokeRect(xU2In, yU2Top, xU2Out - xU2In, yU2Bot - yU2Top);
+      g1Ctx.fillRect(xU2Left, yU2Top, wU2, hU2);
+      g1Ctx.strokeRect(xU2Left, yU2Top, wU2, hU2);
 
-      // Pins on U2 Box
-      // Pin 3: IN (Left)
-      g1Ctx.fillStyle = cText;
-      g1Ctx.font = 'bold 11px ui-monospace, monospace';
-      g1Ctx.fillText('IN', xU2In + 8, yRailMid + 4);
-      g1Ctx.fillStyle = cComp;
-      g1Ctx.font = 'bold 10px ui-monospace, monospace';
-      g1Ctx.fillText('3', xU2In - 12, yRailMid - 5);
-
-      // Pin 2: OUT (Right)
-      g1Ctx.fillStyle = cText;
-      g1Ctx.font = 'bold 11px ui-monospace, monospace';
-      g1Ctx.fillText('OUT', xU2Out - 32, 264);
-      g1Ctx.fillStyle = cComp;
-      g1Ctx.font = 'bold 10px ui-monospace, monospace';
-      g1Ctx.fillText('2', xU2Out + 5, 255);
-
-      // Pin 1: ADJ (Bottom Right)
-      g1Ctx.fillStyle = cText;
-      g1Ctx.font = 'bold 11px ui-monospace, monospace';
-      g1Ctx.fillText('ADJ', xU2Out - 32, yU2Adj + 4);
-      g1Ctx.fillStyle = cComp;
-      g1Ctx.font = 'bold 10px ui-monospace, monospace';
-      g1Ctx.fillText('1', xU2Out + 5, yU2Adj - 5);
-
-      // Label U2 LM317 next to box
-      g1Ctx.fillStyle = cComp;
-      g1Ctx.font = 'bold 13px ui-monospace, monospace';
-      g1Ctx.fillText('U2', xU2Out + 14, yU2Top + 20);
-      g1Ctx.fillStyle = cVal;
-      g1Ctx.font = 'bold 11px ui-monospace, monospace';
-      g1Ctx.fillText('LM317', xU2Out + 14, yU2Top + 36);
-
-      // 6. RESISTOR R1 (EasyEDA Rectangular Box)
-      g1Ctx.fillStyle = '#070b13';
+      // Pins on Top Edge of U2 (Pin 3 IN, Pin 2 OUT, Pin 1 ADJ)
       g1Ctx.strokeStyle = cComp;
       g1Ctx.lineWidth = 2.2;
-      g1Ctx.fillRect(xR1 - 10, 160, 20, 70);
-      g1Ctx.strokeRect(xR1 - 10, 160, 20, 70);
+      g1Ctx.beginPath();
+      // Pin 3: IN (780)
+      g1Ctx.moveTo(xPin3, yU2Top); g1Ctx.lineTo(xPin3, yU2Top - 14);
+      // Pin 2: OUT (802)
+      g1Ctx.moveTo(xPin2, yU2Top); g1Ctx.lineTo(xPin2, yU2Top - 14);
+      // Pin 1: ADJ (824)
+      g1Ctx.moveTo(xPin1, yU2Top); g1Ctx.lineTo(xPin1, yU2Top - 14);
+      g1Ctx.stroke();
 
+      // Pin Number labels above stems in red
+      g1Ctx.fillStyle = cComp;
+      g1Ctx.font = 'bold 10px ui-monospace, monospace';
+      g1Ctx.fillText('3', xPin3 - 8, yU2Top - 4);
+      g1Ctx.fillText('2', xPin2 - 8, yU2Top - 4);
+      g1Ctx.fillText('1', xPin1 - 8, yU2Top - 4);
+
+      // Vertical pin designations inside U2 box (Authentic EasyEDA IC Style)
       g1Ctx.fillStyle = cText;
-      g1Ctx.font = 'bold 11px ui-monospace, monospace';
-      g1Ctx.fillText('R1', xR1 + 16, 185);
-      g1Ctx.fillStyle = cVal;
+      g1Ctx.font = 'bold 9.5px ui-monospace, monospace';
+      // Under Pin 3: 'I', 'N'
+      g1Ctx.fillText('I', xPin3 - 3, yU2Top + 14);
+      g1Ctx.fillText('N', xPin3 - 4, yU2Top + 24);
+      // Under Pin 2: 'O', 'U', 'T'
+      g1Ctx.fillText('O', xPin2 - 4, yU2Top + 14);
+      g1Ctx.fillText('U', xPin2 - 4, yU2Top + 24);
+      g1Ctx.fillText('T', xPin2 - 4, yU2Top + 34);
+      // Under Pin 1: 'A', 'D', 'J'
+      g1Ctx.fillText('A', xPin1 - 4, yU2Top + 14);
+      g1Ctx.fillText('D', xPin1 - 4, yU2Top + 24);
+      g1Ctx.fillText('J', xPin1 - 3, yU2Top + 34);
+
+      // Orientation marker dot inside top-right corner
+      g1Ctx.fillStyle = cComp;
+      g1Ctx.beginPath();
+      g1Ctx.arc(xU2Left + wU2 - 10, yU2Top + 10, 2.5, 0, Math.PI * 2);
+      g1Ctx.fill();
+
+      // Label U2 LM317 next to box (EasyEDA Blue)
+      g1Ctx.fillStyle = '#38bdf8';
+      g1Ctx.font = 'bold 12px ui-monospace, monospace';
+      g1Ctx.fillText('U2', xU2Left + wU2 + 10, yU2Top + 24);
       g1Ctx.font = '10px ui-monospace, monospace';
-      g1Ctx.fillText('470', xR1 + 16, 203);
+      g1Ctx.fillText('LM317', xU2Left + wU2 + 10, yU2Top + 40);
+
+      // 6. RESISTOR R1 (EasyEDA Rectangular Box between VOUT rail and ADJ node)
+      g1Ctx.strokeStyle = cComp;
+      g1Ctx.lineWidth = 2.2;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xR1, yRailTop); g1Ctx.lineTo(xR1, 155);
+      g1Ctx.moveTo(xR1, 210);      g1Ctx.lineTo(xR1, yADJNode);
+      g1Ctx.stroke();
+
+      g1Ctx.fillStyle = '#070b13';
+      g1Ctx.fillRect(xR1 - 9, 155, 18, 55);
+      g1Ctx.strokeRect(xR1 - 9, 155, 18, 55);
+
+      g1Ctx.fillStyle = '#38bdf8';
+      g1Ctx.font = 'bold 11px ui-monospace, monospace';
+      g1Ctx.fillText('R1', xR1 + 14, 178);
+      g1Ctx.font = '10px ui-monospace, monospace';
+      g1Ctx.fillText('470', xR1 + 14, 196);
 
       // 7. POTENTIOMETER PR1 (EasyEDA Variable Resistor Box with Side Wiper)
-      g1Ctx.fillStyle = '#070b13';
       g1Ctx.strokeStyle = cComp;
       g1Ctx.lineWidth = 2.2;
-      g1Ctx.fillRect(xPR1 - 10, 350, 20, 100);
-      g1Ctx.strokeRect(xPR1 - 10, 350, 20, 100);
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xPR1, yADJNode); g1Ctx.lineTo(xPR1, 330);
+      g1Ctx.moveTo(xPR1, 420);      g1Ctx.lineTo(xPR1, yRailBot);
+      g1Ctx.stroke();
+
+      g1Ctx.fillStyle = '#070b13';
+      g1Ctx.fillRect(xPR1 - 9, 330, 18, 90);
+      g1Ctx.strokeRect(xPR1 - 9, 330, 18, 90);
 
       // Wiper Arrow at left side
-      // Wiper position slides slightly with pot setting
-      const wiperY = 380 + ((g1PotVoltage - 1.25) / (12.0 - 1.25)) * 50;
       g1Ctx.strokeStyle = cComp;
       g1Ctx.fillStyle = cComp;
       g1Ctx.lineWidth = 2;
       g1Ctx.beginPath();
-      g1Ctx.moveTo(xPR1 - 10, wiperY);
+      g1Ctx.moveTo(xPR1 - 9, wiperY);
       g1Ctx.lineTo(xPR1 - 20, wiperY - 5);
       g1Ctx.lineTo(xPR1 - 20, wiperY + 5);
       g1Ctx.closePath();
       g1Ctx.fill();
       g1Ctx.stroke();
 
-      g1Ctx.fillStyle = cText;
+      g1Ctx.fillStyle = '#38bdf8';
       g1Ctx.font = 'bold 11px ui-monospace, monospace';
-      g1Ctx.fillText('PR1', xPR1 + 16, 395);
-      g1Ctx.fillStyle = cVal;
+      g1Ctx.fillText('PR1', xPR1 + 14, 365);
       g1Ctx.font = '10px ui-monospace, monospace';
-      g1Ctx.fillText('5K', xPR1 + 16, 413);
+      g1Ctx.fillText('5K', xPR1 + 14, 383);
 
       // 8. GROUND SYMBOL (GND) on Bottom Rail below U2
       g1Ctx.strokeStyle = cComp;
@@ -1611,7 +1610,7 @@
       g1Ctx.moveTo(xGND - 4,  yRailBot + 22); g1Ctx.lineTo(xGND + 4,  yRailBot + 22);
       g1Ctx.stroke();
 
-      g1Ctx.fillStyle = cComp;
+      g1Ctx.fillStyle = '#38bdf8';
       g1Ctx.font = 'bold 10px ui-monospace, monospace';
       g1Ctx.fillText('GND', xGND - 11, yRailBot - 8);
 
@@ -1655,7 +1654,7 @@
       // 2. DC Positive Rail flow (Diodes Cathode -> C2 -> C1 -> LM317 IN)
       const nDcIn = 8;
       for (let i = 0; i < nDcIn; i++) {
-        const offset = ((g1AnimTime * 100 + (i * 60)) % (xU2In - xD1D2));
+        const offset = ((g1AnimTime * 100 + (i * 60)) % (xPin3 - xD1D2));
         const px = xD1D2 + offset;
         g1Ctx.fillStyle = '#34d399';
         g1Ctx.beginPath();
@@ -1666,8 +1665,8 @@
       // 3. DC Regulated Output Rail flow (LM317 OUT -> R1 -> C3 -> H2 Pin 1)
       const nDcOut = 8;
       for (let i = 0; i < nDcOut; i++) {
-        const offset = ((g1AnimTime * 120 + (i * 60)) % (1140 - 850));
-        const px = 850 + offset;
+        const offset = ((g1AnimTime * 120 + (i * 60)) % (1140 - xPin2));
+        const px = xPin2 + offset;
         g1Ctx.fillStyle = '#38bdf8';
         g1Ctx.beginPath();
         g1Ctx.arc(px, yRailTop, 3.8, 0, Math.PI * 2);
