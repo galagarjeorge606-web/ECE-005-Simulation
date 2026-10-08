@@ -44,19 +44,19 @@
     <nav class="bg-slate-900/95 border border-slate-800 rounded-2xl p-2.5 flex flex-wrap items-center justify-between gap-3 shadow-2xl backdrop-blur sticky top-2 z-50">
       <div class="flex items-center gap-2.5 px-2">
         <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="text-xs font-black uppercase tracking-wider text-slate-200">ECE 005 / ME31S1 &bull; Regulated DC Power Supply Laboratory</span>
+        <span class="text-xs font-black uppercase tracking-wider text-slate-200">ECE 005 / ME3151 &bull; Regulated DC Power Supply Laboratory</span>
       </div>
       <div class="flex items-center gap-2 bg-slate-950 p-1.5 rounded-xl border border-slate-800">
         <button id="nav-btn-g2" onclick="switchGroupTab('group2')" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/20">
-          ðŸ”¬ Group 2: Dual Parallel LM317T &amp; Diode Physics
+          &#128300; Group 2: Dual Parallel LM317T &amp; Diode Physics
         </button>
         <button id="nav-btn-g1" onclick="switchGroupTab('group1')" class="px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80">
-          âš¡ Group 1: Single LM317T Regulated PSU (1.25Vâ€“12V)
+          &#9889; Group 1: Single LM317T Regulated PSU (1.25V&ndash;12V)
         </button>
       </div>
     </nav>
     <!-- ========================================================================= -->
-    <!-- GROUP 1 CONTAINER (INTERACTIVE CANVAS & SIMULATION) -->
+    <!-- GROUP 1 CONTAINER (INTERACTIVE CANVAS & SIMULATION - SIMPLE & CLEAR) -->
     <!-- ========================================================================= -->
     <div id="group1-container" class="space-y-5 hidden">
 
@@ -98,13 +98,13 @@
       <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-xl">
         <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-3 border-b border-slate-800 pb-3">
           <div class="flex items-center gap-2">
-            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-sky-500 text-slate-950 font-black text-xs">â˜…</span>
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-sky-500 text-slate-950 font-black text-xs">&#9733;</span>
             <span class="text-xs font-bold text-white uppercase tracking-wider">Quick Tour:</span>
             <span class="text-xs text-sky-300 font-semibold" id="g1-tour-step-subtitle">Step 1: Wall Power to Safe 18V</span>
           </div>
           <div class="flex items-center gap-2">
-            <button onclick="prevG1TourStep()" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all">â—€ Prev</button>
-            <button onclick="nextG1TourStep()" class="px-4 py-1.5 rounded-lg text-xs font-bold bg-sky-500 hover:bg-sky-400 text-slate-950 font-black transition-all shadow-lg shadow-sky-500/20">Next Step â–¶</button>
+            <button onclick="prevG1TourStep()" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all">&#9664; Prev</button>
+            <button onclick="nextG1TourStep()" class="px-4 py-1.5 rounded-lg text-xs font-bold bg-sky-500 hover:bg-sky-400 text-slate-950 font-black transition-all shadow-lg shadow-sky-500/20">Next Step &#9654;</button>
           </div>
         </div>
 
@@ -123,7 +123,7 @@
           <button id="g1-pill-step-3" onclick="setG1TourStep(3)" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-left transition-all hover:border-slate-700">
             <div class="text-[10px] font-bold text-slate-400 uppercase">Step 3</div>
             <div class="text-xs font-bold text-white">3. Water Tank</div>
-            <div class="text-[10px] text-slate-400">2200ÂµF Smooths Bumps</div>
+            <div class="text-[10px] text-slate-400">2200&mu;F Smooths Bumps</div>
           </button>
           <button id="g1-pill-step-4" onclick="setG1TourStep(4)" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-left transition-all hover:border-slate-700">
             <div class="text-[10px] font-bold text-slate-400 uppercase">Step 4</div>
@@ -152,16 +152,16 @@
             <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Click to See How Power Moves:</span>
             <div class="inline-flex flex-wrap p-1 bg-slate-900/80 rounded-xl border border-slate-800 gap-1">
               <button id="g1-btn-mode-normal" onclick="setG1Mode('normal')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all bg-sky-500 text-slate-950 shadow">
-                âš¡ Normal Power Flow
+                &#9889; Normal Power Flow
               </button>
               <button id="g1-btn-mode-acpos" onclick="setG1Mode('acpos')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all text-cyan-300 hover:text-white border border-cyan-500/30">
-                ðŸŒŠ AC Positive Half
+                &#9654; AC Positive Half
               </button>
               <button id="g1-btn-mode-acneg" onclick="setG1Mode('acneg')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all text-orange-300 hover:text-white border border-orange-500/30">
-                ðŸŒŠ AC Negative Half
+                &#9664; AC Negative Half
               </button>
               <button id="g1-btn-mode-ground" onclick="setG1Mode('ground')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white">
-                ðŸ”„ Ground Return Wire
+                &#8644; Ground Return Wire
               </button>
             </div>
           </div>
@@ -171,7 +171,7 @@
             <span class="text-[10px] font-bold text-slate-400 uppercase mr-1">Flow Speed:</span>
             <button id="g1-btn-spd-1" onclick="setG1SimSpeed(1.0)" class="px-2.5 py-1 rounded text-xs font-bold bg-sky-500 text-slate-950">1x</button>
             <button id="g1-btn-spd-025" onclick="setG1SimSpeed(0.25)" class="px-2.5 py-1 rounded text-xs font-bold text-slate-300 hover:text-white">Slow</button>
-            <button id="g1-btn-pause" onclick="toggleG1Pause()" class="px-2.5 py-1 rounded text-xs font-bold bg-slate-800 text-amber-400 border border-amber-500/30">â¸ Pause</button>
+            <button id="g1-btn-pause" onclick="toggleG1Pause()" class="px-2.5 py-1 rounded text-xs font-bold bg-slate-800 text-amber-400 border border-amber-500/30">&#9208; Pause</button>
           </div>
         </div>
 
@@ -235,26 +235,26 @@
         <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-xl space-y-3">
           <div class="flex items-center justify-between border-b border-slate-800 pb-2">
             <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
-              <span>ðŸ’§</span> The "Water Tank" Filter
+              <span>&#128167;</span> The "Water Tank" Filter
             </h3>
             <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-sky-500/20 text-sky-300">C1 Capacitor</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed">
-            Converting AC wall power creates electrical ripples (like water waves). The big <strong>2200ÂµF capacitor</strong> acts like a water tank that stores power and keeps the output calm and steady.
+            Converting AC wall power creates electrical ripples (like water waves). The big <strong>2200&mu;F capacitor</strong> acts like a water tank that stores power and keeps the output calm and steady.
           </p>
 
           <!-- Simple Toggle -->
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-2">
             <div class="flex justify-between text-xs">
               <span class="text-slate-400">Capacitor Size:</span>
-              <span id="g1-simple-cap-label" class="text-emerald-400 font-bold">2200 ÂµF (Smooth)</span>
+              <span id="g1-simple-cap-label" class="text-emerald-400 font-bold">2200 &mu;F (Smooth)</span>
             </div>
             <div class="grid grid-cols-2 gap-2">
-              <button id="g1-cap-btn-1000" onclick="setG1CapValue(1000)" class="py-1 px-2 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white">1000ÂµF (Bumpy)</button>
-              <button id="g1-cap-btn-2200" onclick="setG1CapValue(2200)" class="py-1 px-2 rounded-lg text-xs font-bold bg-sky-500 text-slate-950 font-black shadow">2200ÂµF (Smooth)</button>
+              <button id="g1-cap-btn-1000" onclick="setG1CapValue(1000)" class="py-1 px-2 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white">1000&mu;F (Bumpy)</button>
+              <button id="g1-cap-btn-2200" onclick="setG1CapValue(2200)" class="py-1 px-2 rounded-lg text-xs font-bold bg-sky-500 text-slate-950 font-black shadow">2200&mu;F (Smooth)</button>
             </div>
             <div class="text-[11px] text-slate-400 text-center pt-1">
-              Electrical Bumps: <strong id="g1-simple-ripple-text" class="text-emerald-400">Low (3.8V ripple)</strong>
+              Electrical Bumps: <strong id="g1-simple-ripple-text" class="text-emerald-400">Low (0.38V ripple)</strong>
             </div>
           </div>
         </div>
@@ -263,12 +263,12 @@
         <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-xl space-y-3">
           <div class="flex items-center justify-between border-b border-slate-800 pb-2">
             <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
-              <span>ðŸŒ¡ï¸</span> The Heatsink &amp; Paste
+              <span>&#127777;</span> The Heatsink &amp; Paste
             </h3>
             <span id="g1-badge-heat-level" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400">SAFE</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed">
-            To lower the voltage, the LM317 regulator burns off the leftover volts as <strong>heat</strong>. That's why we screw it onto an aluminum heatsink with thermal paste.
+            To lower the voltage, the LM317 regulator burns off leftover volts as <strong>heat</strong>. That is why it is bolted to an aluminum heatsink with thermal paste.
           </p>
 
           <!-- Thermometer Bar -->
@@ -291,7 +291,7 @@
         <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-xl space-y-3">
           <div class="flex items-center justify-between border-b border-slate-800 pb-2">
             <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
-              <span>ðŸ“Š</span> Live Waveforms
+              <span>&#128202;</span> Live Waveforms
             </h3>
             <span class="text-[10px] font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">CH1 / CH2</span>
           </div>
@@ -313,7 +313,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-2">
           <div>
             <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <span>ðŸŽ¤</span> Group 1 Presentation Roles (October 9)
+              <span>&#127908;</span> Group 1 Presentation Roles (October 9)
             </h3>
             <p class="text-xs text-slate-400">Topic: <strong>Schematic Capture &amp; Sourcing Circuit Diagrams</strong></p>
           </div>
@@ -367,46 +367,47 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-2">
           <div>
             <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <span>ðŸ“‹</span> Bill of Materials (Budget Summary)
+              <span>&#128203;</span> Bill of Materials (Budget Summary)
             </h3>
-            <p class="text-xs text-slate-400">Total Project Cost: <strong>â‚±1,134.00</strong> &bull; Per Member (6): <strong>â‚±189.00</strong> (Exact)</p>
+            <p class="text-xs text-slate-400">Total Project Cost: <strong>&#8369;1,134.00</strong> &bull; Per Member (6): <strong>&#8369;189.00</strong> (Exact)</p>
           </div>
           <span class="text-xs font-black text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-xl border border-emerald-500/30">
-            SAVED â‚±51.67 / MEMBER (3D-PRINTED CASE)
+            SAVED &#8369;51.67 / MEMBER (3D-PRINTED CASE)
           </span>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-xs">
           <div class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-800 text-center">
             <span class="text-[10px] text-slate-400 block">Transformer (18V)</span>
-            <strong class="text-white text-xs">â‚±454.00</strong>
+            <strong class="text-white text-xs">&#8369;454.00</strong>
           </div>
           <div class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-800 text-center">
             <span class="text-[10px] text-slate-400 block">Regulator LM317</span>
-            <strong class="text-white text-xs">â‚±42.00</strong>
+            <strong class="text-white text-xs">&#8369;42.00</strong>
           </div>
           <div class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-800 text-center">
             <span class="text-[10px] text-slate-400 block">Heatsink + Paste</span>
-            <strong class="text-white text-xs">â‚±61.00</strong>
+            <strong class="text-white text-xs">&#8369;61.00</strong>
           </div>
           <div class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-800 text-center">
             <span class="text-[10px] text-slate-400 block">4x Diodes (Bridge)</span>
-            <strong class="text-white text-xs">â‚±84.00</strong>
+            <strong class="text-white text-xs">&#8369;84.00</strong>
           </div>
           <div class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-800 text-center">
-            <span class="text-[10px] text-slate-400 block">2200ÂµF Filter Cap</span>
-            <strong class="text-white text-xs">â‚±30.00</strong>
+            <span class="text-[10px] text-slate-400 block">2200&mu;F Filter Cap</span>
+            <strong class="text-white text-xs">&#8369;30.00</strong>
           </div>
           <div class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-800 text-center">
             <span class="text-[10px] text-slate-400 block">Copper Board 3x5"</span>
-            <strong class="text-white text-xs">â‚±50.00</strong>
+            <strong class="text-white text-xs">&#8369;50.00</strong>
           </div>
         </div>
       </section>
 
     </div>
-
-    <div id="group2-container" class="space-y-4"><!-- HEADER -->
+    <!-- GROUP 2 CONTAINER (VISIBLE BY DEFAULT) -->
+    <div id="group2-container" class="space-y-4">
+    <!-- HEADER -->
     <header class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-2xl relative overflow-hidden">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div>
@@ -446,13 +447,13 @@
     <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-xl">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-3 border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2">
-          <span class="flex h-6 w-6 items-center justify-center rounded-full bg-sky-500 text-slate-950 font-black text-xs">â˜…</span>
+          <span class="flex h-6 w-6 items-center justify-center rounded-full bg-sky-500 text-slate-950 font-black text-xs">★</span>
           <span class="text-xs font-extrabold text-white uppercase tracking-wider">Interactive Guided Tour:</span>
           <span class="text-xs text-slate-400" id="tour-step-subtitle">Step 1 of 6 &bull; Normal Power Delivery Loop</span>
         </div>
         <div class="flex items-center gap-2">
-          <button onclick="prevTourStep()" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all">â—€ Prev Step</button>
-          <button onclick="nextTourStep()" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-sky-500 hover:bg-sky-400 text-slate-950 font-black transition-all shadow-lg shadow-sky-500/20">Next Step â–¶</button>
+          <button onclick="prevTourStep()" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all">◀ Prev Step</button>
+          <button onclick="nextTourStep()" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-sky-500 hover:bg-sky-400 text-slate-950 font-black transition-all shadow-lg shadow-sky-500/20">Next Step ▶</button>
         </div>
       </div>
 
@@ -461,7 +462,7 @@
         <button id="pill-step-1" onclick="setTourStep(1)" class="tour-step-active p-2.5 rounded-xl border border-slate-700 text-left transition-all">
           <div class="text-[10px] font-bold uppercase text-sky-200">Step 1</div>
           <div class="text-xs font-bold text-white truncate">1. Normal Regulation</div>
-          <div class="text-[9px] text-slate-300 truncate">AC â†’ DC 12V @ 3A</div>
+          <div class="text-[9px] text-slate-300 truncate">AC → DC 12V @ 3A</div>
         </button>
         <button id="pill-step-2" onclick="setTourStep(2)" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-left transition-all hover:border-slate-700">
           <div class="text-[10px] font-bold uppercase text-slate-400">Step 2</div>
@@ -500,23 +501,23 @@
           <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Select Physical Experiment:</span>
           <div class="inline-flex flex-wrap p-1 bg-slate-900/80 rounded-xl border border-slate-800 gap-1">
             <button id="btn-mode-normal" onclick="setMode('normal')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-sky-500 text-slate-950 shadow">
-              âš¡ Normal Power Flow
+              ⚡ Normal Power Flow
             </button>
             <button id="btn-mode-acpos" onclick="setMode('acpos')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-cyan-300 hover:text-white border border-cyan-500/30">
-              ðŸŒŠ AC Pos Half (D1, D4)
+              🌊 AC Pos Half (D1, D4)
             </button>
             <button id="btn-mode-acneg" onclick="setMode('acneg')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-orange-300 hover:text-white border border-orange-500/30">
-              ðŸŒŠ AC Neg Half (D2, D3)
+              🌊 AC Neg Half (D2, D3)
             </button>
             <button id="btn-mode-ground" onclick="setMode('ground')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white">
-              ðŸ”„ Ground Return Path (KCL)
+              🔄 Ground Return Path (KCL)
             </button>
             <button id="btn-mode-extbatt" onclick="setMode('extbatt')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-amber-300 hover:text-white border border-amber-500/30">
-              ðŸ”‹ Push +12V into VOUT (Tests D5)
+              🔋 Push +12V into VOUT (Tests D5)
             </button>
 
             <button id="btn-mode-dmm" onclick="setMode('dmm')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-purple-300 hover:text-white border border-purple-500/40 bg-purple-500/10">
-              ðŸ“Ÿ Virtual DMM: Test D5 &amp; D6
+              📟 Virtual DMM: Test D5 &amp; D6
             </button>
           </div>
         </div>
@@ -525,7 +526,7 @@
         <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-slate-800">
           <span class="text-[10px] font-bold text-slate-400 uppercase">Focus View:</span>
           <button id="btn-focus-mode" onclick="toggleFocusMode()" class="px-2.5 py-1 rounded text-xs font-bold bg-sky-500 text-slate-950 shadow transition-all">
-            ðŸ” Active Loop Only (ON)
+            🔍 Active Loop Only (ON)
           </button>
         </div>
 
@@ -545,7 +546,7 @@
           <span class="text-[10px] font-bold text-slate-400 uppercase mr-1">Speed:</span>
           <button id="btn-spd-1" onclick="setSimSpeed(1.0)" class="px-2 py-0.5 rounded text-xs font-bold bg-sky-500 text-slate-950">1x</button>
           <button id="btn-spd-025" onclick="setSimSpeed(0.25)" class="px-2 py-0.5 rounded text-xs font-bold text-slate-300 hover:text-white">0.25x</button>
-          <button id="btn-pause" onclick="togglePause()" class="px-2 py-0.5 rounded text-xs font-bold bg-slate-800 text-amber-400 border border-amber-500/30">â¸</button>
+          <button id="btn-pause" onclick="togglePause()" class="px-2 py-0.5 rounded text-xs font-bold bg-slate-800 text-amber-400 border border-amber-500/30">⏸</button>
         </div>
 
       </div>
@@ -554,16 +555,16 @@
       <div id="dmm-subbar" class="hidden flex-wrap items-center justify-between gap-2 p-2 rounded-xl bg-purple-950/40 border border-purple-500/30">
         <div class="flex items-center gap-2">
           <span class="text-xs font-bold text-purple-300 uppercase flex items-center gap-1">
-            <span>ðŸ“Ÿ</span> DMM Test Target:
+            <span>📟</span> DMM Test Target:
           </span>
           <button id="btn-dmm-d5-fwd" onclick="setDmmTarget('d5_fwd')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-purple-500 text-slate-950">
-            D5 Forward Drop (Anode â†’ Cathode)
+            D5 Forward Drop (Anode → Cathode)
           </button>
           <button id="btn-dmm-d5-rev" onclick="setDmmTarget('d5_rev')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 hover:text-white">
             D5 Reverse Blocking (OL)
           </button>
           <button id="btn-dmm-d6-fwd" onclick="setDmmTarget('d6_fwd')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 hover:text-white">
-            D6 Forward Drop (ADJ â†’ VOUT)
+            D6 Forward Drop (ADJ → VOUT)
           </button>
           <button id="btn-dmm-d6-rev" onclick="setDmmTarget('d6_rev')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 hover:text-white">
             D6 Reverse Blocking (OL)
@@ -585,7 +586,7 @@
         <div class="flex items-center gap-1.5">
           <span class="text-[10px] font-bold text-slate-400 uppercase mr-1">Voltage Presets:</span>
           <button onclick="setVoltPreset(1.25)" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-rose-500/20 border border-rose-500/40 text-rose-300 hover:bg-rose-500/30">
-            1.25V (Max Heat ðŸ”¥)
+            1.25V (Max Heat 🔥)
           </button>
           <button onclick="setVoltPreset(5.00)" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30">
             5.00V (Logic)
@@ -638,7 +639,7 @@
 
         <div class="p-3.5 rounded-xl border border-emerald-500/30 bg-slate-900/80 space-y-2 text-xs">
           <div class="font-bold text-emerald-300 flex items-center gap-1.5">
-            <span>âš¡</span> The 2 Real-World Sources of Reverse Current:
+            <span>⚡</span> The 2 Real-World Sources of Reverse Current:
           </div>
           <p class="text-slate-300 leading-relaxed">
             During normal power delivery, current flows from <strong>IN to OUT</strong> through the LM317. Diode D5's Anode is at $V_{\text{out}}$ ($12\text{V}$) and Cathode is at $V_{\text{in}}$ ($16.5\text{V}$), so D5 is reverse-biased (shut off, 0A). Current through D5 <strong>only flows when $V_{\text{out}} > V_{\text{in}}$</strong>. That current comes from:
@@ -657,7 +658,7 @@
 
         <div class="p-3.5 rounded-xl border border-slate-800 bg-slate-900/60 space-y-2 text-xs">
           <div class="font-bold text-sky-300 flex items-center gap-1.5">
-            <span>ðŸ”„</span> Why Does Current Return to Bridge (-) and Not Just "Ground"?
+            <span>🔄</span> Why Does Current Return to Bridge (-) and Not Just "Ground"?
           </div>
           <p class="text-[11px] text-slate-300 leading-relaxed">
             <strong>Kirchhoff's Current Law (KCL):</strong> Charge cannot disappear into the earth! The Bridge Rectifier acts like a pump: whatever current leaves Bridge (+) <strong>must return to Bridge (-)</strong>. Ground is simply the common copper wire connecting all return paths together.
@@ -688,7 +689,7 @@
                 <div id="thermo-fluid" class="w-full bg-emerald-500 rounded-full transition-all duration-300" style="height: 35%;"></div>
                 <div id="thermo-bulb" class="w-8 h-8 rounded-full bg-emerald-500 absolute -bottom-3 -left-1 border-2 border-slate-900 shadow-lg transition-all duration-300"></div>
               </div>
-              <div id="lbl-die-temp" class="text-xs font-mono font-black text-emerald-400 mt-4">58 Â°C</div>
+              <div id="lbl-die-temp" class="text-xs font-mono font-black text-emerald-400 mt-4">58 °C</div>
             </div>
 
             <!-- Heatsink & Fan Block Graphic -->
@@ -729,10 +730,10 @@
           <div class="mt-3 p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px] font-mono space-y-1 text-slate-300">
             <div class="flex justify-between">
               <span class="text-slate-400">Formula:</span>
-              <span class="text-amber-400 font-bold">P = (Vin - Vout) Ã— Ireg</span>
+              <span class="text-amber-400 font-bold">P = (Vin - Vout) × Ireg</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-400">Voltage Drop (Î”V):</span>
+              <span class="text-slate-400">Voltage Drop (ΔV):</span>
               <span id="calc-vdrop" class="text-sky-300 font-bold">16.5V - 12.0V = 4.5V</span>
             </div>
             <div class="flex justify-between">
@@ -747,7 +748,7 @@
         </div>
 
         <div class="text-[10px] text-slate-400 bg-slate-900/40 p-2 rounded-lg border border-slate-800">
-          ðŸ’¡ <strong class="text-slate-200">Linear Regulator Rule:</strong> The LM317 produces the <em>most heat</em> when output voltage is lowest ($1.25\,\text{V}$), because it drops $15.25\,\text{V}$ across its internal transistor!
+          💡 <strong class="text-slate-200">Linear Regulator Rule:</strong> The LM317 produces the <em>most heat</em> when output voltage is lowest ($1.25\,\text{V}$), because it drops $15.25\,\text{V}$ across its internal transistor!
         </div>
       </div>
 
@@ -760,7 +761,7 @@
               Dual-Channel Oscilloscope
             </h3>
             <span class="text-[9px] font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
-              CH1: AC Â· CH2: DC
+              CH1: AC · CH2: DC
             </span>
           </div>
 
@@ -768,10 +769,10 @@
             <canvas id="scopeCanvas" width="400" height="310" class="w-full h-full block"></canvas>
             
             <div class="absolute top-2 left-2 text-[7px] font-mono space-y-0.5 text-slate-400 pointer-events-none bg-slate-900/90 p-1 rounded border border-slate-800 backdrop-blur">
-              <div class="text-[7px] font-bold text-sky-400 uppercase mb-0.5">CH1 â€” AC Secondary</div>
+              <div class="text-[7px] font-bold text-sky-400 uppercase mb-0.5">CH1 — AC Secondary</div>
               <div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-sky-400 inline-block"></span> <span class="text-sky-300">+ half (D1,D2 conduct)</span></div>
-              <div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-orange-400 inline-block"></span> <span class="text-orange-300">âˆ’ half (D3,D4 conduct)</span></div>
-              <div class="text-[7px] font-bold text-emerald-400 uppercase mt-1 mb-0.5">CH2 â€” Rectified / DC</div>
+              <div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-orange-400 inline-block"></span> <span class="text-orange-300">− half (D3,D4 conduct)</span></div>
+              <div class="text-[7px] font-bold text-emerald-400 uppercase mt-1 mb-0.5">CH2 — Rectified / DC</div>
               <div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-sky-400 inline-block"></span> <span class="text-sky-300">Vin unreg (C1)</span></div>
               <div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-emerald-400 inline-block"></span> <span class="text-emerald-300">Vout regulated</span></div>
               <div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-amber-400 inline-block"></span> <span class="text-amber-300">Vadj node</span></div>
@@ -785,7 +786,7 @@
         </div>
 
         <div class="mt-2 text-[10px] text-slate-400 text-center">
-          <strong class="text-sky-300">Top:</strong> AC sine (cyan = +, orange = âˆ’).&nbsp;&nbsp;<strong class="text-emerald-300">Bottom:</strong> Rectified DC + Vout. Dashes = fault at $t\!=\!0$.
+          <strong class="text-sky-300">Top:</strong> AC sine (cyan = +, orange = −).&nbsp;&nbsp;<strong class="text-emerald-300">Bottom:</strong> Rectified DC + Vout. Dashes = fault at $t\!=\!0$.
         </div>
       </div>
 
@@ -795,7 +796,7 @@
     <!-- COMPONENT EXPLANATION SECTION -->
     <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-xl mt-4">
       <h2 class="text-xl font-black text-white mb-4 border-b border-slate-800 pb-2 flex items-center gap-2">
-        <span class="text-sky-400">ðŸ“˜</span> Component Dictionary (Matched to Final PCB Schematic)
+        <span class="text-sky-400">📘</span> Component Dictionary (Matched to Final PCB Schematic)
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4 text-sm">
         
@@ -808,11 +809,11 @@
           <p class="text-slate-400 text-xs">Bridge Rectifier. Converts alternating current (AC) into pulsating direct current (DC).</p>
         </div>
         <div class="space-y-1">
-          <strong class="text-sky-300">C1 (4700ÂµF - 35V)</strong>
+          <strong class="text-sky-300">C1 (4700µF - 35V)</strong>
           <p class="text-slate-400 text-xs">Main filter capacitor. Smooths the pulsating DC into a steady DC voltage (~16.5V) on the VOUT_UNREGULATED net.</p>
         </div>
         <div class="space-y-1">
-          <strong class="text-amber-300">C2 (0.1ÂµF)</strong>
+          <strong class="text-amber-300">C2 (0.1µF)</strong>
           <p class="text-slate-400 text-xs">High-frequency decoupling capacitor for the regulators' input. Prevents oscillation.</p>
         </div>
         <div class="space-y-1">
@@ -820,19 +821,19 @@
           <p class="text-slate-400 text-xs">The core of the supply. Wired in parallel to share the load current, providing up to 3A combined output.</p>
         </div>
         <div class="space-y-1">
-          <strong class="text-rose-300">R1, R2 (0.1Î© - 5W)</strong>
+          <strong class="text-rose-300">R1, R2 (0.1Ω - 5W)</strong>
           <p class="text-slate-400 text-xs">Ballast resistors. Crucial for parallel operation. Forces the two LM317s to share current equally.</p>
         </div>
         <div class="space-y-1">
-          <strong class="text-sky-300">RV1 (TRIM 50kÎ©) & R3 (220Î©)</strong>
+          <strong class="text-sky-300">RV1 (TRIM 50kΩ) & R3 (220Ω)</strong>
           <p class="text-slate-400 text-xs">The voltage adjustment network on the ADJ_WIRE net. Output Voltage = 1.25V * (1 + RV1/R3).</p>
         </div>
         <div class="space-y-1">
-          <strong class="text-amber-300">R5 (100Î©)</strong>
+          <strong class="text-amber-300">R5 (100Ω)</strong>
           <p class="text-slate-400 text-xs">Minimum load resistor. Ensures the LM317 always has a minimum current draw to maintain regulation.</p>
         </div>
         <div class="space-y-1">
-          <strong class="text-emerald-300">C3 (1ÂµF - 35V)</strong>
+          <strong class="text-emerald-300">C3 (1µF - 35V)</strong>
           <p class="text-slate-400 text-xs">Output capacitor on the VOUT net. Improves transient response and stability.</p>
         </div>
         <div class="space-y-1">
@@ -844,7 +845,7 @@
           <p class="text-slate-400 text-xs">Protects the ADJ pin. (Note: Primarily useful if a bypass capacitor is added to ADJ_WIRE, but safe to keep).</p>
         </div>
         <div class="space-y-1">
-          <strong class="text-rose-300">R4 (2.2kÎ©) & LED (D7)</strong>
+          <strong class="text-rose-300">R4 (2.2kΩ) & LED (D7)</strong>
           <p class="text-slate-400 text-xs">Power indicator light circuit. R4 limits the current to the LED.</p>
         </div>
         <div class="space-y-1">
@@ -862,7 +863,7 @@
     <!-- Q&A SECTION -->
     <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-xl mt-4">
       <h2 class="text-xl font-black text-white mb-4 border-b border-slate-800 pb-2 flex items-center gap-2">
-        <span class="text-amber-400">ðŸ’¡</span> Frequently Asked Questions & Design Theory
+        <span class="text-amber-400">💡</span> Frequently Asked Questions & Design Theory
       </h2>
       <div class="space-y-4">
         <!-- Q1 -->
@@ -872,18 +873,18 @@
         </div>
         <!-- Q2 -->
         <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-          <h3 class="text-sky-400 font-bold mb-1">Q: Why are the 0.1Î© "ballast" resistors (R1 & R2) absolutely necessary?</h3>
-          <p class="text-slate-300 text-sm">No two LM317s are manufactured perfectly identical; one will naturally try to output a slightly higher voltage. Without ballast resistors, the "stronger" regulator would "hog" all the current and burn out. The 0.1Î© resistors create a small voltage drop proportional to the current, which automatically balances the load evenly between both chips.</p>
+          <h3 class="text-sky-400 font-bold mb-1">Q: Why are the 0.1Ω "ballast" resistors (R1 & R2) absolutely necessary?</h3>
+          <p class="text-slate-300 text-sm">No two LM317s are manufactured perfectly identical; one will naturally try to output a slightly higher voltage. Without ballast resistors, the "stronger" regulator would "hog" all the current and burn out. The 0.1Ω resistors create a small voltage drop proportional to the current, which automatically balances the load evenly between both chips.</p>
         </div>
         <!-- Q3 -->
         <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-          <h3 class="text-rose-400 font-bold mb-1">Q: Since C3 is only 1ÂµF, why do we need Protection Diode D5?</h3>
-          <p class="text-slate-300 text-sm">You're completely rightâ€”a tiny 1ÂµF capacitor doesn't hold enough energy to damage the LM317 during an AC power cut! However, D5 is critically important if you ever connect a <strong>12V battery</strong> (e.g., to charge it) or a large inductive load to the DC Output terminal. If you unplug the AC power while a battery is still attached, the battery will push massive reverse current backwards through the LM317. D5 acts as a bypass lane, safely routing that destructive reverse current around the chip!</p>
+          <h3 class="text-rose-400 font-bold mb-1">Q: Since C3 is only 1µF, why do we need Protection Diode D5?</h3>
+          <p class="text-slate-300 text-sm">You're completely right—a tiny 1µF capacitor doesn't hold enough energy to damage the LM317 during an AC power cut! However, D5 is critically important if you ever connect a <strong>12V battery</strong> (e.g., to charge it) or a large inductive load to the DC Output terminal. If you unplug the AC power while a battery is still attached, the battery will push massive reverse current backwards through the LM317. D5 acts as a bypass lane, safely routing that destructive reverse current around the chip!</p>
         </div>
         <!-- Q3.5 -->
         <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
           <h3 class="text-rose-400 font-bold mb-1">Q: Wait, why is Protection Diode D6 included if there is no Cadj capacitor?</h3>
-          <p class="text-slate-300 text-sm">Excellent catch! In the standard LM317 reference design, D6 is used to protect the ADJ pin from a 10ÂµF bypass capacitor discharging backwards if the output is shorted. Because your schematic <em>does not have</em> an ADJ bypass capacitor, <strong>D6 is actually completely redundant and does nothing!</strong> It's common practice to leave it on the PCB just in case a capacitor is added later, but electrically, it is inactive in your current build.</p>
+          <p class="text-slate-300 text-sm">Excellent catch! In the standard LM317 reference design, D6 is used to protect the ADJ pin from a 10µF bypass capacitor discharging backwards if the output is shorted. Because your schematic <em>does not have</em> an ADJ bypass capacitor, <strong>D6 is actually completely redundant and does nothing!</strong> It's common practice to leave it on the PCB just in case a capacitor is added later, but electrically, it is inactive in your current build.</p>
         </div>
         <!-- Q4 -->
         <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
@@ -892,13 +893,14 @@
         </div>
         <!-- Q5 -->
         <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-          <h3 class="text-purple-400 font-bold mb-1">Q: Why include the 100Î© minimum load resistor (R5)?</h3>
+          <h3 class="text-purple-400 font-bold mb-1">Q: Why include the 100Ω minimum load resistor (R5)?</h3>
           <p class="text-slate-300 text-sm">Linear regulators like the LM317 require a minimum amount of current to flow through them at all times (typically around 10mA) in order to maintain a stable output voltage. If nothing is plugged into the DC OUTPUT (J5), R5 guarantees this minimum current is always drawn, preventing the output voltage from floating dangerously high.</p>
         </div>
       </div>
-    </section></div>
-  </div>
+    </section>
 
+    </div><!-- End group2-container -->
+  </div><!-- End max-w-[1560px] -->
   <script>
     // =========================================================================
     // GROUP SWITCHING STATE (GROUP 2 DEFAULT ACTIVE)
@@ -913,59 +915,31 @@
       const btnG2 = document.getElementById('nav-btn-g2');
 
       if (group === 'group1') {
-        g1Cont.classList.remove('hidden');
-        g2Cont.classList.add('hidden');
-        btnG1.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/20";
-        btnG2.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80";
+        if (g1Cont) g1Cont.classList.remove('hidden');
+        if (g2Cont) g2Cont.classList.add('hidden');
+        if (btnG1) btnG1.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/20";
+        if (btnG2) btnG2.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80";
         updateG1UI();
       } else {
-        g1Cont.classList.add('hidden');
-        g2Cont.classList.remove('hidden');
-        btnG2.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/20";
-        btnG1.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80";
-      }
-    }
-
-    // =========================================================================
-    
-    // =========================================================================
-    // GROUP SWITCHING STATE (GROUP 2 DEFAULT ACTIVE)
-    // =========================================================================
-    let activeGroup = 'group2';
-
-    function switchGroupTab(group) {
-      activeGroup = group;
-      const g1Cont = document.getElementById('group1-container');
-      const g2Cont = document.getElementById('group2-container');
-      const btnG1 = document.getElementById('nav-btn-g1');
-      const btnG2 = document.getElementById('nav-btn-g2');
-
-      if (group === 'group1') {
-        g1Cont.classList.remove('hidden');
-        g2Cont.classList.add('hidden');
-        btnG1.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/20";
-        btnG2.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80";
-        updateG1UI();
-      } else {
-        g1Cont.classList.add('hidden');
-        g2Cont.classList.remove('hidden');
-        btnG2.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/20";
-        btnG1.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80";
+        if (g1Cont) g1Cont.classList.add('hidden');
+        if (g2Cont) g2Cont.classList.remove('hidden');
+        if (btnG2) btnG2.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/20";
+        if (btnG1) btnG1.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80";
+        if (typeof updateNarrative === 'function') updateNarrative();
       }
     }
 
     // =========================================================================
     // GROUP 1 SIMULATION STATE & CONFIGURATION (SIMPLE & CLEAN)
     // =========================================================================
-    let g1Mode = 'normal'; // 'normal', 'acpos', 'acneg', 'ground'
+    let g1Mode = 'normal';
     let g1TourStep = 1;
     let g1PotVoltage = 12.00;
-    let g1CapVal = 2200; // 1000 or 2200 uF
+    let g1CapVal = 2200;
     let g1SimSpeed = 1.0;
     let g1Paused = false;
     let g1AnimTime = 0;
 
-    // Canvas References
     const g1Canvas = document.getElementById('g1CircuitCanvas');
     const g1Ctx = g1Canvas ? g1Canvas.getContext('2d') : null;
     const g1Scope = document.getElementById('g1ScopeCanvas');
@@ -974,39 +948,40 @@
     function setG1TourStep(step) {
       g1TourStep = step;
       for (let i = 1; i <= 6; i++) {
-        const pill = document.getElementById(`g1-pill-step-${i}`);
+        const pill = document.getElementById('g1-pill-step-' + i);
         if (!pill) continue;
         if (i === step) {
           pill.className = "tour-step-active p-2.5 rounded-xl border border-slate-700 text-left transition-all";
-          pill.children[0].className = "text-[10px] font-bold uppercase text-sky-200";
+          if (pill.children[0]) pill.children[0].className = "text-[10px] font-bold uppercase text-sky-200";
         } else {
           pill.className = "p-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-left transition-all hover:border-slate-700";
-          pill.children[0].className = "text-[10px] font-bold uppercase text-slate-400";
+          if (pill.children[0]) pill.children[0].className = "text-[10px] font-bold uppercase text-slate-400";
         }
       }
 
+      const sub = document.getElementById('g1-tour-step-subtitle');
       if (step === 1) {
         setG1Mode('normal');
-        document.getElementById('g1-tour-step-subtitle').textContent = "Step 1: Wall Power to Safe 18V AC";
+        if (sub) sub.textContent = "Step 1: Wall Power to Safe 18V AC";
       } else if (step === 2) {
         setG1Mode('acpos');
-        document.getElementById('g1-tour-step-subtitle').textContent = "Step 2: 4 Diodes Directing Power One-Way";
+        if (sub) sub.textContent = "Step 2: 4 Diodes Directing Power One-Way";
       } else if (step === 3) {
         setG1Mode('normal');
         setG1CapValue(2200);
-        document.getElementById('g1-tour-step-subtitle').textContent = "Step 3: 2200ÂµF Water Tank Smooths Out Bumps";
+        if (sub) sub.textContent = "Step 3: 2200 \u00B5F Water Tank Smooths Out Bumps";
       } else if (step === 4) {
         setG1Mode('normal');
         setG1PotPreset(12.00);
-        document.getElementById('g1-tour-step-subtitle').textContent = "Step 4: Voltage Knob Sets Desired Volts";
+        if (sub) sub.textContent = "Step 4: Voltage Knob Sets Desired Volts";
       } else if (step === 5) {
         setG1Mode('normal');
         setG1PotPreset(1.25);
-        document.getElementById('g1-tour-step-subtitle').textContent = "Step 5: Heatsink & Paste Keeps It Cool";
+        if (sub) sub.textContent = "Step 5: Heatsink & Paste Keeps It Cool";
       } else if (step === 6) {
         setG1Mode('normal');
         setG1PotPreset(12.00);
-        document.getElementById('g1-tour-step-subtitle').textContent = "Step 6: Digital Readout & Banana Terminals";
+        if (sub) sub.textContent = "Step 6: Digital Readout & Banana Terminals";
       }
       updateG1Narrative();
     }
@@ -1027,7 +1002,7 @@
       g1Mode = mode;
       const modes = ['normal', 'acpos', 'acneg', 'ground'];
       modes.forEach(m => {
-        const btn = document.getElementById(`g1-btn-mode-${m}`);
+        const btn = document.getElementById('g1-btn-mode-' + m);
         if (!btn) return;
         if (m === mode) {
           btn.className = "px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all bg-sky-500 text-slate-950 shadow";
@@ -1040,18 +1015,22 @@
 
     function setG1SimSpeed(spd) {
       g1SimSpeed = spd;
-      document.getElementById('g1-btn-spd-1').className = spd === 1.0 ? "px-2.5 py-1 rounded text-xs font-bold bg-sky-500 text-slate-950" : "px-2.5 py-1 rounded text-xs font-bold text-slate-300 hover:text-white";
-      document.getElementById('g1-btn-spd-025').className = spd === 0.25 ? "px-2.5 py-1 rounded text-xs font-bold bg-sky-500 text-slate-950" : "px-2.5 py-1 rounded text-xs font-bold text-slate-300 hover:text-white";
+      const b1 = document.getElementById('g1-btn-spd-1');
+      const b025 = document.getElementById('g1-btn-spd-025');
+      if (b1) b1.className = spd === 1.0 ? "px-2.5 py-1 rounded text-xs font-bold bg-sky-500 text-slate-950" : "px-2.5 py-1 rounded text-xs font-bold text-slate-300 hover:text-white";
+      if (b025) b025.className = spd === 0.25 ? "px-2.5 py-1 rounded text-xs font-bold bg-sky-500 text-slate-950" : "px-2.5 py-1 rounded text-xs font-bold text-slate-300 hover:text-white";
     }
 
     function toggleG1Pause() {
       g1Paused = !g1Paused;
-      document.getElementById('g1-btn-pause').textContent = g1Paused ? "â–¶ Play" : "â¸ Pause";
+      const bPause = document.getElementById('g1-btn-pause');
+      if (bPause) bPause.innerHTML = g1Paused ? "&#9654; Play" : "&#9208; Pause";
     }
 
     function updateG1PotVoltage(val) {
       g1PotVoltage = parseFloat(val);
-      document.getElementById('g1-slider-volt-val').textContent = g1PotVoltage.toFixed(2) + " V";
+      const lbl = document.getElementById('g1-slider-volt-val');
+      if (lbl) lbl.textContent = g1PotVoltage.toFixed(2) + " V";
       updateG1UI();
     }
 
@@ -1059,7 +1038,8 @@
       g1PotVoltage = val;
       const slider = document.getElementById('g1-main-pot-slider');
       if (slider) slider.value = val;
-      document.getElementById('g1-slider-volt-val').textContent = val.toFixed(2) + " V";
+      const lbl = document.getElementById('g1-slider-volt-val');
+      if (lbl) lbl.textContent = val.toFixed(2) + " V";
       updateG1UI();
     }
 
@@ -1073,20 +1053,20 @@
       if (val === 1000) {
         if (b1000) b1000.className = "py-1 px-2 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 font-black shadow";
         if (b2200) b2200.className = "py-1 px-2 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white";
-        if (capLabel) { capLabel.textContent = "1000 ÂµF (Bumpy)"; capLabel.className = "text-amber-400 font-bold"; }
-        if (rippleText) { rippleText.textContent = "High (8.3V ripple)"; rippleText.className = "text-amber-400"; }
+        if (capLabel) { capLabel.textContent = "1000 \u00B5F (Bumpy)"; capLabel.className = "text-amber-400 font-bold"; }
+        if (rippleText) { rippleText.textContent = "High (0.83V ripple)"; rippleText.className = "text-amber-400"; }
       } else {
         if (b2200) b2200.className = "py-1 px-2 rounded-lg text-xs font-bold bg-sky-500 text-slate-950 font-black shadow";
         if (b1000) b1000.className = "py-1 px-2 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white";
-        if (capLabel) { capLabel.textContent = "2200 ÂµF (Smooth)"; capLabel.className = "text-emerald-400 font-bold"; }
-        if (rippleText) { rippleText.textContent = "Low (3.8V ripple)"; rippleText.className = "text-emerald-400"; }
+        if (capLabel) { capLabel.textContent = "2200 \u00B5F (Smooth)"; capLabel.className = "text-emerald-400 font-bold"; }
+        if (rippleText) { rippleText.textContent = "Low (0.38V ripple)"; rippleText.className = "text-emerald-400"; }
       }
       updateG1UI();
     }
 
     function updateG1UI() {
       const vout = g1PotVoltage;
-      const watts = (24.0 - vout) * 1.0;
+      const watts = (23.9 - vout) * 1.0;
       const temp = Math.round(25 + (watts * 2.1));
 
       const txtLoop = document.getElementById('g1-txt-active-loop');
@@ -1094,10 +1074,9 @@
         if (g1Mode === 'acpos') txtLoop.textContent = "Positive Wave: D1 & D4 Active";
         else if (g1Mode === 'acneg') txtLoop.textContent = "Negative Wave: D2 & D3 Active";
         else if (g1Mode === 'ground') txtLoop.textContent = "Ground Wire: Returning Power to Negative Side";
-        else txtLoop.textContent = `${vout.toFixed(2)}V Output @ 1A Clean Power`;
+        else txtLoop.textContent = vout.toFixed(2) + "V Output @ 1A Clean Power";
       }
 
-      // Simple Heat Thermometer
       const thermoFluid = document.getElementById('g1-thermo-fluid');
       const lblDieTemp = document.getElementById('g1-lbl-die-temp');
       const lblWatts = document.getElementById('g1-lbl-heatsink-watts');
@@ -1108,7 +1087,7 @@
         thermoFluid.style.width = pct + "%";
         thermoFluid.className = temp > 65 ? "h-full bg-rose-500 transition-all duration-300" : "h-full bg-emerald-500 transition-all duration-300";
       }
-      if (lblDieTemp) lblDieTemp.textContent = temp + " Â°C";
+      if (lblDieTemp) lblDieTemp.textContent = temp + " \u00B0C";
       if (lblWatts) lblWatts.textContent = Math.round(watts) + " Watts";
       if (badgeHeat) {
         if (temp > 65) {
@@ -1127,13 +1106,13 @@
       const card = document.getElementById('g1-narrative-content');
       if (!card) return;
       if (g1Mode === 'acpos') {
-        card.innerHTML = `<strong class="text-white">Positive Half:</strong> Current flows from the transformer through <strong>Diodes D1 &amp; D4</strong>, filling the capacitor tank and sending smooth DC to your output knob.`;
+        card.innerHTML = '<strong class="text-white">Positive Half:</strong> Current flows from the transformer through <strong>Diodes D1 &amp; D4</strong>, filling the capacitor tank and sending smooth DC to your output knob.';
       } else if (g1Mode === 'acneg') {
-        card.innerHTML = `<strong class="text-white">Negative Half:</strong> The AC wave flips! <strong>Diodes D2 &amp; D3</strong> take over so power still flows in the exact same forward direction. Nothing is wasted!`;
+        card.innerHTML = '<strong class="text-white">Negative Half:</strong> The AC wave flips! <strong>Diodes D2 &amp; D3</strong> take over so power still flows in the exact same forward direction. Nothing is wasted!';
       } else if (g1Mode === 'ground') {
-        card.innerHTML = `<strong class="text-white">The Ground Wire:</strong> Electricity must always complete a circle to work. Ground is just the return highway carrying electrons back to the diodes!`;
+        card.innerHTML = '<strong class="text-white">The Ground Wire:</strong> Electricity must always complete a circle to work. Ground is just the return highway carrying electrons back to the diodes!';
       } else {
-        card.innerHTML = `<strong class="text-white">Normal Operation:</strong> Your 18V transformer powers the 4 diodes, the 2200ÂµF capacitor flattens out any bumps, and the LM317 delivers a rock-solid <strong>${g1PotVoltage.toFixed(2)}V DC</strong>!`;
+        card.innerHTML = '<strong class="text-white">Normal Operation:</strong> Your 18V transformer powers the 4 diodes, the 2200&mu;F capacitor flattens out any bumps, and the LM317 delivers a rock-solid <strong>' + g1PotVoltage.toFixed(2) + 'V DC</strong>!';
       }
     }
 
@@ -1144,7 +1123,6 @@
       if (!g1Ctx || !g1Canvas) return;
       g1Ctx.clearRect(0, 0, g1Canvas.width, g1Canvas.height);
 
-      // Simple Blueprint Grid
       g1Ctx.strokeStyle = 'rgba(30, 41, 59, 0.4)';
       g1Ctx.lineWidth = 1;
       for (let x = 0; x < g1Canvas.width; x += 30) {
@@ -1154,12 +1132,11 @@
         g1Ctx.beginPath(); g1Ctx.moveTo(0, y); g1Ctx.lineTo(g1Canvas.width, y); g1Ctx.stroke();
       }
 
-      // 6 Clear Stage Blocks
       const stages = [
         { x: 30, y: 50, w: 180, h: 560, title: "1. WALL POWER", sub: "220V Input & Fuse", color: "#0284c7" },
         { x: 230, y: 50, w: 200, h: 560, title: "2. TRANSFORMER", sub: "Steps down to safe 18V", color: "#06b6d4" },
         { x: 450, y: 50, w: 220, h: 560, title: "3. 4 DIODES (BRIDGE)", sub: "AC to DC (One-Way)", color: "#10b981" },
-        { x: 690, y: 50, w: 180, h: 560, title: "4. WATER TANK", sub: `2200ÂµF Smooths Bumps`, color: "#f59e0b" },
+        { x: 690, y: 50, w: 180, h: 560, title: "4. WATER TANK", sub: "2200 \u00B5F Smooths Bumps", color: "#f59e0b" },
         { x: 890, y: 50, w: 220, h: 560, title: "5. VOLTAGE KNOB", sub: "LM317 Sets Output", color: "#a855f7" },
         { x: 1130, y: 50, w: 180, h: 560, title: "6. OUTPUT SCREEN", sub: "Volts & Banana Jacks", color: "#ef4444" }
       ];
@@ -1187,13 +1164,11 @@
       g1Ctx.font = 'bold 11px monospace';
       g1Ctx.fillText('220V~', 50, 270);
 
-      // Fuse
       g1Ctx.strokeStyle = '#cbd5e1';
       g1Ctx.strokeRect(105, 222, 35, 16);
       g1Ctx.fillStyle = '#cbd5e1';
       g1Ctx.fillText('FUSE 2A', 100, 214);
 
-      // Switch
       g1Ctx.strokeStyle = '#38bdf8';
       g1Ctx.beginPath(); g1Ctx.moveTo(155, 230); g1Ctx.lineTo(180, 215); g1Ctx.stroke();
       g1Ctx.fillText('ON/OFF', 150, 205);
@@ -1254,8 +1229,8 @@
       g1Ctx.strokeRect(cx1 - 14, 205, 28, 50);
       g1Ctx.fillStyle = '#f59e0b';
       g1Ctx.font = 'bold 11px monospace';
-      g1Ctx.fillText(`C1 Tank`, cx1 - 22, 275);
-      g1Ctx.fillText(`${g1CapVal}ÂµF`, cx1 - 18, 290);
+      g1Ctx.fillText('C1 Tank', cx1 - 22, 275);
+      g1Ctx.fillText(g1CapVal + ' \u00B5F', cx1 - 20, 290);
 
       // 5. Voltage Knob (LM317)
       const regX = 950, regY = 200;
@@ -1265,7 +1240,6 @@
       g1Ctx.lineWidth = 2.5;
       g1Ctx.strokeRect(regX, regY, 80, 55);
 
-      // Heatsink fins
       g1Ctx.strokeStyle = '#cbd5e1';
       g1Ctx.lineWidth = 2;
       for (let i = 0; i < 5; i++) {
@@ -1277,7 +1251,6 @@
       g1Ctx.font = '9px monospace';
       g1Ctx.fillText('VOLTAGE VALVE', regX + 6, regY + 44);
 
-      // Potentiometer knob icon
       g1Ctx.strokeStyle = '#c084fc';
       g1Ctx.beginPath(); g1Ctx.arc(regX + 40, regY + 110, 20, 0, Math.PI * 2); g1Ctx.stroke();
       g1Ctx.beginPath(); g1Ctx.moveTo(regX + 40, regY + 110); g1Ctx.lineTo(regX + 54, regY + 98); g1Ctx.stroke();
@@ -1286,7 +1259,6 @@
 
       // 6. Output Screen & Terminals
       const outX = 1180;
-      // Voltmeter Screen
       g1Ctx.fillStyle = '#020617';
       g1Ctx.fillRect(outX - 25, 190, 70, 45);
       g1Ctx.strokeStyle = '#10b981';
@@ -1296,7 +1268,6 @@
       g1Ctx.font = 'bold 14px monospace';
       g1Ctx.fillText(g1PotVoltage.toFixed(1) + 'V', outX - 18, 220);
 
-      // Output Binding Posts
       g1Ctx.fillStyle = '#ef4444';
       g1Ctx.fillRect(outX + 25, 330, 16, 24);
       g1Ctx.fillStyle = '#0f172a';
@@ -1309,7 +1280,7 @@
       g1Ctx.fillText('RED (+)', outX - 18, 345);
       g1Ctx.fillText('BLACK (-)', outX - 28, 395);
 
-      // Positive Rail (Top Red)
+      // Positive Rail
       g1Ctx.strokeStyle = '#ef4444';
       g1Ctx.lineWidth = 3;
       g1Ctx.beginPath();
@@ -1317,25 +1288,23 @@
       g1Ctx.moveTo(regX + 80, by - 40); g1Ctx.lineTo(outX + 25, by - 40);
       g1Ctx.stroke();
 
-      // Ground Rail (Bottom Blue)
+      // Ground Rail
       g1Ctx.strokeStyle = '#0284c7';
       g1Ctx.lineWidth = 3;
       g1Ctx.beginPath();
       g1Ctx.moveTo(bx + 55, 450); g1Ctx.lineTo(outX + 25, 450);
       g1Ctx.stroke();
 
-      // LIVE ANIMATED CURRENT DOTS (FRIENDLY GLOWING PARTICLES)
+      // Live Animated Current Dots
       g1Ctx.fillStyle = '#38bdf8';
       const numDots = 20;
       for (let i = 0; i < numDots; i++) {
         const offset = ((g1AnimTime * 80 + (i * 60)) % 1200);
         const px = bx + 60 + offset * 0.55;
         if (px < outX + 25) {
-          // Flow along top
           g1Ctx.beginPath();
           g1Ctx.arc(px, by - 40, 4, 0, Math.PI * 2);
           g1Ctx.fill();
-          // Flow return ground
           g1Ctx.beginPath();
           g1Ctx.arc(outX + 25 - (px - (bx + 60)), 450, 4, 0, Math.PI * 2);
           g1Ctx.fill();
@@ -1344,7 +1313,7 @@
     }
 
     // =========================================================================
-    // DUAL CHANNEL SCOPE (SIMPLIFIED & INTUITIVE)
+    // DUAL CHANNEL SCOPE (GROUP 1)
     // =========================================================================
     function drawG1Scope() {
       if (!g1ScopeCtx || !g1Scope) return;
@@ -1387,7 +1356,14 @@
       g1ScopeCtx.lineTo(w, voutY);
       g1ScopeCtx.stroke();
     }
-let currentMode = 'normal';
+    // =========================================================================
+    // GROUP 2 CODE (PRISTINE INTERACTIVE SIMULATION)
+    // =========================================================================
+    // =========================================================================
+    // SIMULATION STATE & CONFIGURATION
+    // =========================================================================
+    // Modes: 'normal', 'ground', 'extbatt', 'groundvin', 'powercut', 'shortgnd'
+    let currentMode = 'normal';
     let dmmTarget = 'd5_fwd'; // 'd5_fwd', 'd5_rev', 'd6_fwd', 'd6_rev' 
     let tourStep = 1;
     let focusMode = true;
@@ -1447,22 +1423,22 @@ let currentMode = 'normal';
       }
 
       if (step === 1) {
-        tourStepSubtitle.textContent = 'Step 1 of 6 â€¢ Normal Regulation Loop (AC to DC 12V @ 3A)';
+        tourStepSubtitle.textContent = 'Step 1 of 6 • Normal Regulation Loop (AC to DC 12V @ 3A)';
         setMode('normal');
       } else if (step === 2) {
-        tourStepSubtitle.textContent = 'Step 2 of 6 â€¢ Ground Demystified (Why electrons return to Bridge -)';
+        tourStepSubtitle.textContent = 'Step 2 of 6 • Ground Demystified (Why electrons return to Bridge -)';
         setMode('ground');
       } else if (step === 3) {
-        tourStepSubtitle.textContent = 'Step 3 of 6 â€¢ Where D5 Current Comes From: Output Capacitor Energy Dump';
+        tourStepSubtitle.textContent = 'Step 3 of 6 • Where D5 Current Comes From: Output Capacitor Energy Dump';
         setMode('powercut');
       } else if (step === 4) {
-        tourStepSubtitle.textContent = 'Step 4 of 6 â€¢ Physical Test: Pushing External 12V Battery into VOUT via Probes';
+        tourStepSubtitle.textContent = 'Step 4 of 6 • Physical Test: Pushing External 12V Battery into VOUT via Probes';
         setMode('extbatt');
       } else if (step === 5) {
-        tourStepSubtitle.textContent = 'Step 5 of 6 â€¢ Physical Test: Grounding VIN with Two Sticks (Watch D5 conduct)';
+        tourStepSubtitle.textContent = 'Step 5 of 6 • Physical Test: Grounding VIN with Two Sticks (Watch D5 conduct)';
         setMode('groundvin');
       } else if (step === 6) {
-        tourStepSubtitle.textContent = 'Step 6 of 6 â€¢ Shorting Output with Two Sticks: Cadj Discharge through D6';
+        tourStepSubtitle.textContent = 'Step 6 of 6 • Shorting Output with Two Sticks: Cadj Discharge through D6';
         setMode('shortgnd');
       }
     }
@@ -1511,7 +1487,7 @@ let currentMode = 'normal';
 
     function toggleFocusMode() {
       focusMode = !focusMode;
-      btnFocusMode.textContent = focusMode ? 'ðŸ” Active Loop Only (ON)' : 'ðŸ” Show All (Full Schem)';
+      btnFocusMode.textContent = focusMode ? '🔍 Active Loop Only (ON)' : '🔍 Show All (Full Schem)';
       btnFocusMode.className = focusMode 
         ? 'px-2.5 py-1 rounded text-xs font-bold bg-sky-500 text-slate-950 shadow transition-all'
         : 'px-2.5 py-1 rounded text-xs font-bold bg-slate-800 text-slate-300 hover:text-white transition-all';
@@ -1536,7 +1512,7 @@ let currentMode = 'normal';
 
     function togglePause() {
       isPaused = !isPaused;
-      document.getElementById('btn-pause').textContent = isPaused ? 'â–¶' : 'â¸';
+      document.getElementById('btn-pause').textContent = isPaused ? '▶' : '⏸';
       document.getElementById('btn-pause').className = isPaused ? 'px-2 py-0.5 rounded text-xs font-bold bg-emerald-500 text-slate-950' : 'px-2 py-0.5 rounded text-xs font-bold bg-slate-800 text-amber-400 border border-amber-500/30';
     }
 
@@ -1571,7 +1547,7 @@ let currentMode = 'normal';
       calcVdrop.textContent = `16.5V - ${potVoltage.toFixed(2)}V = ${vDrop.toFixed(2)}V`;
       calcPtotal.textContent = `${pdTotal.toFixed(2)} W Total`;
       lblHeatsinkWatts.textContent = `${pdEach.toFixed(2)} W`;
-      lblDieTemp.textContent = `${Math.round(tjEst)} Â°C`;
+      lblDieTemp.textContent = `${Math.round(tjEst)} °C`;
 
       const thermoPercent = Math.min(100, Math.max(15, (tjEst - 20) / 100 * 100));
       thermoFluid.style.height = `${thermoPercent}%`;
@@ -1601,9 +1577,9 @@ let currentMode = 'normal';
 
       // Mode-specific Narrative Cards
       if (currentMode === 'normal') {
-        canvasTitle.textContent = 'Step 1: Normal 7-Block Power Regulation Loop (AC â†’ DC 12V @ 3A)';
+        canvasTitle.textContent = 'Step 1: Normal 7-Block Power Regulation Loop (AC → DC 12V @ 3A)';
         loopDot.className = 'w-3 h-3 rounded-full bg-emerald-400 shadow shadow-emerald-400/50 animate-pulse';
-        txtActiveLoop.textContent = 'Normal Forward Power Loop (Transformer â†’ Bridge â†’ LM317s â†’ Load â†’ Bridge -)';
+        txtActiveLoop.textContent = 'Normal Forward Power Loop (Transformer → Bridge → LM317s → Load → Bridge -)';
         txtActiveLoop.className = 'text-emerald-400 font-bold';
         badgeSystemState.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span> ALL 7 STAGES REGULATING';
         badgeSystemState.className = 'inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-400';
@@ -1611,7 +1587,7 @@ let currentMode = 'normal';
         narrativeCard.className = 'p-4 rounded-xl border border-sky-500/30 bg-sky-950/30 text-sky-200 text-xs md:text-sm leading-relaxed flex items-start gap-3 shadow-lg';
         narrativeContent.innerHTML = `
           <div class="font-extrabold text-white text-sm">Normal Operation (Forward Current Flow):</div>
-          <div>Mains AC enters through <strong>J1</strong>, stepped down by Transformer <strong>T1</strong> to 14V AC. Bridge Rectifier <strong>D1â€“D4</strong> converts it to DC, smoothed by <strong>C1</strong> to +16.50V DC. Current splits equally: 1.5A into <strong>U1</strong> and 1.5A into <strong>U2</strong>. Ballast resistors <strong>R4 &amp; R5</strong> balance current into 3.0A at +${potVoltage.toFixed(2)}V. Diodes <strong>D5 &amp; D6</strong> are reverse-biased (Anode at Vout, Cathode at Vin; Vin > Vout so D5 is OFF and consumes 0W).</div>
+          <div>Mains AC enters through <strong>J1</strong>, stepped down by Transformer <strong>T1</strong> to 14V AC. Bridge Rectifier <strong>D1–D4</strong> converts it to DC, smoothed by <strong>C1</strong> to +16.50V DC. Current splits equally: 1.5A into <strong>U1</strong> and 1.5A into <strong>U2</strong>. Ballast resistors <strong>R4 &amp; R5</strong> balance current into 3.0A at +${potVoltage.toFixed(2)}V. Diodes <strong>D5 &amp; D6</strong> are reverse-biased (Anode at Vout, Cathode at Vin; Vin > Vout so D5 is OFF and consumes 0W).</div>
         `;
         scopeStatusPill.textContent = 'STEADY: OK';
         scopeStatusPill.className = 'absolute bottom-2 right-2 text-[9px] font-mono px-2 py-0.5 rounded bg-slate-900/90 border border-emerald-500/40 text-emerald-400 font-bold';
@@ -1649,7 +1625,7 @@ let currentMode = 'normal';
         scopeStatusPill.className = 'absolute bottom-2 right-2 text-[9px] font-mono px-2 py-0.5 rounded bg-slate-900/90 border border-orange-500/40 text-orange-400 font-bold';
 
       } else if (currentMode === 'ground') {
-        canvasTitle.textContent = 'Step 2: Ground Demystified â€” Why Return Current Goes to Bridge (-)';
+        canvasTitle.textContent = 'Step 2: Ground Demystified — Why Return Current Goes to Bridge (-)';
         loopDot.className = 'w-3 h-3 rounded-full bg-sky-400 shadow shadow-sky-400/50 animate-pulse';
         txtActiveLoop.textContent = 'Ground Return Loop: Every electron MUST return to the Bridge Rectifier (-) Terminal!';
         txtActiveLoop.className = 'text-sky-300 font-bold';
@@ -1658,7 +1634,7 @@ let currentMode = 'normal';
 
         narrativeCard.className = 'p-4 rounded-xl border border-sky-400/40 bg-sky-950/40 text-sky-100 text-xs md:text-sm leading-relaxed flex items-start gap-3 shadow-lg';
         narrativeContent.innerHTML = `
-          <div class="font-extrabold text-sky-300 text-sm">Demystifying "Ground" â€” Kirchhoff's Current Law (KCL):</div>
+          <div class="font-extrabold text-sky-300 text-sm">Demystifying "Ground" — Kirchhoff's Current Law (KCL):</div>
           <div>Notice the bright glowing arrows moving <strong class="text-sky-300">LEFT along the bottom wire towards the Bridge Rectifier (-) terminal</strong>! The Bridge Rectifier is the "pump". The (+) terminal pushes electrons out, so the (-) terminal MUST receive those exact same electrons back. The GND wire is simply the return highway connecting the Load (-) terminal back to the Bridge (-) terminal. Current <em>never</em> vanishes into thin air!</div>
         `;
         scopeStatusPill.textContent = 'KCL VERIFIED: I_IN = I_OUT';
@@ -1672,14 +1648,14 @@ let currentMode = 'normal';
         
         if (diodesEnabled) {
           loopDot.className = 'w-3 h-3 rounded-full bg-amber-400 shadow shadow-amber-400/50 animate-ping';
-          txtActiveLoop.textContent = 'External Battery Loop: Current flows OUT of Battery (+) â†’ D5 â†’ C1 â†’ Battery (-)';
+          txtActiveLoop.textContent = 'External Battery Loop: Current flows OUT of Battery (+) → D5 → C1 → Battery (-)';
           txtActiveLoop.className = 'text-amber-300 font-bold';
           badgeSystemState.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span> EXTERNAL BATTERY INJECTING';
           badgeSystemState.className = 'inline-flex items-center gap-1.5 text-xs font-extrabold text-amber-300';
 
           narrativeCard.className = 'p-4 rounded-xl border border-amber-500/40 bg-amber-950/40 text-amber-200 text-xs md:text-sm leading-relaxed flex items-start gap-3 shadow-lg';
           narrativeContent.innerHTML = `
-            <div class="font-extrabold text-amber-300 text-sm">Where D5 Current Comes From â€” External Battery Injection:</div>
+            <div class="font-extrabold text-amber-300 text-sm">Where D5 Current Comes From — External Battery Injection:</div>
             <div>Look at the right side: an <strong>External 12V Battery</strong> is connected to the output terminals using Red (+) and Black (-) probe sticks. Because the PSU mains AC is off ($V_{\\text{in}} = 0\\text{V}$), the battery pushes $+12.0\\text{V}$ backwards into $V_{\\text{out}}$! Notice the bright orange electrons: they leave the battery, travel LEFT along the $V_{\\text{out}}$ rail, turn <strong>UP through Diode D5</strong>, flow through D5 from Anode to Cathode, enter the $V_{\\text{in}}$ node, flow down through $C_1$, and travel along GND back to the battery's negative terminal! Reverse voltage across the LM317 is clamped to just <strong>0.72V</strong> (SAFE)!</div>
           `;
           scopeStatusPill.textContent = 'BATTERY CLAMP: 0.72V (SAFE)';
@@ -1716,7 +1692,7 @@ let currentMode = 'normal';
 
           narrativeCard.className = 'p-4 rounded-xl border border-emerald-500/40 bg-emerald-950/30 text-emerald-200 text-xs md:text-sm leading-relaxed flex items-start gap-3 shadow-lg';
           narrativeContent.innerHTML = `
-            <div class="font-extrabold text-emerald-300 text-sm">Where D5 Current Comes From â€” Charged Output Capacitors:</div>
+            <div class="font-extrabold text-emerald-300 text-sm">Where D5 Current Comes From — Charged Output Capacitors:</div>
             <div>Look at the input node: <strong>two probe sticks ("Two Sticks")</strong> are touching $V_{\\text{in}}$ directly to GND. The input collapses to 0V. Meanwhile, the output capacitor <strong>C3</strong> (and any connected load) is charged with electrostatic energy ($E = \\frac{1}{2} C V^2$). That stored charge acts as a temporary battery! The electrons shoot OUT of the output block, travel up and left through <strong>Diode D5</strong>, down through the shorted probe sticks to GND, and back to the negative plane. D5 protects the LM317 by clamping reverse voltage to 0.72V!</div>
           `;
           scopeStatusPill.textContent = 'D5 CLAMP: 0.72V (SAFE)';
@@ -1740,20 +1716,20 @@ let currentMode = 'normal';
 
       } else if (currentMode === 'powercut') {
         canvasTitle.textContent = diodesEnabled 
-          ? 'Step 3: Safe D5 Clamping Loop (C3 â†’ D5 â†’ C1 â†’ C3)' 
-          : 'Step 3: FATAL! No D5 â†’ Capacitors Blow Internal Pass Transistors!';
+          ? 'Step 3: Safe D5 Clamping Loop (C3 → D5 → C1 → C3)' 
+          : 'Step 3: FATAL! No D5 → Capacitors Blow Internal Pass Transistors!';
         
         if (diodesEnabled) {
           loopDot.className = 'w-3 h-3 rounded-full bg-emerald-400 shadow shadow-emerald-400/50 animate-ping';
           txtActiveLoop.textContent = 'Safe D5 Bypass Loop: C3 discharge bypasses LM317s directly into C1 & GND';
           txtActiveLoop.className = 'text-emerald-400 font-bold';
-          badgeSystemState.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span> D5 ACTIVE â€¢ ICs SAFE';
+          badgeSystemState.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span> D5 ACTIVE • ICs SAFE';
           badgeSystemState.className = 'inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-400';
 
           narrativeCard.className = 'p-4 rounded-xl border border-emerald-500/40 bg-emerald-950/30 text-emerald-200 text-xs md:text-sm leading-relaxed flex items-start gap-3 shadow-lg';
           narrativeContent.innerHTML = `
             <div class="font-extrabold text-emerald-300 text-sm">Safe D5 Clamping Action (AC Power Cut / Unplugged):</div>
-            <div>When AC power drops, input capacitor <strong>C1</strong> discharges to 0V. Output capacitor <strong>C3</strong> (1ÂµF) holds +12V. Protection diode <strong>D5 forward-biases</strong>, routing charge out of C3, through D5, and safely dumping into C1. Reverse voltage is clamped to <strong>0.72V</strong>!</div>
+            <div>When AC power drops, input capacitor <strong>C1</strong> discharges to 0V. Output capacitor <strong>C3</strong> (1µF) holds +12V. Protection diode <strong>D5 forward-biases</strong>, routing charge out of C3, through D5, and safely dumping into C1. Reverse voltage is clamped to <strong>0.72V</strong>!</div>
           `;
           scopeStatusPill.textContent = 'D5 CLAMP: 0.72V (SAFE)';
           scopeStatusPill.className = 'absolute bottom-2 right-2 text-[9px] font-mono px-2 py-0.5 rounded bg-slate-900/90 border border-emerald-500/40 text-emerald-400 font-bold';
@@ -1801,7 +1777,7 @@ let currentMode = 'normal';
           <div class="pt-2 text-[11px] text-purple-200 border-t border-purple-800/60 mt-1">
             <strong>3 Steps to Prove to Your Professor that Diodes Work:</strong><br>
             1. <em>Unpowered DMM Check:</em> Test forward drop (~0.68V) and reverse blocking (OL).<br>
-            2. <em>Safe 9V Battery Push Test:</em> With PSU unpowered, push 9V into VOUT through a 1kÎ© resistor. Measure across D5 -> exactly 0.69V! Measure Vin -> 8.3V (proves D5 feeds charge!).<br>
+            2. <em>Safe 9V Battery Push Test:</em> With PSU unpowered, push 9V into VOUT through a 1kΩ resistor. Measure across D5 -> exactly 0.69V! Measure Vin -> 8.3V (proves D5 feeds charge!).<br>
             3. <em>Oscilloscope Single Trigger:</em> Trigger on AC switch cut; observe Vout clamp at Vin + 0.72V max.
           </div>
         `;
@@ -1810,20 +1786,20 @@ let currentMode = 'normal';
 
       } else if (currentMode === 'shortgnd') {
         canvasTitle.textContent = diodesEnabled 
-          ? 'Step 6: Safe D6 Shunt Loop (Cadj â†’ D6 â†’ Shorted Sticks â†’ GND)' 
-          : 'Step 6: FATAL! No D6 â†’ Cadj Discharges into Internal Op-Amp Substrate!';
+          ? 'Step 6: Safe D6 Shunt Loop (Cadj → D6 → Shorted Sticks → GND)' 
+          : 'Step 6: FATAL! No D6 → Cadj Discharges into Internal Op-Amp Substrate!';
 
         if (diodesEnabled) {
           loopDot.className = 'w-3 h-3 rounded-full bg-amber-400 shadow shadow-amber-400/50 animate-ping';
           txtActiveLoop.textContent = 'Safe D6 Bypass Loop: Cadj discharge shunts through D6 to output short';
           txtActiveLoop.className = 'text-amber-400 font-bold';
-          badgeSystemState.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span> D6 ACTIVE â€¢ AMPS SAFE';
+          badgeSystemState.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span> D6 ACTIVE • AMPS SAFE';
           badgeSystemState.className = 'inline-flex items-center gap-1.5 text-xs font-extrabold text-amber-400';
 
           narrativeCard.className = 'p-4 rounded-xl border border-amber-500/40 bg-amber-950/30 text-amber-200 text-xs md:text-sm leading-relaxed flex items-start gap-3 shadow-lg';
           narrativeContent.innerHTML = `
             <div class="font-extrabold text-amber-300 text-sm">Safe D6 Shunting Action (Two Sticks Short Output to Ground):</div>
-            <div>Two probe sticks short the output terminals together ($V_{\\text{out}} = 0\\text{V}$). <strong>Cadj</strong> (10ÂµF) is still at +10.75V. <strong>D6 forward-biases</strong>, routing charge out of Cadj, through D6, directly onto the shorted sticks to GND. Differential across the internal error amplifier is clamped to only <strong>0.72V</strong>!</div>
+            <div>Two probe sticks short the output terminals together ($V_{\\text{out}} = 0\\text{V}$). <strong>Cadj</strong> (10µF) is still at +10.75V. <strong>D6 forward-biases</strong>, routing charge out of Cadj, through D6, directly onto the shorted sticks to GND. Differential across the internal error amplifier is clamped to only <strong>0.72V</strong>!</div>
           `;
           scopeStatusPill.textContent = 'D6 CLAMP: 0.72V (SAFE)';
           scopeStatusPill.className = 'absolute bottom-2 right-2 text-[9px] font-mono px-2 py-0.5 rounded bg-slate-900/90 border border-amber-500/40 text-amber-400 font-bold';
@@ -2114,7 +2090,7 @@ let currentMode = 'normal';
           <div class="pt-2 text-[11px] text-purple-200 border-t border-purple-800/60 mt-1">
             <strong>3 Steps to Prove to Your Professor that Diodes Work:</strong><br>
             1. <em>Unpowered DMM Check:</em> Test forward drop (~0.68V) and reverse blocking (OL).<br>
-            2. <em>Safe 9V Battery Push Test:</em> With PSU unpowered, push 9V into VOUT through a 1kÎ© resistor. Measure across D5 -> exactly 0.69V! Measure Vin -> 8.3V (proves D5 feeds charge!).<br>
+            2. <em>Safe 9V Battery Push Test:</em> With PSU unpowered, push 9V into VOUT through a 1kΩ resistor. Measure across D5 -> exactly 0.69V! Measure Vin -> 8.3V (proves D5 feeds charge!).<br>
             3. <em>Oscilloscope Single Trigger:</em> Trigger on AC switch cut; observe Vout clamp at Vin + 0.72V max.
           </div>
         `;
@@ -2175,7 +2151,7 @@ let currentMode = 'normal';
           <div class="pt-2 text-[11px] text-purple-200 border-t border-purple-800/60 mt-1">
             <strong>3 Steps to Prove to Your Professor that Diodes Work:</strong><br>
             1. <em>Unpowered DMM Check:</em> Test forward drop (~0.68V) and reverse blocking (OL).<br>
-            2. <em>Safe 9V Battery Push Test:</em> With PSU unpowered, push 9V into VOUT through a 1kÎ© resistor. Measure across D5 -> exactly 0.69V! Measure Vin -> 8.3V (proves D5 feeds charge!).<br>
+            2. <em>Safe 9V Battery Push Test:</em> With PSU unpowered, push 9V into VOUT through a 1kΩ resistor. Measure across D5 -> exactly 0.69V! Measure Vin -> 8.3V (proves D5 feeds charge!).<br>
             3. <em>Oscilloscope Single Trigger:</em> Trigger on AC switch cut; observe Vout clamp at Vin + 0.72V max.
           </div>
         `;
@@ -2237,7 +2213,7 @@ let currentMode = 'normal';
         cCtx.strokeRect(240, 555, 230, 36);
         cCtx.fillStyle = '#ffffff';
         cCtx.font = 'bold 10px sans-serif';
-        cCtx.fillText('â¬… Current returns to Bridge (-) terminal!', 248, 570);
+        cCtx.fillText('⬅ Current returns to Bridge (-) terminal!', 248, 570);
         cCtx.font = '8.5px monospace';
         cCtx.fillStyle = '#bae6fd';
         cCtx.fillText('(Kirchhoff Current Law: closed loop)', 248, 583);
@@ -2323,7 +2299,7 @@ let currentMode = 'normal';
       cCtx.restore();
 
       // =====================================================================
-      // 4. BLOCK 3: FULL-WAVE BRIDGE RECTIFIER (D1â€“D4)
+      // 4. BLOCK 3: FULL-WAVE BRIDGE RECTIFIER (D1–D4)
       // =====================================================================
       cCtx.save();
       cCtx.globalAlpha = getBlockAlpha('bridge');
@@ -2385,7 +2361,7 @@ let currentMode = 'normal';
       cCtx.restore();
 
       // =====================================================================
-      // 5. BLOCK 4: BULK FILTERING (C1: 4700ÂµF, C2: 100nF)
+      // 5. BLOCK 4: BULK FILTERING (C1: 4700µF, C2: 100nF)
       // =====================================================================
       cCtx.save();
       cCtx.globalAlpha = getBlockAlpha('c1');
@@ -2394,7 +2370,7 @@ let currentMode = 'normal';
       cCtx.fillStyle = '#1e293b'; cCtx.strokeStyle = colVin; cCtx.lineWidth = 2;
       cCtx.fillRect(414, 350, 32, 50); cCtx.strokeRect(414, 350, 32, 50);
       cCtx.fillStyle = colVin; cCtx.font = 'bold 9.5px monospace'; cCtx.fillText('C1', 422, 372);
-      cCtx.font = '8px monospace'; cCtx.fillStyle = '#94a3b8'; cCtx.fillText('4700Âµ', 416, 388);
+      cCtx.font = '8px monospace'; cCtx.fillStyle = '#94a3b8'; cCtx.fillText('4700µ', 416, 388);
       cCtx.fillText('35V', 421, 398);
       cCtx.strokeStyle = '#475569'; cCtx.lineWidth = 3;
       cCtx.beginPath(); cCtx.moveTo(430, 400); cCtx.lineTo(430, 540); cCtx.stroke();
@@ -2473,7 +2449,7 @@ let currentMode = 'normal';
       cCtx.beginPath(); cCtx.moveTo(640, 210); cCtx.lineTo(660, 210); cCtx.stroke();
       cCtx.fillStyle = '#1e293b'; cCtx.strokeStyle = '#e2e8f0'; cCtx.lineWidth = 2;
       cCtx.fillRect(660, 198, 48, 24); cCtx.strokeRect(660, 198, 48, 24);
-      cCtx.fillStyle = '#e2e8f0'; cCtx.font = 'bold 9.5px monospace'; cCtx.fillText('R1:0.1Î©', 663, 214);
+      cCtx.fillStyle = '#e2e8f0'; cCtx.font = 'bold 9.5px monospace'; cCtx.fillText('R1:0.1Ω', 663, 214);
       cCtx.font = '7.5px monospace'; cCtx.fillStyle = '#94a3b8'; cCtx.fillText('5W Wire', 667, 230);
       cCtx.strokeStyle = isReverseU ? '#ef4444' : colVout; cCtx.lineWidth = 3.5;
       cCtx.beginPath(); cCtx.moveTo(708, 210); cCtx.lineTo(745, 210); cCtx.lineTo(745, 270); cCtx.stroke();
@@ -2481,7 +2457,7 @@ let currentMode = 'normal';
       cCtx.beginPath(); cCtx.moveTo(640, 330); cCtx.lineTo(660, 330); cCtx.stroke();
       cCtx.fillStyle = '#1e293b'; cCtx.strokeStyle = '#e2e8f0'; cCtx.lineWidth = 2;
       cCtx.fillRect(660, 318, 48, 24); cCtx.strokeRect(660, 318, 48, 24);
-      cCtx.fillStyle = '#e2e8f0'; cCtx.font = 'bold 9.5px monospace'; cCtx.fillText('R2:0.1Î©', 663, 334);
+      cCtx.fillStyle = '#e2e8f0'; cCtx.font = 'bold 9.5px monospace'; cCtx.fillText('R2:0.1Ω', 663, 334);
       cCtx.font = '7.5px monospace'; cCtx.fillStyle = '#94a3b8'; cCtx.fillText('5W Wire', 667, 350);
       cCtx.strokeStyle = isReverseU ? '#ef4444' : colVout; cCtx.lineWidth = 3.5;
       cCtx.beginPath(); cCtx.moveTo(708, 330); cCtx.lineTo(745, 330); cCtx.lineTo(745, 270); cCtx.stroke();
@@ -2518,7 +2494,7 @@ let currentMode = 'normal';
       cCtx.fillStyle = '#1e293b'; cCtx.strokeStyle = '#f59e0b'; cCtx.lineWidth = 1.8;
       cCtx.fillRect(768, 310, 24, 32); cCtx.strokeRect(768, 310, 24, 32);
       cCtx.fillStyle = '#f59e0b'; cCtx.font = 'bold 9.5px monospace'; cCtx.fillText('R3', 773, 326);
-      cCtx.font = '7.5px monospace'; cCtx.fillStyle = '#94a3b8'; cCtx.fillText('220Î©', 770, 337);
+      cCtx.font = '7.5px monospace'; cCtx.fillStyle = '#94a3b8'; cCtx.fillText('220Ω', 770, 337);
       cCtx.strokeStyle = colVadj; cCtx.lineWidth = 3;
       cCtx.beginPath(); cCtx.moveTo(780, 342); cCtx.lineTo(780, 420); cCtx.stroke();
 
@@ -2533,7 +2509,7 @@ let currentMode = 'normal';
       cCtx.fillStyle = '#1e293b'; cCtx.strokeStyle = '#94a3b8'; cCtx.lineWidth = 1.5;
       cCtx.fillRect(770, 475, 20, 22); cCtx.strokeRect(770, 475, 20, 22);
       cCtx.fillStyle = '#94a3b8'; cCtx.font = 'bold 8px monospace'; cCtx.fillText('R5', 774, 488);
-      cCtx.font = '7px monospace'; cCtx.fillText('100Î©', 772, 495);
+      cCtx.font = '7px monospace'; cCtx.fillText('100Ω', 772, 495);
       cCtx.strokeStyle = '#475569'; cCtx.lineWidth = 3;
       cCtx.beginPath(); cCtx.moveTo(780, 497); cCtx.lineTo(780, 540); cCtx.stroke();
 
@@ -2563,7 +2539,7 @@ let currentMode = 'normal';
       cCtx.fillStyle = isD5Active ? '#22c55e' : (diodesEnabled ? '#22c55e' : '#64748b');
       cCtx.font = 'bold 11px sans-serif'; cCtx.fillText('D5: 1N4007', 648, 44);
       cCtx.font = 'bold 8.5px monospace';
-      cCtx.fillText(isD5Active ? 'â¬… CLAMPING 0.72V' : 'OUT â†’ IN Bypass', 635, 102);
+      cCtx.fillText(isD5Active ? '⬅ CLAMPING 0.72V' : 'OUT → IN Bypass', 635, 102);
 
       if (isD5Active) {
         const offsetD5 = (animTime * 80) % 120;
@@ -2594,7 +2570,7 @@ let currentMode = 'normal';
       cCtx.beginPath(); cCtx.moveTo(831, 338); cCtx.lineTo(849, 338); cCtx.stroke();
       cCtx.fillStyle = isD6Active ? '#f59e0b' : (diodesEnabled ? '#f59e0b' : '#64748b');
       cCtx.font = 'bold 11px sans-serif'; cCtx.fillText('D6: 1N4007', 866, 348);
-      cCtx.font = '8px monospace'; cCtx.fillText('ADJ â†’ OUT', 866, 360);
+      cCtx.font = '8px monospace'; cCtx.fillText('ADJ → OUT', 866, 360);
 
       if (isD6Active) {
         const offsetD6 = (animTime * 60) % 50;
@@ -2615,14 +2591,14 @@ let currentMode = 'normal';
       cCtx.fillRect(907, 360, 26, 36); cCtx.strokeRect(907, 360, 26, 36);
       cCtx.fillStyle = isC3Source ? '#22c55e' : colVout; cCtx.font = 'bold 9px monospace'; cCtx.fillText('C3', 914, 376);
       cCtx.font = '7.5px monospace'; cCtx.fillStyle = '#94a3b8';
-      cCtx.fillText('1ÂµF', 912, 388);
+      cCtx.fillText('1µF', 912, 388);
       cCtx.strokeStyle = '#475569'; cCtx.lineWidth = 3;
       cCtx.beginPath(); cCtx.moveTo(920, 396); cCtx.lineTo(920, 540); cCtx.stroke();
 
       if (isC3Source) {
         cCtx.fillStyle = '#22c55e';
         cCtx.font = 'bold 9px monospace';
-        cCtx.fillText('âš¡ CAP ENERGY SOURCE', 875, 445);
+        cCtx.fillText('⚡ CAP ENERGY SOURCE', 875, 445);
       }
       cCtx.restore();
 
@@ -2674,7 +2650,7 @@ let currentMode = 'normal';
       cCtx.fillRect(1170, 340, 40, 60); cCtx.strokeRect(1170, 340, 40, 60);
       cCtx.fillStyle = '#ffffff'; cCtx.font = 'bold 10px monospace'; cCtx.fillText('J5:LOAD', 1173, 360);
       cCtx.fillStyle = colVout; cCtx.font = 'bold 9px monospace';
-      cCtx.fillText(`${(vOut/3.0).toFixed(1)}Î©`, 1178, 376);
+      cCtx.fillText(`${(vOut/3.0).toFixed(1)}Ω`, 1178, 376);
       cCtx.fillText(currentMode === 'normal' ? '3.0 A' : '0.0 A', 1176, 390);
       cCtx.strokeStyle = '#475569'; cCtx.lineWidth = 3.5;
       cCtx.beginPath(); cCtx.moveTo(1190, 400); cCtx.lineTo(1190, 540); cCtx.stroke();
@@ -2707,7 +2683,7 @@ let currentMode = 'normal';
         cCtx.font = '8px monospace';
         cCtx.fillStyle = '#94a3b8';
         cCtx.fillText('Current Source', 1238, 400);
-        cCtx.fillText('Pushing In âž¡', 1242, 415);
+        cCtx.fillText('Pushing In ➡', 1242, 415);
 
         // Red Probe Stick connecting Battery (+) into VOUT Jack (1190, 270)
         drawProbeStick(1190, 270, Math.PI / 4, '#ef4444', '+12V');
@@ -2728,7 +2704,7 @@ let currentMode = 'normal';
         cCtx.strokeRect(800, 20, 480, 36);
         cCtx.fillStyle = '#fde68a';
         cCtx.font = 'bold 11px sans-serif';
-        cCtx.fillText('ðŸ”‹ Physical Test: External 12V Battery Pushing Voltage into VOUT!', 810, 35);
+        cCtx.fillText('🔋 Physical Test: External 12V Battery Pushing Voltage into VOUT!', 810, 35);
         cCtx.font = '9px monospace';
         cCtx.fillStyle = '#cbd5e1';
         cCtx.fillText('Notice current leaves Battery (+), goes UP through D5, and into C1/GND!', 810, 48);
@@ -2766,7 +2742,7 @@ let currentMode = 'normal';
         cCtx.strokeRect(400, 110, 460, 36);
         cCtx.fillStyle = '#6ee7b7';
         cCtx.font = 'bold 11px sans-serif';
-        cCtx.fillText('ðŸ¥¢ Physical Test: Two Sticks Grounding VIN to GND!', 410, 125);
+        cCtx.fillText('🥢 Physical Test: Two Sticks Grounding VIN to GND!', 410, 125);
         cCtx.font = '9px monospace';
         cCtx.fillStyle = '#cbd5e1';
         cCtx.fillText('Capacitor C3 dumps charge UP through D5 directly into the short!', 410, 138);
@@ -2819,7 +2795,7 @@ let currentMode = 'normal';
         // Red Jack (V/Ohm)
         cCtx.fillStyle = '#ef4444';
         cCtx.beginPath(); cCtx.arc(275, 218, 7, 0, Math.PI * 2); cCtx.fill();
-        cCtx.fillStyle = '#ffffff'; cCtx.font = 'bold 7px monospace'; cCtx.fillText('V/Î©', 269, 235);
+        cCtx.fillStyle = '#ffffff'; cCtx.font = 'bold 7px monospace'; cCtx.fillText('V/Ω', 269, 235);
 
         // Black Jack (COM)
         cCtx.fillStyle = '#0f172a';
@@ -3059,14 +3035,14 @@ let currentMode = 'normal';
     }
 
     // =========================================================================
-    // OSCILLOSCOPE DRAWING â€” Dual Panel: AC Wave + Rectified DC
+    // OSCILLOSCOPE DRAWING — Dual Panel: AC Wave + Rectified DC
     // =========================================================================
     function drawScope() {
       const W = sCanvas.width;
       const H = sCanvas.height;
       sCtx.clearRect(0, 0, W, H);
 
-      // â”€â”€ Layout: top panel = AC secondary, bottom panel = rectified DC â”€â”€
+      // ── Layout: top panel = AC secondary, bottom panel = rectified DC ──
       const splitY = Math.floor(H * 0.48);
       const panelPad = 6;
 
@@ -3080,7 +3056,7 @@ let currentMode = 'normal';
       sCtx.lineWidth = 1;
       sCtx.beginPath(); sCtx.moveTo(0, splitY); sCtx.lineTo(W, splitY); sCtx.stroke();
 
-      // â”€â”€ Draw subtle grid for each panel â”€â”€
+      // ── Draw subtle grid for each panel ──
       function drawGrid(yTop, yBot) {
         sCtx.strokeStyle = 'rgba(30, 41, 59, 0.55)';
         sCtx.lineWidth = 0.5;
@@ -3098,10 +3074,10 @@ let currentMode = 'normal';
       drawGrid(0, splitY - 1);
       drawGrid(splitY + 1, H);
 
-      // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-      // TOP PANEL: Raw AC Transformer Secondary (Â±16.5V peak)
-      // Positive half â†’ cyan, Negative half â†’ orange-red
-      // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      // ─────────────────────────────────────────────────────────────────
+      // TOP PANEL: Raw AC Transformer Secondary (±16.5V peak)
+      // Positive half → cyan, Negative half → orange-red
+      // ─────────────────────────────────────────────────────────────────
       const acMid  = Math.round(splitY / 2);         // centre axis of top panel
       const acAmp  = (splitY / 2) - panelPad - 8;    // amplitude in pixels
       const acPeak = 16.5;                             // V peak
@@ -3118,7 +3094,7 @@ let currentMode = 'normal';
       // "+/-" labels
       sCtx.font = '8px monospace'; sCtx.fillStyle = '#64748b';
       sCtx.fillText('+16.5V', 2, acMid - acAmp + 10);
-      sCtx.fillText('âˆ’16.5V', 2, acMid + acAmp - 2);
+      sCtx.fillText('−16.5V', 2, acMid + acAmp - 2);
       sCtx.fillText('0V', 2, acMid - 3);
 
       // Panel label
@@ -3129,7 +3105,7 @@ let currentMode = 'normal';
       const acOff = (currentMode === 'powercut' || currentMode === 'extbatt' || currentMode === 'groundvin');
       const tFaultAC = 100; // x-pixel where fault starts
 
-      // Draw AC waveform â€” segment by segment so we can colour each half-cycle
+      // Draw AC waveform — segment by segment so we can colour each half-cycle
       sCtx.lineWidth = 2.2;
       let prevX = 0, prevY = acMid;
       let prevPhase = null;
@@ -3152,7 +3128,7 @@ let currentMode = 'normal';
           prevX = 0; prevY = cy; prevPhase = isPos;
         } else {
           if (isPos !== prevPhase) {
-            // Segment end â€” stroke what we have
+            // Segment end — stroke what we have
             sCtx.stroke();
             sCtx.beginPath();
             sCtx.moveTo(prevX, prevY);
@@ -3227,12 +3203,12 @@ let currentMode = 'normal';
           if (xMid > 4 && xMid < W - 4) {
             sCtx.fillStyle = 'rgba(56,189,248,0.85)';
             sCtx.font = 'bold 7px monospace';
-            sCtx.fillText('D1+D2â–²', xMid - 16, acMid - acAmp * 0.55);
+            sCtx.fillText('D1+D2▲', xMid - 16, acMid - acAmp * 0.55);
           }
           if (xMidN > 4 && xMidN < W - 4) {
             sCtx.fillStyle = 'rgba(249,115,22,0.85)';
             sCtx.font = 'bold 7px monospace';
-            sCtx.fillText('D3+D4â–¼', xMidN - 16, acMid + acAmp * 0.6 + 6);
+            sCtx.fillText('D3+D4▼', xMidN - 16, acMid + acAmp * 0.6 + 6);
           }
         }
       }
@@ -3241,13 +3217,13 @@ let currentMode = 'normal';
       sCtx.fillStyle = '#38bdf8'; sCtx.font = '8px monospace';
       sCtx.fillRect(W - 90, 3, 6, 6); sCtx.fillText('+ half (D1,D2)', W - 82, 9);
       sCtx.fillStyle = '#f97316';
-      sCtx.fillRect(W - 90, 12, 6, 6); sCtx.fillText('âˆ’ half (D3,D4)', W - 82, 18);
+      sCtx.fillRect(W - 90, 12, 6, 6); sCtx.fillText('− half (D3,D4)', W - 82, 18);
 
       sCtx.restore(); // end top panel clip
 
-      // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      // ─────────────────────────────────────────────────────────────────
       // BOTTOM PANEL: Rectified DC, Vout regulated, Vadj
-      // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      // ─────────────────────────────────────────────────────────────────
       const dcTop  = splitY + 1;
       const dcH    = H - dcTop;
       const dcMid  = dcTop + dcH - 14;          // zero-volt baseline near bottom
@@ -3307,7 +3283,7 @@ let currentMode = 'normal';
 
         // Voltage labels on right edge
         sCtx.font = 'bold 8px monospace';
-        sCtx.fillStyle = '#7dd3fc'; sCtx.fillText(`+${(16.5).toFixed(1)}V Vin(â‰ˆ)`, W - 68, dcMid - 16.5 * dcPxV + 3);
+        sCtx.fillStyle = '#7dd3fc'; sCtx.fillText(`+${(16.5).toFixed(1)}V Vin(≈)`, W - 68, dcMid - 16.5 * dcPxV + 3);
         sCtx.fillStyle = '#22c55e'; sCtx.fillText(`+${potVoltage.toFixed(2)}V Vout`, W - 68, voutY + 3);
         sCtx.fillStyle = '#fbbf24'; sCtx.fillText(`+${Math.max(0, potVoltage - 1.25).toFixed(2)}V Vadj`, W - 72, vadjY - 3);
 
@@ -3340,7 +3316,7 @@ let currentMode = 'normal';
           sCtx.strokeStyle = '#ef4444'; sCtx.lineWidth = 2.5;
           sCtx.beginPath(); sCtx.moveTo(0, dcMid); sCtx.lineTo(W, dcMid); sCtx.stroke();
           sCtx.fillStyle = '#ef4444'; sCtx.font = 'bold 9px sans-serif';
-          sCtx.fillText('âš¡ 12V REVERSE â€” IC BLOWN', tFault + 10, voutY + 20);
+          sCtx.fillText('⚡ 12V REVERSE — IC BLOWN', tFault + 10, voutY + 20);
         }
 
       } else if (currentMode === 'groundvin') {
@@ -3349,7 +3325,7 @@ let currentMode = 'normal';
         sCtx.beginPath(); sCtx.moveTo(0, vinY0); sCtx.lineTo(tFault, vinY0);
         sCtx.lineTo(tFault + 2, dcMid); sCtx.lineTo(W, dcMid); sCtx.stroke();
         sCtx.fillStyle = '#38bdf8'; sCtx.font = 'bold 8px monospace';
-        sCtx.fillText('Vin â†’ 0V (shorted)', tFault + 6, vinY0 + 14);
+        sCtx.fillText('Vin → 0V (shorted)', tFault + 6, vinY0 + 14);
 
         const voutY0 = dcMid - potVoltage * dcPxV;
         sCtx.beginPath(); sCtx.moveTo(0, voutY0); sCtx.lineTo(tFault, voutY0);
@@ -3371,7 +3347,7 @@ let currentMode = 'normal';
           }
           sCtx.stroke();
           sCtx.fillStyle = '#ef4444'; sCtx.font = 'bold 9px sans-serif';
-          sCtx.fillText('âš¡ CAP DUMP â†’ IC BLOWN', tFault + 10, voutY0 + 28);
+          sCtx.fillText('⚡ CAP DUMP → IC BLOWN', tFault + 10, voutY0 + 28);
         }
 
       } else if (currentMode === 'powercut') {
@@ -3399,7 +3375,7 @@ let currentMode = 'normal';
           }
           sCtx.stroke();
           sCtx.fillStyle = '#22c55e'; sCtx.font = 'bold 8px monospace';
-          sCtx.fillText('D5 clamping: Vout â‰¤ Vin+0.72V', tFault + 6, voutY0dc + 18);
+          sCtx.fillText('D5 clamping: Vout ≤ Vin+0.72V', tFault + 6, voutY0dc + 18);
         } else {
           sCtx.strokeStyle = '#ef4444'; sCtx.lineWidth = 3;
           for (let x = tFault; x <= W; x++) {
@@ -3408,7 +3384,7 @@ let currentMode = 'normal';
           }
           sCtx.stroke();
           sCtx.fillStyle = '#ef4444'; sCtx.font = 'bold 9px sans-serif';
-          sCtx.fillText('âš¡ REVERSE AVALANCHE >10V', tFault + 10, voutY0dc + 28);
+          sCtx.fillText('⚡ REVERSE AVALANCHE >10V', tFault + 10, voutY0dc + 28);
         }
 
       } else if (currentMode === 'dmm') {
@@ -3419,8 +3395,8 @@ let currentMode = 'normal';
         sCtx.beginPath(); sCtx.moveTo(0, dcMid); sCtx.lineTo(W * 0.3, dcMid);
         sCtx.lineTo(W * 0.3 + 4, testY); sCtx.lineTo(W, testY); sCtx.stroke();
         sCtx.fillStyle = '#c084fc'; sCtx.font = 'bold 9px monospace';
-        const dmmVal = dmmTarget.endsWith('fwd') ? '0.685 V' : 'O.L. (âˆž)';
-        sCtx.fillText(`DMM â†’ ${dmmVal}`, W * 0.35, testY - 5);
+        const dmmVal = dmmTarget.endsWith('fwd') ? '0.685 V' : 'O.L. (∞)';
+        sCtx.fillText(`DMM → ${dmmVal}`, W * 0.35, testY - 5);
 
       } else if (currentMode === 'shortgnd') {
         const voutY0dc = dcMid - potVoltage * dcPxV;
@@ -3440,7 +3416,7 @@ let currentMode = 'normal';
           }
           sCtx.stroke();
           sCtx.fillStyle = '#f59e0b'; sCtx.font = 'bold 8px monospace';
-          sCtx.fillText('Vadj â†’ D6 clamp 0.72V', tFault + 6, vadjY0dc + 18);
+          sCtx.fillText('Vadj → D6 clamp 0.72V', tFault + 6, vadjY0dc + 18);
         } else {
           sCtx.strokeStyle = '#ef4444'; sCtx.lineWidth = 2.5;
           for (let x = tFault; x <= W; x++) {
@@ -3449,7 +3425,7 @@ let currentMode = 'normal';
           }
           sCtx.stroke();
           sCtx.fillStyle = '#ef4444'; sCtx.font = 'bold 9px sans-serif';
-          sCtx.fillText('âš¡ OP-AMPS FUSED', tFault + 15, vadjY0dc + 28);
+          sCtx.fillText('⚡ OP-AMPS FUSED', tFault + 15, vadjY0dc + 28);
         }
       }
 
@@ -3466,7 +3442,7 @@ let currentMode = 'normal';
 
       sCtx.restore(); // end bottom panel clip
 
-      // â”€â”€ Bottom-panel legend â”€â”€
+      // ── Bottom-panel legend ──
       sCtx.font = '7px monospace';
       sCtx.strokeStyle = '#38bdf8'; sCtx.lineWidth = 1.5;
       sCtx.beginPath(); sCtx.moveTo(W - 92, H - 20); sCtx.lineTo(W - 84, H - 20); sCtx.stroke();
@@ -3480,7 +3456,8 @@ let currentMode = 'normal';
     }
 
     // =========================================================================
-    // MAIN ANIMATION LOOP
+    // =========================================================================
+    // DUAL-GROUP ANIMATION LOOP & INITIALIZATION
     // =========================================================================
     function animate() {
       requestAnimationFrame(animate);
@@ -3493,24 +3470,18 @@ let currentMode = 'normal';
         }
         if (typeof drawCircuit === 'function') drawCircuit();
         if (typeof drawScope === 'function') drawScope();
-      } else {
+      } else if (activeGroup === 'group1') {
         if (!g1Paused) {
           g1AnimTime += 0.016 * g1SimSpeed;
         }
-        drawG1Circuit();
-        drawG1Scope();
+        if (typeof drawG1Circuit === 'function') drawG1Circuit();
+        if (typeof drawG1Scope === 'function') drawG1Scope();
       }
-    }
-      requestAnimationFrame(animate);
-      if (!isPaused) {
-        animTime += 0.016 * simSpeed;
-        if (currentMode !== 'normal' && currentMode !== 'ground') {
-          faultTimer += 0.016 * simSpeed;
-        }
-      }
-      drawCircuit();
-      drawScope();
     }
 
-    updateNarrative();
+    if (typeof updateNarrative === 'function') updateNarrative();
+    if (typeof updateG1UI === 'function') updateG1UI();
     animate();
+  </script>
+</body>
+</html>
