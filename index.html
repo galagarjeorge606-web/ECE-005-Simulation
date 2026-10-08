@@ -1062,7 +1062,7 @@
       const cComp = '#ef4444';      // EasyEDA red component outline
       const cText = '#ffffff';      // Component labels
       const cVal  = '#38bdf8';      // Values (cyan)
-      const cDot  = '#22c55e';      // Green junction dots
+      const cDot  = '#ef4444';      // EasyEDA signature red junction dots
 
       // Helper for EasyEDA Junction Dot
       function drawJunction(x, y) {
@@ -1073,75 +1073,93 @@
       }
 
       // Helper for EasyEDA Vertical Diode (Pointing UP)
-      function drawEasyEDADiode(x, y, label, isConducting) {
+      // Draws the diode with full terminal lead pins connecting from yTopPin to yBotPin
+      function drawEasyEDADiode(x, yTopPin, yBotPin, yCathode, label, isConducting) {
         const dColor = isConducting ? '#34d399' : cComp;
+        const triHeight = 22;
+        const triWidth = 11;
+        const yAnode = yCathode + triHeight;
+
         g1Ctx.strokeStyle = dColor;
-        g1Ctx.fillStyle = isConducting ? 'rgba(52, 211, 153, 0.25)' : '#070b13';
         g1Ctx.lineWidth = 2.5;
 
-        // Vertical wire leads
+        // 1. Top terminal pin (from top rail/wire down to cathode bar)
         g1Ctx.beginPath();
-        g1Ctx.moveTo(x, y - 24); g1Ctx.lineTo(x, y - 10);
-        g1Ctx.moveTo(x, y + 10); g1Ctx.lineTo(x, y + 24);
+        g1Ctx.moveTo(x, yTopPin);
+        g1Ctx.lineTo(x, yCathode);
         g1Ctx.stroke();
 
-        // Diode Triangle (Base at bottom, tip at top)
+        // 2. Cathode bar (horizontal line across top of triangle)
         g1Ctx.beginPath();
-        g1Ctx.moveTo(x - 11, y + 10);
-        g1Ctx.lineTo(x + 11, y + 10);
-        g1Ctx.lineTo(x, y - 10);
+        g1Ctx.moveTo(x - triWidth, yCathode);
+        g1Ctx.lineTo(x + triWidth, yCathode);
+        g1Ctx.stroke();
+
+        // 3. Diode Triangle (Base at bottom, tip at top)
+        g1Ctx.fillStyle = isConducting ? 'rgba(52, 211, 153, 0.25)' : '#070b13';
+        g1Ctx.beginPath();
+        g1Ctx.moveTo(x, yCathode);
+        g1Ctx.lineTo(x - triWidth, yAnode);
+        g1Ctx.lineTo(x + triWidth, yAnode);
         g1Ctx.closePath();
         g1Ctx.fill();
         g1Ctx.stroke();
 
-        // Cathode Bar (Horizontal at top)
+        // 4. Bottom terminal pin (from triangle base down to bottom rail/wire)
         g1Ctx.beginPath();
-        g1Ctx.moveTo(x - 11, y - 10);
-        g1Ctx.lineTo(x + 11, y - 10);
+        g1Ctx.moveTo(x, yAnode);
+        g1Ctx.lineTo(x, yBotPin);
         g1Ctx.stroke();
 
-        // Text label to the right
+        // 5. Component designation label to the right
         g1Ctx.fillStyle = isConducting ? '#34d399' : cText;
         g1Ctx.font = 'bold 11px ui-monospace, monospace';
-        g1Ctx.fillText(label, x + 16, y + 4);
+        g1Ctx.fillText(label, x + 16, yCathode + 14);
       }
 
       // Helper for Polarized Electrolytic Capacitor (C2, C3)
       function drawPolarizedCap(x, yTop, yBot, desig, valText) {
         const yMid = (yTop + yBot) / 2;
+
+        // Top and bottom green circuit wire leads
         g1Ctx.strokeStyle = cWire;
         g1Ctx.lineWidth = 2.5;
-
-        // Top and bottom wire leads
         g1Ctx.beginPath();
-        g1Ctx.moveTo(x, yTop); g1Ctx.lineTo(x, yMid - 10);
-        g1Ctx.moveTo(x, yMid + 10); g1Ctx.lineTo(x, yBot);
+        g1Ctx.moveTo(x, yTop);
+        g1Ctx.lineTo(x, yMid - 6);
+        g1Ctx.moveTo(x, yMid + 8);
+        g1Ctx.lineTo(x, yBot);
         g1Ctx.stroke();
 
-        // Top plate (flat positive)
+        // Red Component Plates
         g1Ctx.strokeStyle = cComp;
         g1Ctx.lineWidth = 2.5;
+
+        // 1. Top Plate (Straight flat positive plate, width 28px)
         g1Ctx.beginPath();
-        g1Ctx.moveTo(x - 14, yMid - 10); g1Ctx.lineTo(x + 14, yMid - 10);
+        g1Ctx.moveTo(x - 14, yMid - 6);
+        g1Ctx.lineTo(x + 14, yMid - 6);
         g1Ctx.stroke();
 
-        // Plus sign on left
-        g1Ctx.fillStyle = '#ef4444';
-        g1Ctx.font = 'bold 13px sans-serif';
-        g1Ctx.fillText('+', x - 26, yMid - 8);
+        // Plus sign '+' above top plate (EasyEDA style)
+        g1Ctx.fillStyle = cComp;
+        g1Ctx.font = 'bold 14px sans-serif';
+        g1Ctx.fillText('+', x + 8, yMid - 10);
 
-        // Bottom plate (curved negative)
+        // 2. Bottom Plate (Curved negative plate, bowed down like authentic EasyEDA)
+        // Matches exact width (28px) from x - 14 to x + 14, smoothly curving downward at center to yMid + 8
         g1Ctx.beginPath();
-        g1Ctx.arc(x, yMid - 10, 20, Math.PI * 0.35, Math.PI * 0.65, false);
+        g1Ctx.moveTo(x - 14, yMid + 2);
+        g1Ctx.quadraticCurveTo(x, yMid + 8, x + 14, yMid + 2);
         g1Ctx.stroke();
 
-        // Labels to the right
+        // Component designation & value labels to the right
         g1Ctx.fillStyle = cText;
         g1Ctx.font = 'bold 11px ui-monospace, monospace';
-        g1Ctx.fillText(desig, x + 18, yMid - 4);
+        g1Ctx.fillText(desig, x + 20, yMid - 2);
         g1Ctx.fillStyle = cVal;
         g1Ctx.font = '10px ui-monospace, monospace';
-        g1Ctx.fillText(valText, x + 18, yMid + 12);
+        g1Ctx.fillText(valText, x + 20, yMid + 14);
       }
 
       // Helper for Non-Polarized Ceramic Capacitor (C1)
@@ -1297,18 +1315,7 @@
       g1Ctx.lineTo(xD4D3, yH1P2);
       g1Ctx.stroke();
 
-      // 5. Vertical Diode Traces:
-      // Left leg: (270, 220) down through D1 -> (270, 320) -> down through D2 -> (270, 520)
-      g1Ctx.beginPath();
-      g1Ctx.moveTo(xD1D2, yRailMid);
-      g1Ctx.lineTo(xD1D2, yRailBot);
-      g1Ctx.stroke();
-
-      // Right leg: (390, 220) down through D4 -> (390, 380) -> down through D3 -> (390, 520)
-      g1Ctx.beginPath();
-      g1Ctx.moveTo(xD4D3, yRailMid);
-      g1Ctx.lineTo(xD4D3, yRailBot);
-      g1Ctx.stroke();
+      // 5. Vertical Diode Traces: (Pins are integrated into EasyEDA diode symbols)
 
       // 6. ADJ Feedback Node Wire:
       // LM317 ADJ (850, 320) -> runs to (970, 320) connecting R1 bottom and PR1 top!
@@ -1379,17 +1386,19 @@
       const isPosCycle = (g1Mode === 'acpos') || (g1Mode === 'normal' && Math.floor(g1AnimTime * 2) % 2 === 0);
       const isNegCycle = (g1Mode === 'acneg') || (g1Mode === 'normal' && !isPosCycle);
 
-      // D1: Anode at AC1 (320), Cathode at Vin (220) -> conducts during Positive cycle
-      drawEasyEDADiode(xD1D2, yD1, 'D1', isPosCycle);
+      // Row 1 (D1 & D4 aligned horizontally): Cathodes at 250, tips at 250, bases at 272
+      // D1: Top pin to Vin rail (220), bottom pin to H1 Pin 1 wire (320)
+      drawEasyEDADiode(xD1D2, yRailMid, yH1P1, 250, 'D1', isPosCycle);
 
-      // D2: Anode at GND (520), Cathode at AC1 (320) -> conducts during Negative cycle
-      drawEasyEDADiode(xD1D2, yD2, 'D2', isNegCycle);
+      // D4: Top pin to Vin rail (220), bottom pin to H1 Pin 2 wire (380)
+      drawEasyEDADiode(xD4D3, yRailMid, yH1P2, 250, 'D4', isNegCycle);
 
-      // D4: Anode at AC2 (380), Cathode at Vin (220) -> conducts during Negative cycle
-      drawEasyEDADiode(xD4D3, yD4, 'D4', isNegCycle);
+      // Row 2 (D2 & D3 aligned horizontally): Cathodes at 448, tips at 448, bases at 470
+      // D2: Top pin to H1 Pin 1 wire (320), bottom pin to GND rail (520)
+      drawEasyEDADiode(xD1D2, yH1P1, yRailBot, 448, 'D2', isNegCycle);
 
-      // D3: Anode at GND (520), Cathode at AC2 (380) -> conducts during Positive cycle
-      drawEasyEDADiode(xD4D3, yD3, 'D3', isPosCycle);
+      // D3: Top pin to H1 Pin 2 wire (380), bottom pin to GND rail (520)
+      drawEasyEDADiode(xD4D3, yH1P2, yRailBot, 448, 'D3', isPosCycle);
 
             // 3. CAPACITOR C2 (Electrolytic Filter Capacitor)
       drawPolarizedCap(xC2, yRailMid, yRailBot, 'C2', `${g1CapVal}\u00B5F`);
