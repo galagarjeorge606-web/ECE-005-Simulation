@@ -1493,8 +1493,120 @@
       // D3: Anode at GND (520), Cathode at AC2 (380) -> conducts during Positive cycle
       drawEasyEDADiode(xD4D3, yD3, 'D3', isPosCycle);
 
-      // 3. CAPACITOR C2 (Electrolytic Filter Capacitor)
+            // 3. CAPACITOR C2 (Electrolytic Filter Capacitor)
       drawPolarizedCap(xC2, yRailMid, yRailBot, 'C2', `${g1CapVal}\u00B5F`);
+
+      // =======================================================================
+      // RIPPLE VOLTAGE CALLOUT (TP1 AT C2 FILTER CAPACITOR)
+      // =======================================================================
+      const xRip = xC2;           // 520
+      const wRip = 210;
+      const hRip = 88;
+      const xRipBox = xRip - wRip / 2;
+      const yRipBox = 65;
+
+      // Test Point TP1 Pad on raw DC rail (520, 220)
+      g1Ctx.strokeStyle = '#fbbf24';
+      g1Ctx.fillStyle = '#070b13';
+      g1Ctx.lineWidth = 2;
+      g1Ctx.beginPath();
+      g1Ctx.arc(xRip, yRailMid, 6.5, 0, Math.PI * 2);
+      g1Ctx.fill();
+      g1Ctx.stroke();
+      g1Ctx.fillStyle = '#fbbf24';
+      g1Ctx.beginPath();
+      g1Ctx.arc(xRip, yRailMid, 2.5, 0, Math.PI * 2);
+      g1Ctx.fill();
+
+      // Probe lead wire extending UP from TP1 pad into the callout box
+      g1Ctx.strokeStyle = '#fbbf24';
+      g1Ctx.lineWidth = 1.8;
+      g1Ctx.setLineDash([3, 3]);
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xRip, yRailMid - 7);
+      g1Ctx.lineTo(xRip, yRipBox + hRip);
+      g1Ctx.stroke();
+      g1Ctx.setLineDash([]);
+
+      // Test Point Label on rail
+      g1Ctx.fillStyle = '#fbbf24';
+      g1Ctx.font = 'bold 9.5px ui-monospace, monospace';
+      g1Ctx.fillText('TP1', xRip + 10, yRailMid - 10);
+
+      // Oscilloscope / Measurement Card Box
+      g1Ctx.fillStyle = '#0b1120';
+      g1Ctx.strokeStyle = (g1CapVal === 2200) ? '#38bdf8' : '#f59e0b';
+      g1Ctx.lineWidth = 2;
+      g1Ctx.fillRect(xRipBox, yRipBox, wRip, hRip);
+      g1Ctx.strokeRect(xRipBox, yRipBox, wRip, hRip);
+
+      // Card Header
+      g1Ctx.fillStyle = '#f8fafc';
+      g1Ctx.font = 'bold 10px ui-monospace, monospace';
+      g1Ctx.fillText('TP1: RIPPLE VOLTAGE (C2)', xRipBox + 10, yRipBox + 16);
+
+      // Calculated Ripple Values
+      const is2200Cap = (g1CapVal === 2200);
+      const vRipVal = is2200Cap ? '3.8V' : '8.3V';
+      const vRipRms = is2200Cap ? '0.38V' : '0.83V';
+      g1Ctx.fillStyle = is2200Cap ? '#34d399' : '#fb923c';
+      g1Ctx.font = 'bold 11px ui-monospace, monospace';
+      g1Ctx.fillText(`Vr(p-p) = ${vRipVal}`, xRipBox + 10, yRipBox + 31);
+
+      g1Ctx.fillStyle = '#94a3b8';
+      g1Ctx.font = '9px ui-monospace, monospace';
+      g1Ctx.fillText(`(${vRipRms} rms) @ 1A`, xRipBox + 115, yRipBox + 31);
+
+      // Mini Live Animated 120Hz Ripple Trace inside the card
+      const scopeX = xRipBox + 10;
+      const scopeY = yRipBox + 39;
+      const scopeW = wRip - 20;
+      const scopeH = 30;
+
+      g1Ctx.fillStyle = '#030712';
+      g1Ctx.fillRect(scopeX, scopeY, scopeW, scopeH);
+      g1Ctx.strokeStyle = 'rgba(56, 189, 248, 0.2)';
+      g1Ctx.lineWidth = 1;
+      g1Ctx.strokeRect(scopeX, scopeY, scopeW, scopeH);
+
+      // Grid line inside mini scope
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(scopeX, scopeY + scopeH / 2);
+      g1Ctx.lineTo(scopeX + scopeW, scopeY + scopeH / 2);
+      g1Ctx.stroke();
+
+      // Animated Sawtooth Ripple Waveform
+      g1Ctx.strokeStyle = is2200Cap ? '#38bdf8' : '#f59e0b';
+      g1Ctx.lineWidth = 2;
+      g1Ctx.beginPath();
+      const ripAmp = is2200Cap ? 5.5 : 12.0;
+      for (let px = 0; px <= scopeW; px++) {
+        const t = (px * 0.12) + (g1AnimTime * 14);
+        const saw = (t % Math.PI) / Math.PI;
+        const wy = (scopeY + scopeH / 2 + ripAmp / 2) - saw * ripAmp;
+        px === 0 ? g1Ctx.moveTo(scopeX + px, wy) : g1Ctx.lineTo(scopeX + px, wy);
+      }
+      g1Ctx.stroke();
+
+      // Voltage Level Annotations
+      g1Ctx.fillStyle = '#38bdf8';
+      g1Ctx.font = '8px ui-monospace, monospace';
+      g1Ctx.fillText('23.9V pk', scopeX + 4, scopeY + 9);
+      g1Ctx.fillStyle = '#94a3b8';
+      g1Ctx.fillText(`${(23.9 - (is2200Cap ? 3.8 : 8.3)).toFixed(1)}V min`, scopeX + scopeW - 48, scopeY + scopeH - 4);
+
+      // Formula footnote below card
+      g1Ctx.fillStyle = '#64748b';
+      g1Ctx.font = '8px ui-monospace, monospace';
+      g1Ctx.fillText('Vr = I / (2\u00B7f\u00B7C) = 1A / (120Hz \u00D7 C2)', xRipBox + 6, yRipBox + hRip + 13);
+
+      // Output Ripple Suppression Callout at H2
+      g1Ctx.fillStyle = '#34d399';
+      g1Ctx.font = 'bold 9.5px ui-monospace, monospace';
+      g1Ctx.fillText('Output Ripple: < 5mV pk-pk', xH2 - 25, yRailTop - 12);
+      g1Ctx.fillStyle = '#94a3b8';
+      g1Ctx.font = '8px ui-monospace, monospace';
+      g1Ctx.fillText('(LM317 Rejection: 80dB \u2022 Flat DC)', xH2 - 25, yRailTop - 2);
 
       // 4. CAPACITOR C1 (Ceramic High-Frequency Bypass)
       drawCeramicCap(xC1, yRailMid, yRailBot, 'C1', '0.1\u00B5F');
