@@ -4162,10 +4162,10 @@ function drawScope() {
       }
     }
 
-    // Initialize UI on startup
+    // Initialize UI on startup (Always open to Group 2 on load/refresh)
+    switchGroupTab('group2');
     if (typeof updateG2UI === 'function') updateG2UI();
     if (typeof updateG2Narrative === 'function') updateG2Narrative();
-    if (typeof updateG1UI === 'function') updateG1UI();
     animate();
   </script>
 </body>
