@@ -47,11 +47,11 @@
         <span class="text-xs font-black uppercase tracking-wider text-slate-200">ECE 005 / ME3151 &bull; Regulated DC Power Supply Laboratory</span>
       </div>
       <div class="flex items-center gap-2 bg-slate-900 p-1.5 rounded-xl border border-slate-800">
-        <button id="nav-btn-g2" onclick="switchGroupTab('group2')" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/20">
-          ⚡ Group 2: Variable DC PSU (1.25V–12V) • Final Project
+        <button id="nav-btn-g1" onclick="switchGroupTab('group1')" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/20">
+          &#9889; Group 1: Variable DC Power Supply &bull; ECE 005 Finals Hub
         </button>
-        <button id="nav-btn-g1" onclick="switchGroupTab('group1')" class="px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80">
-          &#9889; Group 1: Single LM317T Regulated PSU (1.25V&ndash;12V)
+        <button id="nav-btn-g2" onclick="switchGroupTab('group2')" class="px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80">
+          ⚡ Group 2: Dual Parallel LM317T PSU (1.25V–12V, 3A)
         </button>
       </div>
     </div>
@@ -61,110 +61,148 @@
     <!-- ========================================================================= -->
     <!-- GROUP 1 CONTAINER (UNTOUCHED ORIGINAL) -->
     <!-- ========================================================================= -->
-<div id="group1-container" class="space-y-5 hidden">
+<div id="group1-container" class="space-y-5">
 
-      <!-- HERO HEADER (CLEAN & SIMPLE) -->
-      <header class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-2xl relative">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <!-- HERO HEADER: GROUP 1 FINALS HUB -->
+      <header class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <div class="flex flex-wrap items-center gap-2 mb-2">
               <span class="px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-bold uppercase tracking-wide">
-                Group 1 Project &bull; ECE 005
+                ECE 005 &bull; Section ME31S1
               </span>
               <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wide">
-                Adjustable 1.25V to 12V Power Supply
+                Group 1: Variable DC Power Supply (1.25V &ndash; 12.0V)
               </span>
               <span class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wide">
                 T.I.P. &bull; Engr. Alessandra Diano
               </span>
             </div>
             <h1 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              Adjustable DC Power Supply Unit <span class="text-sky-400">(How It Works)</span>
+              Schematic Capture &amp; Sourcing Circuit Diagrams <span class="text-sky-400">&bull; Group 1 Finals Hub</span>
             </h1>
-            <p class="text-slate-300 text-sm mt-1 max-w-3xl">
-              Takes regular <strong>220V wall power</strong>, steps it down safely to <strong>18V</strong>, turns it into smooth DC, and lets you dial in any output from <strong>1.25V to 12.0V</strong> using a simple knob.
+            <p class="text-slate-300 text-xs sm:text-sm mt-1 max-w-4xl leading-relaxed">
+              Complete engineering design, live EasyEDA simulation, single-sided PCB layout, and bill of materials for our <strong>1.25V&ndash;12.0V (1.5A peak) Regulated DC Power Supply</strong>. Verified against Texas Instruments datasheets, tested with 0 DRC errors, and fabricated on a 3&times;5" single-sided copper PCB.
             </p>
           </div>
 
-          <!-- Quick Status Pill -->
-          <div class="bg-slate-900/90 px-4 py-3 rounded-xl border border-slate-800 text-left md:text-right shrink-0">
-            <span class="text-[10px] uppercase font-bold text-slate-400 block">Circuit Status</span>
-            <span class="inline-flex items-center gap-2 text-sm font-black text-emerald-400">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-              READY &bull; 0 ERRORS
-            </span>
+          <!-- Quick Metrics & Leader Pill -->
+          <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0">
+            <div class="bg-slate-900/90 px-4 py-3 rounded-xl border border-slate-800 text-right">
+              <span class="text-[10px] uppercase font-bold text-slate-400 block">Project Leader</span>
+              <span class="text-sm font-black text-sky-400">Jacob Iain Brazal</span>
+            </div>
+            <div class="bg-slate-900/90 px-4 py-3 rounded-xl border border-slate-800 text-right">
+              <span class="text-[10px] uppercase font-bold text-slate-400 block">ERC / DRC Status</span>
+              <span class="inline-flex items-center gap-1.5 text-sm font-black text-emerald-400">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                0 ERRORS &bull; 100% PASS
+              </span>
+            </div>
+            <div class="bg-slate-900/90 px-4 py-3 rounded-xl border border-slate-800 text-right">
+              <span class="text-[10px] uppercase font-bold text-slate-400 block">Total Budget (6 Members)</span>
+              <span class="text-sm font-black text-emerald-400">&#8369;1,134.00 (&#8369;189/ea)</span>
+            </div>
           </div>
         </div>
       </header>
 
-      <!-- 6-STEP SIMPLE GUIDED TOUR -->
-      <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-xl">
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-3 border-b border-slate-800 pb-3">
-          <div class="flex items-center gap-2">
-            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-sky-500 text-slate-950 font-black text-xs">&#9733;</span>
-            <span class="text-xs font-bold text-white uppercase tracking-wider">Quick Tour:</span>
-            <span class="text-xs text-sky-300 font-semibold" id="g1-tour-step-subtitle">Step 1: Wall Power to Safe 18V</span>
+      <!-- 6-MEMBER PRESENTATION ROLE LINEUP (OCTOBER 9 FINALS PRESENTATION) -->
+      <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-2xl space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <span class="text-sky-400">&#127908;</span> Finals Presentation Role Lineup &bull; October 9, 2026
+            </h3>
+            <p class="text-xs text-slate-400">Assigned Topic: <strong>Group 1: Schematic Capture &amp; Sourcing Circuit Diagrams</strong> &bull; 100 Points Total</p>
           </div>
-          <div class="flex items-center gap-2">
-            <button onclick="prevG1TourStep()" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all">&#9664; Prev</button>
-            <button onclick="nextG1TourStep()" class="px-4 py-1.5 rounded-lg text-xs font-bold bg-sky-500 hover:bg-sky-400 text-slate-950 font-black transition-all shadow-lg shadow-sky-500/20">Next Step &#9654;</button>
-          </div>
+          <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-xl border border-emerald-500/20 shrink-0">
+            6 Members &bull; Complete Presentation Roster
+          </span>
         </div>
 
-        <!-- Step Buttons -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
-          <button id="g1-pill-step-1" onclick="setG1TourStep(1)" class="tour-step-active p-2.5 rounded-xl border border-slate-700 text-left transition-all">
-            <div class="text-[10px] font-bold text-sky-200 uppercase">Step 1</div>
-            <div class="text-xs font-bold text-white">1. Wall Power</div>
-            <div class="text-[10px] text-slate-300">220V &rarr; Safe 18V</div>
-          </button>
-          <button id="g1-pill-step-2" onclick="setG1TourStep(2)" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-left transition-all hover:border-slate-700">
-            <div class="text-[10px] font-bold text-slate-400 uppercase">Step 2</div>
-            <div class="text-xs font-bold text-white">2. Diodes</div>
-            <div class="text-[10px] text-slate-400">AC &rarr; DC (One-Way)</div>
-          </button>
-          <button id="g1-pill-step-3" onclick="setG1TourStep(3)" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-left transition-all hover:border-slate-700">
-            <div class="text-[10px] font-bold text-slate-400 uppercase">Step 3</div>
-            <div class="text-xs font-bold text-white">3. Water Tank</div>
-            <div class="text-[10px] text-slate-400">2200&mu;F Smooths Bumps</div>
-          </button>
-          <button id="g1-pill-step-4" onclick="setG1TourStep(4)" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-left transition-all hover:border-slate-700">
-            <div class="text-[10px] font-bold text-slate-400 uppercase">Step 4</div>
-            <div class="text-xs font-bold text-white">4. Voltage Knob</div>
-            <div class="text-[10px] text-slate-400">LM317 Sets Output</div>
-          </button>
-          <button id="g1-pill-step-5" onclick="setG1TourStep(5)" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-left transition-all hover:border-slate-700">
-            <div class="text-[10px] font-bold text-slate-400 uppercase">Step 5</div>
-            <div class="text-xs font-bold text-white">5. Cooling Down</div>
-            <div class="text-[10px] text-slate-400">Heatsink &amp; Paste</div>
-          </button>
-          <button id="g1-pill-step-6" onclick="setG1TourStep(6)" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-left transition-all hover:border-slate-700">
-            <div class="text-[10px] font-bold text-slate-400 uppercase">Step 6</div>
-            <div class="text-xs font-bold text-white">6. Output Screen</div>
-            <div class="text-[10px] text-slate-400">Live Voltmeter Readout</div>
-          </button>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+          <!-- Member 1 -->
+          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1 hover:border-slate-700 transition-all">
+            <span class="text-[10px] font-mono font-bold text-sky-400 uppercase">Part 1 &bull; Theory &amp; Tools</span>
+            <div class="font-bold text-white text-sm">John Aarole Javier</div>
+            <div class="text-slate-300 font-semibold text-xs">Introduction to EDA Software</div>
+            <p class="text-slate-400 text-[11px] leading-relaxed">Overview of EDA tools (EasyEDA, KiCad, Altium); desktop vs. cloud tools, and the role of computer-aided capture before physical board etching.</p>
+          </div>
+          <!-- Member 2 -->
+          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1 hover:border-slate-700 transition-all">
+            <span class="text-[10px] font-mono font-bold text-emerald-400 uppercase">Part 2 &bull; Verification</span>
+            <div class="font-bold text-white text-sm">Jhonvick Mac Bryan De Borja</div>
+            <div class="text-slate-300 font-semibold text-xs">Sourcing &amp; Verifying Circuit Diagrams</div>
+            <p class="text-slate-400 text-[11px] leading-relaxed">Hierarchy of credibility; validating unverified online blogs against official Texas Instruments LM317 datasheets; checking capacitor ripple and diode current limits.</p>
+          </div>
+          <!-- Member 3 -->
+          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1 hover:border-slate-700 transition-all">
+            <span class="text-[10px] font-mono font-bold text-amber-400 uppercase">Part 3 &bull; Library Management</span>
+            <div class="font-bold text-white text-sm">Karl Andrew Nacino</div>
+            <div class="text-slate-300 font-semibold text-xs">Symbol Selection &amp; PCB Footprints</div>
+            <p class="text-slate-400 text-[11px] leading-relaxed">Bridging logical schematic symbols with physical footprints: DO-41 through-hole diodes, TO-220 regulator package, radial capacitors, and axial resistors.</p>
+          </div>
+          <!-- Member 4 -->
+          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1 hover:border-slate-700 transition-all">
+            <span class="text-[10px] font-mono font-bold text-purple-400 uppercase">Part 4 &bull; Schematic Standards</span>
+            <div class="font-bold text-white text-sm">Joshua Galera</div>
+            <div class="text-slate-300 font-semibold text-xs">Wiring, Power/GND Nets &amp; Component Values</div>
+            <p class="text-slate-400 text-[11px] leading-relaxed">Orthogonal 90&deg; wiring rules, red junction dots vs. non-connecting crossings, continuous ground return buses, and calculating R1 (240&Omega;) &amp; RV1 (5k&Omega;) values.</p>
+          </div>
+          <!-- Member 5 -->
+          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1 hover:border-slate-700 transition-all">
+            <span class="text-[10px] font-mono font-bold text-rose-400 uppercase">Part 5 &bull; Automated Checks</span>
+            <div class="font-bold text-white text-sm">Ebrahim Khali Bascon</div>
+            <div class="text-slate-300 font-semibold text-xs">Generating Netlists &amp; Electrical Rules Check (ERC)</div>
+            <p class="text-slate-400 text-[11px] leading-relaxed">Automated netlist generation, validating electrical connectivity, diagnosing floating pin warnings, and securing a flawless 0-error clearance check.</p>
+          </div>
+          <!-- Member 6 -->
+          <div class="p-3.5 bg-sky-950/40 rounded-xl border border-sky-500/40 space-y-1 shadow-lg hover:border-sky-400 transition-all">
+            <span class="text-[10px] font-mono font-bold text-sky-300 uppercase">Part 6 (Leader) &bull; Live Demonstration</span>
+            <div class="font-bold text-white text-sm">Jacob Iain Brazal</div>
+            <div class="text-sky-300 font-semibold text-xs">Live EasyEDA Walkthrough &amp; PCB Conversion</div>
+            <p class="text-slate-300 text-[11px] leading-relaxed">Live software demo in EasyEDA Pro: placing parts, wiring the schematic, running live 0-error DRC, and converting to a 3&times;5" single-sided copper PCB layout.</p>
+          </div>
         </div>
       </section>
 
-      <!-- SIMPLE CONTROL TOOLBAR -->
+      <!-- MAIN SCHEMATIC CANVAS SECTION -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-2xl space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h2 class="text-sm md:text-base font-bold text-white flex items-center gap-2">
+            <span id="g1-loop-dot" class="w-3 h-3 rounded-full bg-emerald-400 shadow shadow-emerald-400/50 animate-pulse"></span>
+            <span id="g1-canvas-title">EasyEDA Pro Schematic Capture &bull; Live Power Simulation</span>
+          </h2>
+          <div class="flex items-center gap-3 text-xs font-mono">
+            <span class="text-slate-300">Status: <strong id="g1-txt-active-loop" class="text-emerald-400 font-bold">12.00V Live Output</strong></span>
+          </div>
+        </div>
+
+        <!-- Canvas Container -->
+        <div class="relative w-full aspect-[16/7.6] bg-slate-950 rounded-xl border border-slate-800 overflow-hidden shadow-inner flex items-center justify-center">
+          <canvas id="g1CircuitCanvas" width="1340" height="660" class="w-full h-full block cursor-crosshair"></canvas>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE CONTROL TOOLBAR -->
       <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-xl space-y-4">
-        
         <!-- Mode Switcher -->
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Click to See How Power Moves:</span>
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Click to Trace Power Flow:</span>
             <div class="inline-flex flex-wrap p-1 bg-slate-900/80 rounded-xl border border-slate-800 gap-1">
               <button id="g1-btn-mode-normal" onclick="setG1Mode('normal')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all bg-sky-500 text-slate-950 shadow">
                 &#9889; Normal Power Flow
               </button>
               <button id="g1-btn-mode-acpos" onclick="setG1Mode('acpos')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all text-cyan-300 hover:text-white border border-cyan-500/30">
-                &#9654; AC Positive Half
+                &#9654; AC Positive Half (D1 &amp; D4)
               </button>
               <button id="g1-btn-mode-acneg" onclick="setG1Mode('acneg')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all text-orange-300 hover:text-white border border-orange-500/30">
-                &#9664; AC Negative Half
+                &#9664; AC Negative Half (D2 &amp; D3)
               </button>
               <button id="g1-btn-mode-ground" onclick="setG1Mode('ground')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white">
-                &#8644; Ground Return Wire
+                &#8644; Ground Return Bus
               </button>
             </div>
           </div>
@@ -178,12 +216,12 @@
           </div>
         </div>
 
-        <!-- Simple Interactive Voltage Knob & Presets -->
+        <!-- Interactive Voltage Knob & Presets -->
         <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
           <div class="w-full md:w-1/2 space-y-2">
             <div class="flex justify-between items-center">
               <label for="g1-main-pot-slider" class="text-xs font-bold text-slate-200">
-                Turn the Knob to Change Voltage:
+                Rotate Potentiometer RV1 (5k&Omega;) to Dial Output:
               </label>
               <span id="g1-slider-volt-val" class="font-mono text-base font-black text-sky-400">12.00 V</span>
             </div>
@@ -192,37 +230,246 @@
 
           <!-- Quick Presets -->
           <div class="flex flex-wrap items-center gap-1.5">
-            <span class="text-[10px] font-bold text-slate-400 uppercase mr-1">Common Voltages:</span>
-            <button onclick="setG1PotPreset(1.25)" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">1.25V</button>
-            <button onclick="setG1PotPreset(3.30)" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700">3.3V (Chips)</button>
+            <span class="text-[10px] font-bold text-slate-400 uppercase mr-1">Bench Presets:</span>
+            <button onclick="setG1PotPreset(1.25)" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">1.25V (Min)</button>
+            <button onclick="setG1PotPreset(3.30)" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700">3.3V (Logic)</button>
             <button onclick="setG1PotPreset(5.00)" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700">5.0V (USB)</button>
             <button onclick="setG1PotPreset(9.00)" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-purple-300 border border-slate-700">9.0V</button>
-            <button onclick="setG1PotPreset(12.00)" class="px-2.5 py-1 rounded-lg text-xs font-black bg-sky-500/20 text-sky-300 border border-sky-500/40">12.0V (Max)</button>
+            <button onclick="setG1PotPreset(12.00)" class="px-2.5 py-1 rounded-lg text-xs font-black bg-sky-500/20 text-sky-300 border border-sky-500/40">12.0V (Target)</button>
           </div>
         </div>
-
       </section>
 
-      <!-- MAIN ANIMATED CANVAS -->
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-2xl space-y-3">
-        <div class="flex flex-wrap items-center justify-between gap-2">
-          <h2 class="text-sm font-bold text-white flex items-center gap-2">
-            <span id="g1-loop-dot" class="w-3 h-3 rounded-full bg-emerald-400 shadow shadow-emerald-400/50 animate-pulse"></span>
-            <span id="g1-canvas-title">Circuit Diagram (Dots Show Live Power Flow)</span>
-          </h2>
-          <div class="text-xs font-mono text-slate-300 bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">
-            Status: <strong id="g1-txt-active-loop" class="text-emerald-400 font-bold">12.00V Live Output</strong>
+      <!-- VERIFIED BILL OF MATERIALS & PROCUREMENT TABLE (ALL 22 ITEMS WITH IMAGES) -->
+      <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-2xl space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <span class="text-emerald-400">&#128203;</span> Verified Bill of Materials &amp; Procurement Table (22 Items)
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">
+              Exact component list, actual item photos, unit prices, and specifications matching our verified design.
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-black text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-xl border border-emerald-500/30">
+              TOTAL: &#8369;1,134.00 &bull; &#8369;189.00 / MEMBER (6)
+            </span>
           </div>
         </div>
 
-        <!-- Canvas -->
-        <div class="relative w-full aspect-[16/7.6] bg-slate-950 rounded-xl border border-slate-800 overflow-hidden shadow-inner flex items-center justify-center">
-          <canvas id="g1CircuitCanvas" width="1340" height="660" class="w-full h-full block cursor-crosshair"></canvas>
+        <!-- 3D Print Savings Callout -->
+        <div class="p-3 rounded-xl bg-sky-950/30 border border-sky-500/30 text-xs flex items-center justify-between text-sky-200">
+          <span>&#128161; <strong>Budget Optimization:</strong> Custom enclosure 3D-printed in-house (&#8369;0.00 purchasing cost) &mdash; saved <strong>&#8369;51.67 per member</strong>!</span>
+          <span class="font-mono text-emerald-400 font-bold hidden sm:inline">18V 2A Transformer + 2200&mu;F Filter Upgrade Included</span>
         </div>
 
-      </div>
+        <!-- 22 Component Cards with Photos -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 text-xs">
+          <!-- Item 1 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/1_trans.png" alt="Transformer" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-sky-400 uppercase">1. AC Mains</div>
+            <div class="font-bold text-white text-[11px] truncate">18V 2A Transformer</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;454.00</strong>
+          </div>
+          <!-- Item 2 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/6_lm317.png" alt="LM317T" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-rose-400 uppercase">2. Regulator IC</div>
+            <div class="font-bold text-white text-[11px] truncate">LM317T (TO-220)</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;42.00</strong>
+          </div>
+          <!-- Item 3 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/17_hs.png" alt="Heatsink" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-slate-400 uppercase">3. Cooling</div>
+            <div class="font-bold text-white text-[11px] truncate">TO-220 Heat Sink</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;36.00</strong>
+          </div>
+          <!-- Item 4 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/2_diode.png" alt="Diodes" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-cyan-400 uppercase">4. Rectifier</div>
+            <div class="font-bold text-white text-[11px] truncate">4x 1N5408 / 1N4007</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;84.00</strong>
+          </div>
+          <!-- Item 5 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/3_c1000.png" alt="Filter Cap" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-purple-400 uppercase">5. Bulk Filter</div>
+            <div class="font-bold text-white text-[11px] truncate">2200&mu;F 35V Cap (C1)</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;30.00</strong>
+          </div>
+          <!-- Item 6 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/8_pot.png" alt="Potentiometer" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-sky-400 uppercase">6. Adjustment</div>
+            <div class="font-bold text-white text-[11px] truncate">Potentiometer 5k (RV1)</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;12.00</strong>
+          </div>
+          <!-- Item 7 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/7_r240.png" alt="Resistor" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-amber-400 uppercase">7. Reference</div>
+            <div class="font-bold text-white text-[11px] truncate">Resistor 240&Omega; / 470&Omega;</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;25.00</strong>
+          </div>
+          <!-- Item 8 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/4_c10.png" alt="Output Cap" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-emerald-400 uppercase">8. Stability</div>
+            <div class="font-bold text-white text-[11px] truncate">10&mu;F 25V Cap (C3)</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;10.00</strong>
+          </div>
+          <!-- Item 9 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/5_c104.png" alt="Bypass Cap" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-slate-400 uppercase">9. HF Bypass</div>
+            <div class="font-bold text-white text-[11px] truncate">2x Ceramic 0.1&mu;F [104]</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;6.00</strong>
+          </div>
+          <!-- Item 10 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/21_fuse.png" alt="Fuse" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-amber-400 uppercase">10. Overcurrent</div>
+            <div class="font-bold text-white text-[11px] truncate">Glass Fuse 2A 250V (3x)</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;36.00</strong>
+          </div>
+          <!-- Item 11 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/22_fhold.png" alt="Fuse Holder" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-slate-400 uppercase">11. Safety Mount</div>
+            <div class="font-bold text-white text-[11px] truncate">Panel Fuse Holder</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;49.00</strong>
+          </div>
+          <!-- Item 12 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/16_plug.png" alt="Power Cord" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-sky-400 uppercase">12. Input &amp; Switch</div>
+            <div class="font-bold text-white text-[11px] truncate">AC Cord &amp; Rocker SW</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;52.00</strong>
+          </div>
+          <!-- Item 13 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/12_pcb.png" alt="Copper PCB" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-amber-400 uppercase">13. Substrate</div>
+            <div class="font-bold text-white text-[11px] truncate">Copper Board (3x5")</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;50.00</strong>
+          </div>
+          <!-- Item 14 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/paste.png" alt="Thermal Paste" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-slate-400 uppercase">14. Thermal</div>
+            <div class="font-bold text-white text-[11px] truncate">Silicone Thermal Paste</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;25.00</strong>
+          </div>
+          <!-- Item 15 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/19_wire.png" alt="Hookup Wires" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-cyan-400 uppercase">15. Wiring</div>
+            <div class="font-bold text-white text-[11px] truncate">18 AWG Wires (3&ndash;5A)</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;60.00</strong>
+          </div>
+          <!-- Item 16 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/18_sold.png" alt="Solder" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-slate-400 uppercase">16. Soldering</div>
+            <div class="font-bold text-white text-[11px] truncate">60/40 Solder Wire</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;45.00</strong>
+          </div>
+          <!-- Item 17 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/9_meter.png" alt="Voltmeter" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-emerald-400 uppercase">17. Readout</div>
+            <div class="font-bold text-white text-[11px] truncate">Digital LED Voltmeter</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;43.00</strong>
+          </div>
+          <!-- Item 18 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/14_posts.png" alt="Binding Posts" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-rose-400 uppercase">18. Binding Posts</div>
+            <div class="font-bold text-white text-[11px] truncate">Output Posts (Red/Blk)</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;15.00</strong>
+          </div>
+          <!-- Item 19 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/10_led.png" alt="LED" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-rose-400 uppercase">19. Indicator</div>
+            <div class="font-bold text-white text-[11px] truncate">Red 5mm LED + 470&Omega;</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;23.00</strong>
+          </div>
+          <!-- Item 20 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/20_m3.png" alt="Hardware" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-slate-400 uppercase">20. Fasteners</div>
+            <div class="font-bold text-white text-[11px] truncate">M3 Standoffs, M4 Bolts</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;30.00</strong>
+          </div>
+          <!-- Item 21 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/22_feet.png" alt="Rubber Feet" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-slate-400 uppercase">21. Feet</div>
+            <div class="font-bold text-white text-[11px] truncate">Rubber Bumpers (4 pcs)</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;8.00</strong>
+          </div>
+          <!-- Item 22 -->
+          <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
+            <img src="bom_images/banana_plugs.png" alt="Banana Plugs" class="h-16 mx-auto object-contain mb-1">
+            <div class="text-[9px] font-bold text-sky-400 uppercase">22. Test Leads</div>
+            <div class="font-bold text-white text-[11px] truncate">Banana Plugs (Red/Blk)</div>
+            <strong class="text-emerald-400 text-xs mt-1">&#8369;20.00</strong>
+          </div>
+        </div>
+      </section>
 
-      <!-- 3 SIMPLE VISUAL EXPLAINERS (WATER TANK, HEAT GAUGE, LIVE SCOPE) -->
+      <!-- EASYEDA PRO PCB LAYOUT & FABRICATION GUIDE -->
+      <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-2xl space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <span class="text-sky-400">&#129699;</span> EasyEDA Pro Single-Sided PCB Layout &amp; Routing
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">
+              Engineered for toner transfer ferric chloride acid etching on single-sided copper clad.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <a href="Group%201%20PCB%20For%20Print.pdf" target="_blank" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-sky-500 hover:bg-sky-400 text-slate-950 font-black transition-all shadow">
+              &#128424; Open Print-Ready PCB PDF (1:1)
+            </a>
+            <a href="EasyEDA_LM317_Reference_Guide.png" target="_blank" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all">
+              &#128065; View Schematic Guide
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
+            <span class="text-[10px] font-mono font-bold text-sky-400 uppercase">1. Trace &amp; Substrate Specs</span>
+            <div class="font-bold text-white text-sm">30 mil Robust Copper Traces</div>
+            <p class="text-slate-300 text-[11px] leading-relaxed">
+              Target board: <strong>3&times;5 inches (3000&times;5000 mil)</strong> single-sided copper clad. Traces thickened to 30 mil (0.76 mm) to prevent trace lifting or over-etching during home ferric chloride baths.
+            </p>
+          </div>
+          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
+            <span class="text-[10px] font-mono font-bold text-emerald-400 uppercase">2. Zero Jumper Wires</span>
+            <div class="font-bold text-white text-sm">100% Bottom Layer Blue Routing</div>
+            <p class="text-slate-300 text-[11px] leading-relaxed">
+              Every single signal and ground trace routes cleanly on the <strong>Bottom Layer</strong> with 0 unrouted nets and 0 top jumpers. Through-hole components standardized to DO-41, TO-220, radial, and axial.
+            </p>
+          </div>
+          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
+            <span class="text-[10px] font-mono font-bold text-amber-400 uppercase">3. Ground Loop Resolution</span>
+            <div class="font-bold text-white text-sm">Continuous Diode &amp; Cap Loop</div>
+            <p class="text-slate-300 text-[11px] leading-relaxed">
+              Resolved diode bridge net isolation by routing a dedicated schematic net between D2/D3 anodes and capacitor ground with red junction confirmation. DRC confirms <strong>0 clearance violations</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 VISUAL EXPLAINERS (WATER TANK, HEAT GAUGE, LIVE SCOPE) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
         <!-- 1. The Water Tank Filter (Why 2200uF?) -->
@@ -234,10 +481,10 @@
             <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-sky-500/20 text-sky-300">C1 Capacitor</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed">
-            Converting AC wall power creates electrical ripples (like water waves). The big <strong>2200&mu;F capacitor</strong> acts like a water tank that stores power and keeps the output calm and steady.
+            Converting AC wall power creates electrical ripples (like water waves). Upgrading to a <strong>2200&mu;F capacitor</strong> flattens ripple from 8.3V down to just 0.38V!
           </p>
 
-          <!-- Simple Toggle -->
+          <!-- Toggle -->
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-2">
             <div class="flex justify-between text-xs">
               <span class="text-slate-400">Capacitor Size:</span>
@@ -257,12 +504,12 @@
         <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-xl space-y-3">
           <div class="flex items-center justify-between border-b border-slate-800 pb-2">
             <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
-              <span>&#127777;</span> The Heatsink &amp; Paste
+              <span>&#127777;</span> Heatsink &amp; Thermal Dissipation
             </h3>
             <span id="g1-badge-heat-level" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400">SAFE</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed">
-            To lower the voltage, the LM317 regulator burns off leftover volts as <strong>heat</strong>. That is why it is bolted to an aluminum heatsink with thermal paste.
+            The LM317 regulator burns off surplus volts as heat. Bolted to an aluminum heatsink with thermal paste to prevent thermal shutdown.
           </p>
 
           <!-- Thermometer Bar -->
@@ -302,211 +549,88 @@
 
       </div>
 
-      <!-- COMPLETE COMPONENT SHOWCASE & HARDWARE INVENTORY -->
-      <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-2xl space-y-4">
+      <!-- MASTER MILESTONE SCHEDULE -->
+      <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-2xl space-y-3">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
           <div>
             <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-              <span class="text-sky-400">&#128268;</span> Complete Component Guide &amp; Hardware Inventory
+              <span class="text-purple-400">&#128197;</span> Master Milestone Schedule &bull; ECE 005 Laboratory
             </h3>
-            <p class="text-xs text-slate-400 mt-0.5">
-              Every part shown on the circuit diagram, what it physically does, and why it is essential.
-            </p>
+            <p class="text-xs text-slate-400">Timeline tracking all project phases from Multisim simulation to final physical hardware defense.</p>
           </div>
-          <span class="text-xs font-mono font-bold text-sky-400 bg-sky-500/10 px-3 py-1 rounded-xl border border-sky-500/20 shrink-0">
-            10 Key Components &bull; Full PSU Build
+          <span class="text-xs font-mono font-bold text-purple-400 bg-purple-500/10 px-3 py-1 rounded-xl border border-purple-500/20 shrink-0">
+            Wednesdays &amp; Fridays Schedule
           </span>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 text-xs">
-          
-          <!-- 1. Wall Power & Fuse -->
-          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1.5 flex flex-col justify-between hover:border-slate-700 transition-all">
-            <div>
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-sky-400 uppercase">Input Stage</span>
-                <span class="text-[10px] font-bold text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded">220V AC</span>
-              </div>
-              <h4 class="font-bold text-white text-sm mt-1">Wall Cord &amp; 2A Fuse</h4>
-              <p class="text-slate-300 text-[11px] mt-1 leading-relaxed">
-                Connects to regular household wall outlets. The <strong>2A fast-blow glass fuse</strong> safely melts if a short circuit happens, protecting your house and parts.
-              </p>
-            </div>
-            <div class="text-[10px] font-mono text-slate-400 border-t border-slate-800/80 pt-1.5 flex justify-between">
-              <span>Rating: 250V / 2A</span>
-              <span class="text-emerald-400">Fused Safe</span>
-            </div>
-          </div>
-
-          <!-- 2. Step-Down Transformer -->
-          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1.5 flex flex-col justify-between hover:border-slate-700 transition-all">
-            <div>
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-sky-400 uppercase">T1 Transformer</span>
-                <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">18V AC</span>
-              </div>
-              <h4 class="font-bold text-white text-sm mt-1">18V Step-Down (T1)</h4>
-              <p class="text-slate-300 text-[11px] mt-1 leading-relaxed">
-                Heavy iron-core transformer. Uses magnetic fields to safely step dangerous <strong>220V AC down to a harmless 18V AC</strong> (1 Amp capacity) with complete electrical isolation.
-              </p>
-            </div>
-            <div class="text-[10px] font-mono text-slate-400 border-t border-slate-800/80 pt-1.5 flex justify-between">
-              <span>Primary: 220V &bull; Sec: 18V</span>
-              <span class="text-emerald-400">1.0A Isolated</span>
-            </div>
-          </div>
-
-          <!-- 3. Rectifier Diodes -->
-          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1.5 flex flex-col justify-between hover:border-slate-700 transition-all">
-            <div>
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-sky-400 uppercase">D1 &ndash; D4 Bridge</span>
-                <span class="text-[10px] font-bold text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded">4x 1N4007</span>
-              </div>
-              <h4 class="font-bold text-white text-sm mt-1">Diode Bridge (4x)</h4>
-              <p class="text-slate-300 text-[11px] mt-1 leading-relaxed">
-                Four one-way electronic check valves arranged in an H-bridge. Turns alternating wave cycles into single-direction pulsating DC power (23.9V peak).
-              </p>
-            </div>
-            <div class="text-[10px] font-mono text-slate-400 border-t border-slate-800/80 pt-1.5 flex justify-between">
-              <span>Max: 1000V / 1A</span>
-              <span class="text-cyan-400">Full-Wave DC</span>
-            </div>
-          </div>
-
-          <!-- 4. Filter Capacitor C2 -->
-          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1.5 flex flex-col justify-between hover:border-slate-700 transition-all">
-            <div>
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-sky-400 uppercase">C2 Water Tank</span>
-                <span class="text-[10px] font-bold text-purple-400 bg-purple-500/10 px-1.5 py-0.5 rounded">2200 &mu;F</span>
-              </div>
-              <h4 class="font-bold text-white text-sm mt-1">Filter Capacitor (C2)</h4>
-              <p class="text-slate-300 text-[11px] mt-1 leading-relaxed">
-                Large electrolytic reservoir capacitor. Fills up during voltage peaks and drains between cycles, flattening bumpy 120Hz waves down to a tiny <strong>0.38V ripple</strong>.
-              </p>
-            </div>
-            <div class="text-[10px] font-mono text-slate-400 border-t border-slate-800/80 pt-1.5 flex justify-between">
-              <span>Rating: 2200&mu;F 35V</span>
-              <span class="text-purple-400">95% Smooth</span>
-            </div>
-          </div>
-
-          <!-- 5. Ceramic Bypass Capacitor C1 -->
-          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1.5 flex flex-col justify-between hover:border-slate-700 transition-all">
-            <div>
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-sky-400 uppercase">C1 Bypass</span>
-                <span class="text-[10px] font-bold text-slate-300 bg-slate-800 px-1.5 py-0.5 rounded">0.1 &mu;F</span>
-              </div>
-              <h4 class="font-bold text-white text-sm mt-1">Ceramic Bypass (C1)</h4>
-              <p class="text-slate-300 text-[11px] mt-1 leading-relaxed">
-                Small yellow ceramic disc located right at the LM317 input. Short-circuits tiny high-frequency electrical static and radio noise directly into ground.
-              </p>
-            </div>
-            <div class="text-[10px] font-mono text-slate-400 border-t border-slate-800/80 pt-1.5 flex justify-between">
-              <span>Rating: 0.1&mu;F 50V</span>
-              <span class="text-slate-300">RF Snubber</span>
-            </div>
-          </div>
-
-          <!-- 6. LM317T Regulator & Heatsink -->
-          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1.5 flex flex-col justify-between hover:border-slate-700 transition-all">
-            <div>
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-sky-400 uppercase">U2 Regulator</span>
-                <span class="text-[10px] font-bold text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded">LM317T</span>
-              </div>
-              <h4 class="font-bold text-white text-sm mt-1">LM317 + Heatsink</h4>
-              <p class="text-slate-300 text-[11px] mt-1 leading-relaxed">
-                Active 3-terminal silicon regulator chip bolted to an aluminum heatsink. Constantly monitors output and burns off surplus volts as heat to hold voltage dead-steady.
-              </p>
-            </div>
-            <div class="text-[10px] font-mono text-slate-400 border-t border-slate-800/80 pt-1.5 flex justify-between">
-              <span>1.25V &ndash; 12.0V &bull; 1.5A</span>
-              <span class="text-rose-400">Heatsink Protected</span>
-            </div>
-          </div>
-
-          <!-- 7. Resistor R1 & Potentiometer PR1 -->
-          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1.5 flex flex-col justify-between hover:border-slate-700 transition-all">
-            <div>
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-sky-400 uppercase">R1 / PR1 Divider</span>
-                <span class="text-[10px] font-bold text-sky-400 bg-sky-500/10 px-1.5 py-0.5 rounded">470 / 5k</span>
-              </div>
-              <h4 class="font-bold text-white text-sm mt-1">Resistor &amp; Pot Knob</h4>
-              <p class="text-slate-300 text-[11px] mt-1 leading-relaxed">
-                <strong>R1 (470&Omega;)</strong> sets the 1.25V baseline reference. <strong>PR1 (5k&Omega;)</strong> rotary dial knob lets you smoothly tune the output up to 12.0V.
-              </p>
-            </div>
-            <div class="text-[10px] font-mono text-slate-400 border-t border-slate-800/80 pt-1.5 flex justify-between">
-              <span>Formula: Vout = 1.25(1+PR1/R1)</span>
-              <span class="text-sky-400">Linear Tuning</span>
-            </div>
-          </div>
-
-          <!-- 8. Output Capacitor C3 -->
-          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1.5 flex flex-col justify-between hover:border-slate-700 transition-all">
-            <div>
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-sky-400 uppercase">C3 Stabilizer</span>
-                <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">10 &mu;F</span>
-              </div>
-              <h4 class="font-bold text-white text-sm mt-1">Output Cap (C3)</h4>
-              <p class="text-slate-300 text-[11px] mt-1 leading-relaxed">
-                Electrolytic capacitor on the output rail. Prevents the regulator from ringing/oscillating and provides instantaneous kick current whenever a device switches on.
-              </p>
-            </div>
-            <div class="text-[10px] font-mono text-slate-400 border-t border-slate-800/80 pt-1.5 flex justify-between">
-              <span>Rating: 10&mu;F 25V</span>
-              <span class="text-emerald-400">Transient Safe</span>
-            </div>
-          </div>
-
-          <!-- 9. Digital Voltmeter Screen -->
-          <div class="p-3.5 bg-sky-950/40 rounded-xl border border-sky-500/40 space-y-1.5 flex flex-col justify-between shadow-lg hover:border-sky-400 transition-all">
-            <div>
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-sky-300 uppercase">Digital Readout</span>
-                <span class="text-[10px] font-bold text-emerald-300 bg-emerald-500/20 px-1.5 py-0.5 rounded font-mono">LIVE DISPLAY</span>
-              </div>
-              <h4 class="font-bold text-white text-sm mt-1">Digital Voltmeter</h4>
-              <p class="text-slate-300 text-[11px] mt-1 leading-relaxed">
-                3-wire 0.36" digital LED panel meter. Continuously reads the actual terminal voltage and shows the exact numeric value (e.g. <strong>12.00V</strong>) in real time.
-              </p>
-            </div>
-            <div class="text-[10px] font-mono text-slate-400 border-t border-slate-800/80 pt-1.5 flex justify-between">
-              <span>Accuracy: &plusmn;0.01V</span>
-              <span class="text-emerald-400 font-bold">Live Metered</span>
-            </div>
-          </div>
-
-          <!-- 10. Banana Output Jacks & Terminals -->
-          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1.5 flex flex-col justify-between hover:border-slate-700 transition-all">
-            <div>
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-sky-400 uppercase">Output Terminals</span>
-                <span class="text-[10px] font-bold text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded">Red &bull; Black</span>
-              </div>
-              <h4 class="font-bold text-white text-sm mt-1">Banana Binding Jacks</h4>
-              <p class="text-slate-300 text-[11px] mt-1 leading-relaxed">
-                Heavy-duty red (+) and black (-) 4mm binding posts. Plug your test leads, crocodile clips, or breadboard directly to power circuits up to 1.0 Amp.
-              </p>
-            </div>
-            <div class="text-[10px] font-mono text-slate-400 border-t border-slate-800/80 pt-1.5 flex justify-between">
-              <span>4mm Standard Jacks</span>
-              <span class="text-sky-400">Clean DC Out</span>
-            </div>
-          </div>
-
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-400 font-mono text-[11px]">
+                <th class="py-2 px-3">Date</th>
+                <th class="py-2 px-3">Class Milestone / Activity</th>
+                <th class="py-2 px-3">Group 1 Target Action</th>
+                <th class="py-2 px-3 text-right">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/60 text-slate-300 text-[11px]">
+              <tr>
+                <td class="py-2 px-3 font-mono text-sky-400">Sep 30 (Wed)</td>
+                <td class="py-2 px-3">Asynchronous: BOM &amp; Circuit Timeline</td>
+                <td class="py-2 px-3">Completed Multisim schematic, initial BOM, and Gantt chart.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">DONE</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-sky-400">Oct 2 (Fri)</td>
+                <td class="py-2 px-3">Finals Reporting Briefing &amp; Sourcing</td>
+                <td class="py-2 px-3">Inspected transformer in store; received Group 1 reporting topic.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">DONE</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-sky-400">Oct 5 (Mon)</td>
+                <td class="py-2 px-3">EasyEDA Capture &amp; Presentation Outline</td>
+                <td class="py-2 px-3">Verified live EasyEDA schematic with 0 ERC errors; finalized member roles.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">DONE</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-sky-400">Oct 7 (Wed)</td>
+                <td class="py-2 px-3">PCB Layout &amp; Etching Mask Export</td>
+                <td class="py-2 px-3">Completed single-sided PCB layout, 0 DRC errors, exported etching PDF.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">DONE</span></td>
+              </tr>
+              <tr class="bg-sky-500/5 font-semibold">
+                <td class="py-2 px-3 font-mono text-sky-400">Oct 9 (Fri)</td>
+                <td class="py-2 px-3 text-white">Group 1 Presentation &amp; Live Demo</td>
+                <td class="py-2 px-3 text-sky-200">Deliver in-class report &amp; live EasyEDA demonstration before Engr. Diano.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-sky-500 text-slate-950 font-black">TODAY</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-slate-400">Oct 14&ndash;16</td>
+                <td class="py-2 px-3">Hardware Assembly: Stages 1 &amp; 2</td>
+                <td class="py-2 px-3">Assemble rectifier bridge, filter cap, LM317 regulator, heatsink, and primary fuse.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400">UPCOMING</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-slate-400">Oct 21&ndash;23</td>
+                <td class="py-2 px-3">Enclosure Integration &amp; Testing</td>
+                <td class="py-2 px-3">Mount panel meter, LED, potentiometer, binding posts into 3D enclosure; load testing.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400">UPCOMING</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-emerald-400 font-bold">Oct 28 (Wed)</td>
+                <td class="py-2 px-3 font-bold text-white">Final Project Defense &amp; Demonstration</td>
+                <td class="py-2 px-3 text-emerald-300">Live physical demonstration of completed Variable DC PSU in laboratory.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">DEFENSE</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
     </div>
-    <!-- GROUP 2 CONTAINER (VISIBLE BY DEFAULT) -->
+    <!-- GROUP 2 CONTAINER (HIDDEN BY DEFAULT) -->
     
-<div id="group2-container" class="space-y-4">
+<div id="group2-container" class="space-y-4 hidden">
 
       <!-- MAIN SCHEMATIC CANVAS SECTION (VERY TOP) -->
       <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-2xl space-y-3">
@@ -1281,9 +1405,9 @@
 
   <script>
     // =========================================================================
-    // GROUP SWITCHING STATE (GROUP 2 DEFAULT ACTIVE)
+    // GROUP SWITCHING STATE (GROUP 1 DEFAULT ACTIVE)
     // =========================================================================
-    let activeGroup = 'group2';
+    let activeGroup = 'group1';
 
     function switchGroupTab(group) {
       activeGroup = group;
