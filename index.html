@@ -101,7 +101,7 @@
             </div>
             <div class="bg-slate-900/90 px-4 py-3 rounded-xl border border-slate-800 text-right">
               <span class="text-[10px] uppercase font-bold text-slate-400 block">Total Budget (6 Members)</span>
-              <span class="text-sm font-black text-emerald-400">&#8369;1,134.00 (&#8369;189/ea)</span>
+              <span class="text-sm font-black text-emerald-400">&#8369;1,181.00 (&#8369;196.83/ea)</span>
             </div>
           </div>
         </div>
@@ -253,7 +253,7 @@
           </div>
           <div class="flex items-center gap-3">
             <span class="text-xs font-black text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-xl border border-emerald-500/30">
-              TOTAL: &#8369;1,134.00 &bull; &#8369;189.00 / MEMBER (6)
+              TOTAL: &#8369;1,181.00 &bull; &#8369;196.83 / MEMBER (6)
             </span>
           </div>
         </div>
@@ -291,7 +291,7 @@
           <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
             <img src="bom_images/2_diode.png" alt="Diodes" class="h-16 mx-auto object-contain mb-1">
             <div class="text-[9px] font-bold text-cyan-400 uppercase">4. Rectifier</div>
-            <div class="font-bold text-white text-[11px] truncate">4x 1N5408 / 1N4007</div>
+            <div class="font-bold text-white text-[11px] truncate">4x 1N5408 (3A, 1000V PIV)</div>
             <strong class="text-emerald-400 text-xs mt-1">&#8369;84.00</strong>
           </div>
           <!-- Item 5 -->
@@ -305,14 +305,14 @@
           <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
             <img src="bom_images/8_pot.png" alt="Potentiometer" class="h-16 mx-auto object-contain mb-1">
             <div class="text-[9px] font-bold text-sky-400 uppercase">6. Adjustment</div>
-            <div class="font-bold text-white text-[11px] truncate">Potentiometer 5k (RV1)</div>
+            <div class="font-bold text-white text-[11px] truncate">Potentiometer 2kΩ (B2K)</div>
             <strong class="text-emerald-400 text-xs mt-1">&#8369;12.00</strong>
           </div>
           <!-- Item 7 -->
           <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all text-center">
             <img src="bom_images/7_r240.png" alt="Resistor" class="h-16 mx-auto object-contain mb-1">
             <div class="text-[9px] font-bold text-amber-400 uppercase">7. Reference</div>
-            <div class="font-bold text-white text-[11px] truncate">Resistor 240&Omega; / 470&Omega;</div>
+            <div class="font-bold text-white text-[11px] truncate">Fixed Resistor 240&Omega; 1/4W</div>
             <strong class="text-emerald-400 text-xs mt-1">&#8369;25.00</strong>
           </div>
           <!-- Item 8 -->
@@ -715,17 +715,17 @@
           <button id="g2-pill-step-1" onclick="setG2TourStep(1)" class="tour-step-active p-2.5 rounded-xl border border-slate-700 text-left transition-all">
             <div class="text-[10px] font-bold uppercase text-sky-200">Step 1</div>
             <div class="text-xs font-bold text-white truncate">1. 220V Mains &amp; T1</div>
-            <div class="text-[9px] text-slate-300 truncate">220V AC &rarr; Safe 15V AC</div>
+            <div class="text-[9px] text-slate-300 truncate">220V AC &rarr; Safe 18V AC (2A)</div>
           </button>
           <button id="g2-pill-step-2" onclick="setG2TourStep(2)" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-left transition-all hover:border-slate-700">
             <div class="text-[10px] font-bold uppercase text-slate-400">Step 2</div>
             <div class="text-xs font-bold text-white truncate">2. 4-Diode Bridge</div>
-            <div class="text-[9px] text-slate-400 truncate">D1–D4 Full-Wave Rectifier</div>
+            <div class="text-[9px] text-slate-400 truncate">4x 1N5408 Bridge Rectifier (3A)</div>
           </button>
           <button id="g2-pill-step-3" onclick="setG2TourStep(3)" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-left transition-all hover:border-slate-700">
             <div class="text-[10px] font-bold uppercase text-slate-400">Step 3</div>
             <div class="text-xs font-bold text-white truncate">3. C2 &amp; C1 Filtering</div>
-            <div class="text-[9px] text-slate-400 truncate">1000&mu;F Bulk + 0.1&mu;F Bypass</div>
+            <div class="text-[9px] text-slate-400 truncate">2200&mu;F 35V Bulk + 0.1&mu;F Bypass</div>
           </button>
           <button id="g2-pill-step-4" onclick="setG2TourStep(4)" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-left transition-all hover:border-slate-700">
             <div class="text-[10px] font-bold uppercase text-slate-400">Step 4</div>
@@ -990,7 +990,7 @@
           <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all">
             <div>
               <span class="text-[9px] font-mono font-bold text-emerald-400 uppercase">Transformer</span>
-              <h4 class="font-bold text-white text-xs mt-0.5">T1: Step-Down (15V)</h4>
+              <h4 class="font-bold text-white text-xs mt-0.5">T1: Step-Down (18V AC, 2A)</h4>
               <p class="text-slate-300 text-[10px] mt-1 leading-relaxed">Steps 220V AC mains down to safe 15V AC with magnetic galvanic isolation.</p>
             </div>
             <div class="text-[9px] font-mono text-slate-400 border-t border-slate-800 pt-1 mt-2">Pri: 220V &bull; Sec: 15V 1A</div>
@@ -1010,7 +1010,7 @@
           <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all">
             <div>
               <span class="text-[9px] font-mono font-bold text-purple-400 uppercase">Bridge Rectifier</span>
-              <h4 class="font-bold text-white text-xs mt-0.5">D1–D4: 4x 1N4007</h4>
+              <h4 class="font-bold text-white text-xs mt-0.5">D1–D4: 4x 1N5408 (3A, 1000V)</h4>
               <p class="text-slate-300 text-[10px] mt-1 leading-relaxed">Individual diodes forming full-wave bridge (satisfies non-IC rule!).</p>
             </div>
             <div class="text-[9px] font-mono text-slate-400 border-t border-slate-800 pt-1 mt-2">1000V / 1A DO-41</div>
@@ -1147,48 +1147,274 @@
               <span class="text-emerald-400">&#128221;</span> Bill of Materials (BOM) &bull; Official Cost &amp; Specification Table
             </h3>
             <p class="text-xs text-slate-400 mt-0.5">
-              Comprehensive list of all components, quantities, technical values, packages, and procurement costs in Philippine Pesos (PHP).
+              Verified list of all 25 components, photographic item thumbnails, exact procurement costs, and hardware ratings.
             </p>
           </div>
-          <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-xl border border-emerald-500/20 shrink-0">
-            Total Build Cost: &asymp; &#8369;785.00 PHP
+          <div class="flex flex-wrap items-center gap-2 shrink-0">
+            <span class="text-xs font-mono font-black text-emerald-400 bg-emerald-500/10 px-3.5 py-1.5 rounded-xl border border-emerald-500/30">
+              TOTAL BUDGET: &#8369;1,181.00 &bull; &#8369;196.83 / MEMBER (6)
+            </span>
+          </div>
+        </div>
+
+        <!-- In-House 3D Print Enclosure Callout -->
+        <div class="p-3.5 rounded-xl bg-sky-950/40 border border-sky-500/30 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-sky-200">
+          <div class="flex items-center gap-2">
+            <span class="text-base">&#128161;</span>
+            <span><strong>Budget Optimization:</strong> Custom Enclosure 3D-Printed In-House (<strong>&#8369;0.00</strong>) &mdash; saved <strong>&#8369;51.67 per member</strong>!</span>
+          </div>
+          <span class="font-mono text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20 text-right">
+            18V 2A Transformer + 2200&mu;F Filter Upgrade
           </span>
         </div>
 
         <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs border-collapse">
+          <table class="w-full text-left text-xs border-collapse font-mono">
             <thead>
-              <tr class="border-b border-slate-800 bg-slate-900/80 text-slate-300 font-mono">
-                <th class="p-2.5">Item</th>
-                <th class="p-2.5">Ref Des</th>
-                <th class="p-2.5">Component Name &amp; Description</th>
-                <th class="p-2.5">Value / Rating</th>
-                <th class="p-2.5">Package</th>
+              <tr class="border-b border-slate-800 bg-slate-900/90 text-slate-300">
+                <th class="p-2.5 text-center w-12">No.</th>
+                <th class="p-2.5 text-center w-14">Image</th>
+                <th class="p-2.5">Name (Exact Type / Model)</th>
+                <th class="p-2.5">Technical Value / Rating</th>
+                <th class="p-2.5">Package / Mounting</th>
                 <th class="p-2.5 text-center">Qty</th>
-                <th class="p-2.5 text-right">Unit Price</th>
-                <th class="p-2.5 text-right">Total Price</th>
+                <th class="p-2.5 text-right">Price</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-slate-800/80 font-mono text-slate-300">
-              <tr class="hover:bg-slate-900/40"><td>1</td><td class="text-sky-300 font-bold">-</td><td>220V AC Power Cord with Molded Plug</td><td>250V AC / 10A</td><td>Chassis Lead</td><td class="text-center">1</td><td class="text-right">&#8369;45.00</td><td class="text-right text-emerald-400">&#8369;45.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>2</td><td class="text-amber-300 font-bold">F1</td><td>Glass Cartridge Fuse &amp; Chassis Holder</td><td>250V / 2A Fast-Blow</td><td>5&times;20mm Panel</td><td class="text-center">1</td><td class="text-right">&#8369;25.00</td><td class="text-right text-emerald-400">&#8369;25.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>3</td><td class="text-sky-300 font-bold">SW1</td><td>SPST Rocker Power Switch</td><td>250V AC / 6A</td><td>Panel Mount</td><td class="text-center">1</td><td class="text-right">&#8369;20.00</td><td class="text-right text-emerald-400">&#8369;20.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>4</td><td class="text-emerald-300 font-bold">T1</td><td>Step-Down Iron-Core Transformer</td><td>220V Pri / 15V Sec (1A)</td><td>Chassis Mount</td><td class="text-center">1</td><td class="text-right">&#8369;220.00</td><td class="text-right text-emerald-400">&#8369;220.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>5</td><td class="text-cyan-300 font-bold">H1, H2</td><td>2-Pin Screw Terminal Blocks</td><td>250V / 16A (5.08mm)</td><td>Through-Hole</td><td class="text-center">2</td><td class="text-right">&#8369;12.00</td><td class="text-right text-emerald-400">&#8369;24.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>6</td><td class="text-purple-300 font-bold">D1–D4</td><td>Rectifier Diodes (Bridge Configuration)</td><td>1N4007 (1000V / 1A)</td><td>DO-41 Axial</td><td class="text-center">4</td><td class="text-right">&#8369;2.50</td><td class="text-right text-emerald-400">&#8369;10.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>7</td><td class="text-purple-300 font-bold">C2</td><td>Electrolytic Bulk Filter Capacitor</td><td>1000&mu;F 35V Radial</td><td>Radial Can</td><td class="text-center">1</td><td class="text-right">&#8369;18.00</td><td class="text-right text-emerald-400">&#8369;18.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>8</td><td class="text-slate-300 font-bold">C1</td><td>Ceramic Noise Decoupling Capacitor</td><td>0.1&mu;F (100nF) 50V</td><td>Radial Disc</td><td class="text-center">1</td><td class="text-right">&#8369;3.00</td><td class="text-right text-emerald-400">&#8369;3.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>9</td><td class="text-emerald-300 font-bold">U2</td><td>Adjustable Positive Voltage Regulator</td><td>LM317 (1.25V–37V, 1.5A)</td><td>TO-220-3</td><td class="text-center">1</td><td class="text-right">&#8369;28.00</td><td class="text-right text-emerald-400">&#8369;28.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>10</td><td class="text-rose-300 font-bold">-</td><td>TO-220 Aluminum Heatsink + Screw Kit</td><td>&theta;<sub>sa</sub> = 8.5 &deg;C/W</td><td>TO-220 Fin</td><td class="text-center">1</td><td class="text-right">&#8369;35.00</td><td class="text-right text-emerald-400">&#8369;35.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>11</td><td class="text-cyan-300 font-bold">R1</td><td>Precision Fixed Feedback Resistor</td><td>470 &Omega; 1/4W &plusmn;1%</td><td>Through-Hole Axial</td><td class="text-center">1</td><td class="text-right">&#8369;2.00</td><td class="text-right text-emerald-400">&#8369;2.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>12</td><td class="text-amber-300 font-bold">PR1</td><td>Linear Rotary Potentiometer + Knob</td><td>5k&Omega; Linear (B5K)</td><td>Panel Mount</td><td class="text-center">1</td><td class="text-right">&#8369;35.00</td><td class="text-right text-emerald-400">&#8369;35.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>13</td><td class="text-emerald-300 font-bold">C3</td><td>Electrolytic Output Transient Capacitor</td><td>10&mu;F 50V Radial</td><td>Radial Can</td><td class="text-center">1</td><td class="text-right">&#8369;5.00</td><td class="text-right text-emerald-400">&#8369;5.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>14</td><td class="text-emerald-400 font-bold">LED1</td><td>Power Indicator LED + 1k&Omega; Resistor</td><td>5mm Green + 1/4W 1k&Omega;</td><td>Radial Lead</td><td class="text-center">1</td><td class="text-right">&#8369;5.00</td><td class="text-right text-emerald-400">&#8369;5.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>15</td><td class="text-sky-300 font-bold">DVM</td><td>Mini 3-Digit Digital LED Voltmeter</td><td>0.00V–30.0V DC (0.28")</td><td>Panel Bezel</td><td class="text-center">1</td><td class="text-right">&#8369;95.00</td><td class="text-right text-emerald-400">&#8369;95.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>16</td><td class="text-rose-400 font-bold">-</td><td>Banana Binding Posts (Red + / Black &minus;)</td><td>4mm Heavy Duty Insulated</td><td>Panel Mount</td><td class="text-center">2</td><td class="text-right">&#8369;20.00</td><td class="text-right text-emerald-400">&#8369;40.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>17</td><td class="text-slate-300 font-bold">-</td><td>Copper Clad Board / PCB Fabrication</td><td>FR4 Single-Sided Copper</td><td>Custom PCB</td><td class="text-center">1</td><td class="text-right">&#8369;75.00</td><td class="text-right text-emerald-400">&#8369;75.00</td></tr>
-              <tr class="hover:bg-slate-900/40"><td>18</td><td class="text-slate-300 font-bold">-</td><td>Ventilated Project Enclosure / Case</td><td>ABS Plastic Enclosure Box</td><td>Chassis Case</td><td class="text-center">1</td><td class="text-right">&#8369;135.00</td><td class="text-right text-emerald-400">&#8369;135.00</td></tr>
-              <tr class="bg-slate-900 font-bold text-white"><td colspan="7" class="p-3 text-right">TOTAL ESTIMATED BILL OF MATERIALS (BOM):</td><td class="p-3 text-right text-emerald-400 text-sm">&#8369;785.00 PHP</td></tr>
+            <tbody class="divide-y divide-slate-800/80 text-slate-300">
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">1</td>
+                <td class="p-2 text-center"><img src="bom_images/1_trans.png" alt="Transformer" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Step-Down Transformer (220V to 18V AC, 2A)</td>
+                <td class="p-2 text-slate-400">Pri: 220V AC, Sec: 18V AC (2A Center-Tap)</td>
+                <td class="p-2 text-slate-400">Chassis Frame Mount</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;454.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">2</td>
+                <td class="p-2 text-center"><img src="bom_images/6_lm317.png" alt="LM317T" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">LM317T Adjustable Voltage Regulator (TO-220)</td>
+                <td class="p-2 text-slate-400">1.25V &ndash; 37V, 1.5A Max Positive Linear IC</td>
+                <td class="p-2 text-slate-400">TO-220-3 Through-Hole</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;42.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">3</td>
+                <td class="p-2 text-center"><img src="bom_images/17_hs.png" alt="Heatsink" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Aluminum TO-220 Heat Sink (with Screw)</td>
+                <td class="p-2 text-slate-400">&theta;<sub>sa</sub> = 8.5 &deg;C/W Aluminum Extruded Fins</td>
+                <td class="p-2 text-slate-400">Bolt-On TO-220 Clip/Screw</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;36.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">4</td>
+                <td class="p-2 text-center"><img src="bom_images/2_diode.png" alt="Diodes" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Diode 1N5408 (3A, 1000V PIV) [x4 Bridge]</td>
+                <td class="p-2 text-slate-400">3.0A Forward Current, 1000V Peak Reverse</td>
+                <td class="p-2 text-slate-400">DO-201AD Axial Leads</td>
+                <td class="p-2 text-center">4</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;84.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">5</td>
+                <td class="p-2 text-center"><img src="bom_images/3_c1000.png" alt="Filter Cap" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Electrolytic Capacitor (2200&mu;F, 35V Bulk)</td>
+                <td class="p-2 text-slate-400">2200&mu;F &plusmn;20%, 35V Rated (C2 Bulk Reservoir)</td>
+                <td class="p-2 text-slate-400">Radial Can (16&times;25mm)</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;30.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">6</td>
+                <td class="p-2 text-center"><img src="bom_images/4_c10.png" alt="Output Cap" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Electrolytic Capacitor (10&mu;F, 25V Output)</td>
+                <td class="p-2 text-slate-400">10&mu;F &plusmn;20%, 25V Rated (C3 Transient Damping)</td>
+                <td class="p-2 text-slate-400">Radial Can (5&times;11mm)</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;10.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">7</td>
+                <td class="p-2 text-center"><img src="bom_images/5_c104.png" alt="Bypass Cap" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Ceramic Capacitor 0.1&mu;F [104] (x2 Bypass)</td>
+                <td class="p-2 text-slate-400">100nF (0.1&mu;F) 50V High-Frequency Decoupling</td>
+                <td class="p-2 text-slate-400">Ceramic Disc Through-Hole</td>
+                <td class="p-2 text-center">2</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;6.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">8</td>
+                <td class="p-2 text-center"><img src="bom_images/8_pot.png" alt="Potentiometer" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Potentiometer 2k&Omega; Linear Taper (B2K)</td>
+                <td class="p-2 text-slate-400">2k&Omega; Linear &plusmn;10% Rotary Voltage Adjust</td>
+                <td class="p-2 text-slate-400">Panel Mount + Fluted Knob</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;12.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">8.5</td>
+                <td class="p-2 text-center"><img src="bom_images/8_pot.png" alt="Trimmer" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Trimmer Potentiometer 500&Omega; (3296W-501)</td>
+                <td class="p-2 text-slate-400">500&Omega; Multiturn Precision Cermet Trimmer</td>
+                <td class="p-2 text-slate-400">3-Pin Through-Hole PCB Trimpot</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;12.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">9</td>
+                <td class="p-2 text-center"><img src="bom_images/7_r240.png" alt="Resistor" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Fixed Resistor 240&Omega;, 1/4W Metal Film</td>
+                <td class="p-2 text-slate-400">240&Omega; &plusmn;1% Reference Resistor (R1)</td>
+                <td class="p-2 text-slate-400">Axial Through-Hole</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;25.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">10</td>
+                <td class="p-2 text-center"><img src="bom_images/10_led.png" alt="LED" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Red LED 5mm + 470&Omega; Resistor Limiter</td>
+                <td class="p-2 text-slate-400">5mm Red Diffused Indicator + 470&Omega; 1/4W</td>
+                <td class="p-2 text-slate-400">Panel Bezel / Through-Hole</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;23.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">11</td>
+                <td class="p-2 text-center"><img src="bom_images/9_meter.png" alt="Voltmeter" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Digital Voltmeter LED Panel Module (0â€“30V)</td>
+                <td class="p-2 text-slate-400">0.00V &ndash; 30.0V DC Real-Time 0.28" Readout</td>
+                <td class="p-2 text-slate-400">Snap-In Panel Bezel Housing</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;43.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">12</td>
+                <td class="p-2 text-center"><img src="bom_images/12_pcb.png" alt="Copper 3x5" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Copper Circuit Board (3x5 inches)</td>
+                <td class="p-2 text-slate-400">Single-Sided Copper Clad Board (3&times;5")</td>
+                <td class="p-2 text-slate-400">Primary Etched PCB Substrate</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;50.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">12.5</td>
+                <td class="p-2 text-center"><img src="bom_images/12_pcb.png" alt="Copper 3x3" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Copper Circuit Board (3x3 inches)</td>
+                <td class="p-2 text-slate-400">Single-Sided Copper Clad Board (3&times;3")</td>
+                <td class="p-2 text-slate-400">Secondary / Spare Etch Substrate</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;35.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">13</td>
+                <td class="p-2 text-center"><img src="bom_images/21_fuse.png" alt="Fuse" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Glass Fuse 2A 250V (5&times;20mm) [x3 Spares]</td>
+                <td class="p-2 text-slate-400">2A Fast-Blow 250V AC Overcurrent Protection</td>
+                <td class="p-2 text-slate-400">5&times;20mm Glass Cartridge</td>
+                <td class="p-2 text-center">3</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;36.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">14</td>
+                <td class="p-2 text-center"><img src="bom_images/22_fhold.png" alt="Fuse Holder" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Panel Mount Fuse Holder (5&times;20mm Screw)</td>
+                <td class="p-2 text-slate-400">250V / 10A Chassis Socket with Screw Cap</td>
+                <td class="p-2 text-slate-400">Chassis Panel Nut Mount</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;49.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">15</td>
+                <td class="p-2 text-center"><img src="bom_images/15_sw.png" alt="Power Switch" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">AC Power Cord &amp; Mini Rocker Switch KCD1</td>
+                <td class="p-2 text-slate-400">2-Pin Molded AC Plug + SPST Rocker (250V/6A)</td>
+                <td class="p-2 text-slate-400">Chassis Strain Relief + Snap-In</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;52.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">16</td>
+                <td class="p-2 text-center"><img src="bom_images/banana_plugs.png" alt="Banana Plugs" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Banana Plugs (1x Red Male, 1x Black Male)</td>
+                <td class="p-2 text-slate-400">4mm Heavy Duty Shrouded Male Test Plugs</td>
+                <td class="p-2 text-slate-400">Screw Terminals (1 Red, 1 Black)</td>
+                <td class="p-2 text-center">2</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;20.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">17</td>
+                <td class="p-2 text-center"><img src="bom_images/14_posts.png" alt="Terminals" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Output Terminals (1x Red +, 1x Black &minus;)</td>
+                <td class="p-2 text-slate-400">4mm Insulated Binding Posts for DC Output</td>
+                <td class="p-2 text-slate-400">Panel Nut Mount (1 Red +, 1 Black &minus;)</td>
+                <td class="p-2 text-center">2</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;15.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">18</td>
+                <td class="p-2 text-center"><img src="bom_images/19_wire.png" alt="Wires" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">18 AWG Insulated Hookup Wires (3&ndash;5A)</td>
+                <td class="p-2 text-slate-400">High-Current Stranded Copper Hookup Wires</td>
+                <td class="p-2 text-slate-400">Color-Coded (Red, Black, Yellow)</td>
+                <td class="p-2 text-center">1 set</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;60.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">19</td>
+                <td class="p-2 text-center"><img src="bom_images/paste.png" alt="Thermal Paste" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Thermal Paste (Silicone Compound for TO-220)</td>
+                <td class="p-2 text-slate-400">High Thermal Conductivity Heat Sink Paste</td>
+                <td class="p-2 text-slate-400">Dispenser Syringe</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;25.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">20</td>
+                <td class="p-2 text-center"><img src="bom_images/18_sold.png" alt="Solder" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Solder Wire (60/40 Rosin Core)</td>
+                <td class="p-2 text-slate-400">0.8mm Sn60/Pb40 Rosin Core Soldering Wire</td>
+                <td class="p-2 text-slate-400">Compact Spool</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;45.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">21</td>
+                <td class="p-2 text-center"><img src="bom_images/20_m3.png" alt="Hardware" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">M3 Brass Standoffs, M4 Bolts &amp; Nuts</td>
+                <td class="p-2 text-slate-400">Threaded PCB Spacers + Transformer Bolts</td>
+                <td class="p-2 text-slate-400">Mechanical Fastener Assortment</td>
+                <td class="p-2 text-center">1 set</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;30.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">22</td>
+                <td class="p-2 text-center"><img src="bom_images/22_feet.png" alt="Rubber Feet" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Rubber Enclosure Feet Bumpers (4 pcs)</td>
+                <td class="p-2 text-slate-400">Self-Adhesive Anti-Vibration Rubber Bumpers</td>
+                <td class="p-2 text-slate-400">Chassis Bottom Pads</td>
+                <td class="p-2 text-center">4</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;8.00</td>
+              </tr>
+              <tr class="hover:bg-slate-900/40 bg-sky-500/5 font-semibold">
+                <td class="p-2 text-center text-sky-400 font-bold">&mdash;</td>
+                <td class="p-2 text-center"><img src="bom_images/13_box.png" alt="3D Enclosure" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-sky-300">Custom 3D-Printed Enclosure (In-House)</td>
+                <td class="p-2 text-slate-300">Ventilated PLA+ Insulated Lab Chassis</td>
+                <td class="p-2 text-sky-400">In-House 3D Printed (Saved &#8369;320)</td>
+                <td class="p-2 text-center font-bold text-sky-300">1</td>
+                <td class="p-2 text-right font-black text-emerald-400">&#8369;0.00</td>
+              </tr>
+              <tr class="bg-slate-900 font-bold text-white">
+                <td colspan="6" class="p-3 text-right font-mono text-xs">TOTAL ESTIMATED PROJECT BUDGET:</td>
+                <td class="p-3 text-right text-emerald-400 text-sm font-mono font-black">&#8369;1,181.00 PHP</td>
+              </tr>
+              <tr class="bg-emerald-950/30 border-t border-emerald-500/30 font-bold text-white">
+                <td colspan="6" class="p-2.5 text-right font-mono text-xs text-emerald-300">ESTIMATED COST PER MEMBER (6):</td>
+                <td class="p-2.5 text-right text-emerald-300 text-sm font-mono font-black">&#8369;196.83 PHP</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -1248,12 +1474,12 @@
             <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 space-y-1">
               <div class="font-bold text-emerald-400">STAGE 2</div>
               <div class="text-white font-bold">Transformer T1</div>
-              <div class="text-slate-400">220V &rarr; 15V AC Step-Down</div>
+              <div class="text-slate-400">220V &rarr; 18V AC Step-Down (2A)</div>
             </div>
             <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 space-y-1">
               <div class="font-bold text-purple-400">STAGE 3</div>
               <div class="text-white font-bold">Bridge Rectifier</div>
-              <div class="text-slate-400">4x 1N4007 Diodes</div>
+              <div class="text-slate-400">4x 1N5408 Diodes (3A, 1000V)</div>
             </div>
             <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 space-y-1">
               <div class="font-bold text-amber-400">STAGE 4</div>
@@ -1377,7 +1603,7 @@
             </div>
             <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800 space-y-1">
               <div class="flex justify-between font-bold"><span class="text-sky-400">Circuit Design (20%)</span><span class="text-sky-400">&check; 100%</span></div>
-              <p class="text-slate-400 text-[11px]">Discrete 4x 1N4007 bridge rectifier, C2 1000&mu;F bulk filter, C1 decoupling, LM317 linear regulator.</p>
+              <p class="text-slate-400 text-[11px]">Discrete 4x 1N5408 bridge rectifier (3A), C2 2200&mu;F bulk filter (35V), C1 decoupling, LM317T linear regulator.</p>
             </div>
             <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800 space-y-1">
               <div class="flex justify-between font-bold"><span class="text-purple-400">Display Integration (15%)</span><span class="text-purple-400">&check; 100%</span></div>
@@ -2752,13 +2978,13 @@
       const sub = document.getElementById('g2-tour-step-subtitle');
       if (step === 1) {
         setG2Mode('normal');
-        if (sub) sub.textContent = "Step 1: 220V Mains & Step-Down Transformer (Safe 15V AC)";
+        if (sub) sub.textContent = "Step 1: 220V Mains & Step-Down Transformer (Safe 18V AC, 2A)";
       } else if (step === 2) {
         setG2Mode('acpos');
         if (sub) sub.textContent = "Step 2: 4-Diode Bridge (D1–D4 Full-Wave Rectification)";
       } else if (step === 3) {
         setG2Mode('normal');
-        if (sub) sub.textContent = "Step 3: C2 (1000µF) & C1 (0.1µF) Smooth Out Voltage Ripples";
+        if (sub) sub.textContent = "Step 3: C2 (2200µF, 35V) & C1 (0.1µF) Smooth Out Voltage Ripples";
       } else if (step === 4) {
         setG2Mode('normal');
         setG2PotPreset(12.00);
@@ -2842,7 +3068,7 @@
       if (lblVolt) lblVolt.textContent = potVoltage.toFixed(2) + " V";
 
       // PR1 resistance: Vout = 1.25 * (1 + PR1 / 470) => PR1 = (Vout / 1.25 - 1) * 470
-      const pr1Val = Math.max(0, (potVoltage / 1.25 - 1) * 470);
+      const pr1Val = Math.max(0, (potVoltage / 1.25 - 1) * 240);
       const lblRes = document.getElementById('g2-slider-res-val');
       if (lblRes) lblRes.textContent = `PR1 = ${Math.round(pr1Val)} Ω`;
 
@@ -2853,16 +3079,16 @@
       if (calcVout) calcVout.textContent = `${potVoltage.toFixed(2)} V`;
 
       // 2. Calculations
-      const vDrop = Math.max(0, 16.50 - potVoltage);
+      const vDrop = Math.max(0, 20.50 - potVoltage);
       const calcVdrop = document.getElementById('g2-calc-vdrop');
-      if (calcVdrop) calcVdrop.textContent = `16.5V - ${potVoltage.toFixed(2)}V = ${vDrop.toFixed(2)}V`;
+      if (calcVdrop) calcVdrop.textContent = `20.5V - ${potVoltage.toFixed(2)}V = ${vDrop.toFixed(2)}V`;
 
       const pTotal = vDrop * 0.50; // 0.5A load
       const calcPtotal = document.getElementById('g2-calc-ptotal');
       if (calcPtotal) calcPtotal.textContent = `${pTotal.toFixed(2)} W`;
 
       const calcMargin = document.getElementById('g2-calc-margin');
-      if (calcMargin) calcMargin.textContent = `${(15.64 - potVoltage).toFixed(2)}V (> 2.5V Dropout Min)`;
+      if (calcMargin) calcMargin.textContent = `${(19.80 - potVoltage).toFixed(2)}V (> 2.5V Dropout Min)`;
 
       // 3. Thermal die temp: Tambient + P * Rth
       const dieTemp = Math.round(30 + pTotal * 13.5);
@@ -3710,7 +3936,7 @@ function drawCircuit() {
       cCtx.font = 'bold 11px ui-monospace, monospace';
       cCtx.fillText('PR1', xPR1 + 14, 365);
       cCtx.font = '10px ui-monospace, monospace';
-      cCtx.fillText('5K', xPR1 + 14, 383);
+      cCtx.fillText('2K+500', xPR1 + 14, 383);
 
       // Dial knob graphic next to PR1
       cCtx.fillStyle = '#1e293b';
