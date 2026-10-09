@@ -2541,83 +2541,207 @@ function drawCircuit() {
       cCtx.fillText(`${(1.0 * potVoltage).toFixed(1)} Watts`, xLoad - 5, yJackRed + 81);
 
       // =======================================================================
-      // LIVE ANIMATED ELECTRON FLOW (ALONG GREEN EASYEDA TRACES)
+      // PHYSICALLY EXACT ELECTRON & POWER FLOW ENGINE (ALONG REAL WIRE TRACES)
       // =======================================================================
-      // 1. AC input oscillating dots (Wall -> Transformer -> H1 -> Diodes)
-      const nAc = 6;
-      for (let i = 0; i < nAc; i++) {
-        const t = ((animTime * 1.5 + (i / nAc)) % 1);
-        const px1 = xWall + t * (xD1D2 - xWall);
-        const px2 = xWall + t * (xD4D3 - xWall);
+      // Helper: Draw animated dots that follow an exact multi-segment polyline path
+      function drawPolylineDots(pts, numDots, speed, col, radius = 3.5, reverse = false) {
+        if (!pts || pts.length < 2) return;
+        let totalLen = 0;
+        const segLens = [];
+        for (let i = 0; i < pts.length - 1; i++) {
+          const dx = pts[i+1][0] - pts[i][0];
+          const dy = pts[i+1][1] - pts[i][1];
+          const len = Math.hypot(dx, dy);
+          segLens.push(len);
+          totalLen += len;
+        }
+        if (totalLen <= 0) return;
 
-        cCtx.fillStyle = '#38bdf8';
-        cCtx.beginPath();
-        cCtx.arc(px1, yAcTop, 3.5, 0, Math.PI * 2);
-        cCtx.arc(px2, yAcBot, 3.5, 0, Math.PI * 2);
-        cCtx.fill();
+        for (let d = 0; d < numDots; d++) {
+          let frac = ((animTime * speed + (d / numDots)) % 1);
+          if (frac < 0) frac += 1;
+          if (reverse) frac = 1 - frac;
+
+          const targetDist = frac * totalLen;
+          let cum = 0;
+          for (let i = 0; i < pts.length - 1; i++) {
+            const len = segLens[i];
+            if (cum + len >= targetDist) {
+              const segFrac = len > 0 ? (targetDist - cum) / len : 0;
+              const px = pts[i][0] + segFrac * (pts[i+1][0] - pts[i][0]);
+              const py = pts[i][1] + segFrac * (pts[i+1][1] - pts[i][1]);
+
+              cCtx.fillStyle = col;
+              cCtx.beginPath();
+              cCtx.arc(px, py, radius, 0, Math.PI * 2);
+              cCtx.fill();
+              break;
+            }
+            cum += len;
+          }
+        }
       }
 
-      // 2. DC Positive Rail flow (Diodes Cathode -> C2 -> C1 -> LM317 IN)
-      const nDcIn = 8;
-      for (let i = 0; i < nDcIn; i++) {
-        const offset = ((animTime * 100 + (i * 60)) % (xPin3 - xD1D2));
-        const px = xD1D2 + offset;
-        cCtx.fillStyle = '#34d399';
-        cCtx.beginPath();
-        cCtx.arc(px, yRailMid, 3.8, 0, Math.PI * 2);
-        cCtx.fill();
-      }
+      // 1. AC Primary Mains (Wall -> Fuse -> Switch -> Transformer Primary)
+      const pathPrimTop = [
+        [xWall, yAcTop],
+        [70, yAcTop], [102, yAcTop],   // Through Fuse F1
+        [125, yAcTop], [150, yAcTop], // Through Switch SW1
+        [xXfmrPri, yAcTop]            // Transformer Primary top
+      ];
+      const pathPrimBot = [
+        [xXfmrPri, yAcBot],
+        [xWall, yAcBot]               // Transformer Primary bottom
+      ];
+      drawPolylineDots(pathPrimTop, 5, 0.9, '#38bdf8', 3.2);
+      drawPolylineDots(pathPrimBot, 5, 0.9, '#38bdf8', 3.2);
 
-      // 3. DC Regulated Output Rail flow (LM317 OUT -> R1 -> C3 -> H2 Pin 1 -> Voltmeter & Load)
-      const nDcOut = 8;
-      for (let i = 0; i < nDcOut; i++) {
-        const offset = ((animTime * 120 + (i * 60)) % (xH2 - xPin2));
-        const px = xPin2 + offset;
-        cCtx.fillStyle = '#38bdf8';
-        cCtx.beginPath();
-        cCtx.arc(px, yRailTop, 3.8, 0, Math.PI * 2);
-        cCtx.fill();
-      }
-
-      // 4. Ground Return Rail flow (H2 Pin 2 -> C3 -> PR1 -> C1 -> C2 -> Diodes Anode)
-      const nGnd = 12;
-      for (let i = 0; i < nGnd; i++) {
-        const offset = ((animTime * 120 + (i * 50)) % (xH2 - xD1D2));
-        const px = xH2 - offset;
-        cCtx.fillStyle = '#38bdf8';
-        cCtx.beginPath();
-        cCtx.arc(px, yRailBot, 3.8, 0, Math.PI * 2);
-        cCtx.fill();
-      }
-
-      // 5. Active Diodes Pulse Dots
+      // 2. AC Secondary & Diode Bridge Rectification Paths
       if (isPosCycle) {
-        // D1 conducting upward:
-        const t1 = (animTime * 3) % 1;
-        const pyD1 = yH1P1 - t1 * (yH1P1 - yRailMid);
-        cCtx.fillStyle = '#34d399';
-        cCtx.beginPath(); cCtx.arc(xD1D2, pyD1, 4, 0, Math.PI * 2); cCtx.fill();
+        // POSITIVE HALF-CYCLE:
+        // A. Secondary top -> H1 Pin 1 -> D1 Anode -> through D1 UP -> yRailMid (Cathode)
+        const pathAcPosTop = [
+          [xXfmrSec, yH1P1],
+          [xH1, yH1P1],
+          [xD1D2, yH1P1],
+          [xD1D2, yRailMid] // UP through D1 into Vin rail!
+        ];
+        drawPolylineDots(pathAcPosTop, 5, 1.2, '#34d399', 3.5);
 
-        // D3 conducting upward from GND:
-        const t3 = (animTime * 3) % 1;
-        const pyD3 = yRailBot - t3 * (yRailBot - yH1P2);
-        cCtx.beginPath(); cCtx.arc(xD4D3, pyD3, 4, 0, Math.PI * 2); cCtx.fill();
+        // B. Return current from GND rail -> through D3 UP -> H1 Pin 2 -> Secondary bottom
+        const pathAcPosBot = [
+          [xD4D3, yRailBot],
+          [xD4D3, yH1P2], // UP through D3
+          [xH1, yH1P2],
+          [xXfmrSec, yH1P2] // Into secondary bottom
+        ];
+        drawPolylineDots(pathAcPosBot, 5, 1.2, '#34d399', 3.5);
+
       } else {
-        // D4 conducting upward:
-        const t4 = (animTime * 3) % 1;
-        const pyD4 = yH1P2 - t4 * (yH1P2 - yRailMid);
-        cCtx.fillStyle = '#34d399';
-        cCtx.beginPath(); cCtx.arc(xD4D3, pyD4, 4, 0, Math.PI * 2); cCtx.fill();
+        // NEGATIVE HALF-CYCLE:
+        // A. Secondary bottom -> H1 Pin 2 -> D4 Anode -> through D4 UP -> yRailMid (Cathode)
+        const pathAcNegBot = [
+          [xXfmrSec, yH1P2],
+          [xH1, yH1P2],
+          [xD4D3, yH1P2],
+          [xD4D3, yRailMid], // UP through D4
+          [xD1D2, yRailMid]  // Into common Vin rail
+        ];
+        drawPolylineDots(pathAcNegBot, 5, 1.2, '#fb923c', 3.5);
 
-        // D2 conducting upward from GND:
-        const t2 = (animTime * 3) % 1;
-        const pyD2 = yRailBot - t2 * (yRailBot - yH1P1);
-        cCtx.beginPath(); cCtx.arc(xD1D2, pyD2, 4, 0, Math.PI * 2); cCtx.fill();
+        // B. Return current from GND rail -> through D2 UP -> H1 Pin 1 -> Secondary top
+        const pathAcNegTop = [
+          [xD1D2, yRailBot],
+          [xD1D2, yH1P1], // UP through D2
+          [xH1, yH1P1],
+          [xXfmrSec, yH1P1] // Into secondary top
+        ];
+        drawPolylineDots(pathAcNegTop, 5, 1.2, '#fb923c', 3.5);
       }
+
+      // 3. DC Positive Rail Flow (Bridge (+) -> C2 -> C1 -> LM317 Pin 3 IN)
+      const pathDcIn = [
+        [xD1D2, yRailMid],
+        [xC2, yRailMid],
+        [xC1, yRailMid],
+        [xPin3, yRailMid],
+        [xPin3, yU2Top] // Turns DOWN into Pin 3 IN of LM317!
+      ];
+      drawPolylineDots(pathDcIn, 8, 1.0, '#34d399', 3.8);
+
+      // Branch into C2 Filter Capacitor (charging surge)
+      const pathC2Charge = [
+        [xC2, yRailMid],
+        [xC2, yRailBot]
+      ];
+      drawPolylineDots(pathC2Charge, 3, 0.7, '#34d399', 2.8);
+
+      // 4. Current through LM317 and out of Pin 2 (OUT) to Top Rail
+      const pathDcOut = [
+        [xPin2, yU2Top],
+        [xPin2, yRailTop], // Turns UP out of Pin 2!
+        [xR1, yRailTop],
+        [xC3, yRailTop],
+        [xH2 - 22, yRailTop],
+        [xH2 - 22, yH2P1], // Turns DOWN into H2 Pin 1!
+        [xH2, yH2P1]
+      ];
+      drawPolylineDots(pathDcOut, 10, 1.2, '#38bdf8', 3.8);
+
+      // 5. Voltage Setting Feedback Loop (R1 470 & PR1 5K to GND)
+      const pathFeedback = [
+        [xR1, yRailTop],
+        [xR1, 155], [xR1, 210], // Through R1 470
+        [xR1, yADJNode],
+        [xPR1, 330], [xPR1, wiperY], // Into PR1
+        [xPR1 - 18, wiperY], // Across wiper
+        [xWiperGnd, wiperY],
+        [xWiperGnd, yRailBot] // Into GND rail!
+      ];
+      drawPolylineDots(pathFeedback, 5, 0.8, '#f59e0b', 3.0);
+
+      // Small reference current from ADJ Pin (Pin 1) joining the feedback node
+      const pathAdjPin = [
+        [xPin1, yU2Top],
+        [xPin1, yADJNode],
+        [xR1, yADJNode]
+      ];
+      drawPolylineDots(pathAdjPin, 2, 0.6, '#f59e0b', 2.5);
+
+      // 6. Output to Voltmeter Panel & Banana Jacks & Load
+      // A. Into Digital Voltmeter Red (+) terminal
+      const pathMeterRed = [
+        [xH2, yH2P1],
+        [xMeter + 28, yH2P1],
+        [xMeter + 28, yMeter + hMeter]
+      ];
+      drawPolylineDots(pathMeterRed, 3, 0.9, '#38bdf8', 3.0);
+
+      // B. Into Red Banana Jack & Bench Load
+      const pathJacksRed = [
+        [xH2, yH2P1],
+        [xJacks, yH2P1],
+        [xJacks, yJackRed],
+        [xLoad - 10, yJackRed + 25] // Into 1.0A bench load
+      ];
+      drawPolylineDots(pathJacksRed, 4, 1.3, '#ef4444', 3.5);
+
+      // 7. Ground Return Loop (Load / Black Jack / DVM -> H2 Pin 2 -> yRailBot -> Bridge)
+      // A. Return from Load through Black Jack to H2 Pin 2
+      const pathJacksBlk = [
+        [xLoad - 10, yJackBlk - 25],
+        [xJacks, yJackBlk],
+        [xJacks, yH2P2],
+        [xH2, yH2P2],
+        [xH2 - 22, yH2P2],
+        [xH2 - 22, yRailBot],
+        [xH2, yRailBot]
+      ];
+      drawPolylineDots(pathJacksBlk, 4, 1.3, '#38bdf8', 3.5);
+
+      // B. Return from DVM Black (-) terminal to H2 Pin 2 / GND
+      const pathMeterBlk = [
+        [xMeter + 115, yMeter + hMeter],
+        [xMeter + 115, yH2P2],
+        [xH2, yH2P2]
+      ];
+      drawPolylineDots(pathMeterBlk, 2, 0.9, '#38bdf8', 2.8);
+
+      // C. Long GND Return Rail along bottom (H2 -> C3 -> PR1 -> GND symbol -> C1 -> C2 -> Bridge)
+      const pathGndRail = [
+        [xH2, yRailBot],
+        [xC3, yRailBot],
+        [xWiperGnd, yRailBot],
+        [xGND, yRailBot],
+        [xC1, yRailBot],
+        [xC2, yRailBot],
+        [xD4D3, yRailBot],
+        [xD1D2, yRailBot]
+      ];
+      drawPolylineDots(pathGndRail, 14, 1.2, '#38bdf8', 3.8);
 
     }
 
-    
 function drawScope() {
       if (!sCtx || !sCanvas) return;
       sCtx.clearRect(0, 0, sCanvas.width, sCanvas.height);
