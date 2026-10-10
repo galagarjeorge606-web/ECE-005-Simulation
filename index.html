@@ -63,6 +63,24 @@
     <!-- ========================================================================= -->
 <div id="group1-container" class="space-y-5 hidden">
 
+      <!-- MAIN SCHEMATIC CANVAS SECTION -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-2xl space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h2 class="text-sm md:text-base font-bold text-white flex items-center gap-2">
+            <span id="g1-loop-dot" class="w-3 h-3 rounded-full bg-emerald-400 shadow shadow-emerald-400/50 animate-pulse"></span>
+            <span id="g1-canvas-title">EasyEDA Pro Schematic Capture &bull; Live Power Simulation</span>
+          </h2>
+          <div class="flex items-center gap-3 text-xs font-mono">
+            <span class="text-slate-300">Status: <strong id="g1-txt-active-loop" class="text-emerald-400 font-bold">12.00V Live Output</strong></span>
+          </div>
+        </div>
+
+        <!-- Canvas Container -->
+        <div class="relative w-full aspect-[16/7.6] bg-slate-950 rounded-xl border border-slate-800 overflow-hidden shadow-inner flex items-center justify-center">
+          <canvas id="g1CircuitCanvas" width="1340" height="660" class="w-full h-full block cursor-crosshair"></canvas>
+        </div>
+      </div>
+
       <!-- HERO HEADER: GROUP 1 FINALS HUB -->
       <header class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-2xl relative overflow-hidden">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
@@ -167,23 +185,7 @@
         </div>
       </section>
 
-      <!-- MAIN SCHEMATIC CANVAS SECTION -->
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-2xl space-y-3">
-        <div class="flex flex-wrap items-center justify-between gap-2">
-          <h2 class="text-sm md:text-base font-bold text-white flex items-center gap-2">
-            <span id="g1-loop-dot" class="w-3 h-3 rounded-full bg-emerald-400 shadow shadow-emerald-400/50 animate-pulse"></span>
-            <span id="g1-canvas-title">EasyEDA Pro Schematic Capture &bull; Live Power Simulation</span>
-          </h2>
-          <div class="flex items-center gap-3 text-xs font-mono">
-            <span class="text-slate-300">Status: <strong id="g1-txt-active-loop" class="text-emerald-400 font-bold">12.00V Live Output</strong></span>
-          </div>
-        </div>
-
-        <!-- Canvas Container -->
-        <div class="relative w-full aspect-[16/7.6] bg-slate-950 rounded-xl border border-slate-800 overflow-hidden shadow-inner flex items-center justify-center">
-          <canvas id="g1CircuitCanvas" width="1340" height="660" class="w-full h-full block cursor-crosshair"></canvas>
-        </div>
-      </div>
+      
 
       <!-- INTERACTIVE CONTROL TOOLBAR -->
       <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-xl space-y-4">
@@ -2421,8 +2423,8 @@
       g1Ctx.fillText('2. RECTIFIER BRIDGE', 260, 62);
       g1Ctx.fillText('3. FILTER C2 / C1', 520, 52);
       g1Ctx.fillText('4. LM317 REGULATOR', 750, 62);
-      g1Ctx.fillText('5. R1 / PR1', 920, 62);
-      g1Ctx.fillText('6. H2 DC OUT', 1070, 62);
+      g1Ctx.fillText('5. R1, PR1 & TRIMMER', 895, 62);
+      g1Ctx.fillText('6. LED LIMITER & H2', 1055, 62);
       g1Ctx.fillText('7. VOLTMETER & LOAD', 1175, 62);
 
       // Subtle dashed stage column separators
@@ -2906,13 +2908,58 @@
       g1Ctx.fillText('240', xR1 + 14, 196);
 
       // -----------------------------------------------------------------------
-      // I. POTENTIOMETER PR1 (5K Potentiometer with Voltage Knob Indicator)
+      // I. POTENTIOMETER & PRECISION CALIBRATION TRIMMER NETWORK (PR1 + R_TRIM)
       // -----------------------------------------------------------------------
+      // 1. Calibration Trimmer R_TRIM (500 ohm Model 3296W in series above PR1)
+      const yTrimTop = 255;
+      const yTrimBot = 295;
+      g1Ctx.strokeStyle = cWire;
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xPR1, yADJNode); g1Ctx.lineTo(xPR1, yTrimTop);
+      g1Ctx.stroke();
+
+      // Trimmer Body Box
+      g1Ctx.fillStyle = '#070b13';
+      g1Ctx.strokeStyle = cComp;
+      g1Ctx.lineWidth = 2.2;
+      g1Ctx.fillRect(xPR1 - 9, yTrimTop, 18, yTrimBot - yTrimTop);
+      g1Ctx.strokeRect(xPR1 - 9, yTrimTop, 18, yTrimBot - yTrimTop);
+
+      // Trimmer Brass Multi-Turn Adjustment Screw graphic
+      g1Ctx.fillStyle = '#fbbf24';
+      g1Ctx.fillRect(xPR1 - 5, yTrimTop + 3, 10, 5);
+      g1Ctx.strokeStyle = '#d97706';
+      g1Ctx.lineWidth = 1;
+      g1Ctx.strokeRect(xPR1 - 5, yTrimTop + 3, 10, 5);
+      // Screw center slot
+      g1Ctx.strokeStyle = '#78350f';
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xPR1 - 3, yTrimTop + 5.5); g1Ctx.lineTo(xPR1 + 3, yTrimTop + 5.5);
+      g1Ctx.stroke();
+
+      // Trimmer Labels
+      g1Ctx.fillStyle = '#38bdf8';
+      g1Ctx.font = 'bold 10px ui-monospace, monospace';
+      g1Ctx.fillText('R_TRIM', xPR1 + 14, yTrimTop + 16);
+      g1Ctx.font = '9.5px ui-monospace, monospace';
+      g1Ctx.fillText('500', xPR1 + 14, yTrimTop + 28);
+      g1Ctx.fillStyle = '#94a3b8';
+      g1Ctx.font = '7.5px ui-monospace, monospace';
+      g1Ctx.fillText('(3296W CAL)', xPR1 + 14, yTrimTop + 38);
+
+      // Connecting Wire between R_TRIM and PR1
+      g1Ctx.strokeStyle = cWire;
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xPR1, yTrimBot); g1Ctx.lineTo(xPR1, 330);
+      g1Ctx.stroke();
+
+      // 2. Main Potentiometer PR1 (2k rotary potentiometer)
       g1Ctx.strokeStyle = cComp;
       g1Ctx.lineWidth = 2.2;
       g1Ctx.beginPath();
-      g1Ctx.moveTo(xPR1, yADJNode); g1Ctx.lineTo(xPR1, 330);
-      g1Ctx.moveTo(xPR1, 420);      g1Ctx.lineTo(xPR1, yRailBot);
+      g1Ctx.moveTo(xPR1, 420); g1Ctx.lineTo(xPR1, yRailBot);
       g1Ctx.stroke();
 
       g1Ctx.fillStyle = '#070b13';
@@ -2978,6 +3025,92 @@
       // K. CAPACITOR C3 (10uF Output Polarized Cap)
       // -----------------------------------------------------------------------
       drawPolarizedCap(xC3, yRailTop, yRailBot, 'C3', '10uF');
+
+      // -----------------------------------------------------------------------
+      // K2. CURRENT LIMITER RESISTOR & POWER INDICATOR LED (R3 = 470 + LED1)
+      // -----------------------------------------------------------------------
+      const xLim = 1070;
+      const yLimTop = 165;
+      const yLimBot = 215;
+      const yLedAnode = 245;
+      const yLedCathode = 265;
+
+      // Top wire from VOUT rail down to R3 limiter
+      g1Ctx.strokeStyle = cWire;
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xLim, yRailTop); g1Ctx.lineTo(xLim, yLimTop);
+      g1Ctx.stroke();
+      drawJunction(xLim, yRailTop);
+
+      // R3 Limiter Resistor Box (470 ohm)
+      g1Ctx.fillStyle = '#070b13';
+      g1Ctx.strokeStyle = cComp;
+      g1Ctx.lineWidth = 2.2;
+      g1Ctx.fillRect(xLim - 8, yLimTop, 16, yLimBot - yLimTop);
+      g1Ctx.strokeRect(xLim - 8, yLimTop, 16, yLimBot - yLimTop);
+
+      // Limiter Labels
+      g1Ctx.fillStyle = '#38bdf8';
+      g1Ctx.font = 'bold 10px ui-monospace, monospace';
+      g1Ctx.fillText('R3', xLim + 12, yLimTop + 16);
+      g1Ctx.font = '9.5px ui-monospace, monospace';
+      g1Ctx.fillText('470', xLim + 12, yLimTop + 30);
+      g1Ctx.fillStyle = '#94a3b8';
+      g1Ctx.font = '7px ui-monospace, monospace';
+      g1Ctx.fillText('(LIMITER)', xLim + 12, yLimTop + 42);
+
+      // Wire from R3 to LED1
+      g1Ctx.strokeStyle = cWire;
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xLim, yLimBot); g1Ctx.lineTo(xLim, yLedAnode);
+      g1Ctx.stroke();
+
+      // LED1: Red 5mm Power Indicator Diode (pointing DOWN to GND)
+      g1Ctx.fillStyle = 'rgba(239, 68, 68, 0.35)';
+      g1Ctx.strokeStyle = '#ef4444';
+      g1Ctx.lineWidth = 2.2;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xLim, yLedCathode);
+      g1Ctx.lineTo(xLim - 9, yLedAnode);
+      g1Ctx.lineTo(xLim + 9, yLedAnode);
+      g1Ctx.closePath();
+      g1Ctx.fill();
+      g1Ctx.stroke();
+
+      // Cathode Bar
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xLim - 9, yLedCathode); g1Ctx.lineTo(xLim + 9, yLedCathode);
+      g1Ctx.stroke();
+
+      // Emitted Light Photon Arrows (slanted up-right in amber/yellow)
+      g1Ctx.strokeStyle = '#fbbf24';
+      g1Ctx.lineWidth = 1.6;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xLim + 7, yLedAnode + 4); g1Ctx.lineTo(xLim + 17, yLedAnode - 6);
+      g1Ctx.lineTo(xLim + 13, yLedAnode - 6);
+      g1Ctx.moveTo(xLim + 17, yLedAnode - 6); g1Ctx.lineTo(xLim + 17, yLedAnode - 2);
+      g1Ctx.moveTo(xLim + 11, yLedAnode + 10); g1Ctx.lineTo(xLim + 21, yLedAnode);
+      g1Ctx.lineTo(xLim + 17, yLedAnode);
+      g1Ctx.moveTo(xLim + 21, yLedAnode); g1Ctx.lineTo(xLim + 21, yLedAnode + 4);
+      g1Ctx.stroke();
+
+      // LED Labels
+      g1Ctx.fillStyle = '#ef4444';
+      g1Ctx.font = 'bold 10px ui-monospace, monospace';
+      g1Ctx.fillText('LED1', xLim + 12, yLedCathode + 14);
+      g1Ctx.fillStyle = '#f87171';
+      g1Ctx.font = '8px ui-monospace, monospace';
+      g1Ctx.fillText('RED 5mm', xLim + 12, yLedCathode + 25);
+
+      // Wire from LED1 cathode to bottom GND rail
+      g1Ctx.strokeStyle = cWire;
+      g1Ctx.lineWidth = 2.5;
+      g1Ctx.beginPath();
+      g1Ctx.moveTo(xLim, yLedCathode); g1Ctx.lineTo(xLim, yRailBot);
+      g1Ctx.stroke();
+      drawJunction(xLim, yRailBot);
 
       // -----------------------------------------------------------------------
       // L. OUTPUT CONNECTOR H2 (2-Pin Screw Terminal)
@@ -3715,8 +3848,8 @@ function drawCircuit() {
       cCtx.fillText('2. RECTIFIER BRIDGE', 260, 62);
       cCtx.fillText('3. FILTER C2 / C1', 520, 52);
       cCtx.fillText('4. LM317 REGULATOR', 750, 62);
-      cCtx.fillText('5. R1 / PR1', 920, 62);
-      cCtx.fillText('6. H2 DC OUT', 1070, 62);
+      cCtx.fillText('5. R1, PR1 & TRIMMER', 895, 62);
+      cCtx.fillText('6. LED LIMITER & H2', 1055, 62);
       cCtx.fillText('7. VOLTMETER & LOAD', 1175, 62);
 
       // Subtle dashed stage column separators
@@ -4200,13 +4333,58 @@ function drawCircuit() {
       cCtx.fillText('240', xR1 + 14, 196);
 
       // -----------------------------------------------------------------------
-      // I. POTENTIOMETER PR1 (5K Potentiometer with Voltage Knob Indicator)
+      // I. POTENTIOMETER & PRECISION CALIBRATION TRIMMER NETWORK (PR1 + R_TRIM)
       // -----------------------------------------------------------------------
+      // 1. Calibration Trimmer R_TRIM (500 ohm Model 3296W in series above PR1)
+      const yG2TrimTop = 255;
+      const yG2TrimBot = 295;
+      cCtx.strokeStyle = cWire;
+      cCtx.lineWidth = 2.5;
+      cCtx.beginPath();
+      cCtx.moveTo(xPR1, yADJNode); cCtx.lineTo(xPR1, yG2TrimTop);
+      cCtx.stroke();
+
+      // Trimmer Body Box
+      cCtx.fillStyle = '#070b13';
+      cCtx.strokeStyle = cComp;
+      cCtx.lineWidth = 2.2;
+      cCtx.fillRect(xPR1 - 9, yG2TrimTop, 18, yG2TrimBot - yG2TrimTop);
+      cCtx.strokeRect(xPR1 - 9, yG2TrimTop, 18, yG2TrimBot - yG2TrimTop);
+
+      // Trimmer Brass Multi-Turn Adjustment Screw graphic
+      cCtx.fillStyle = '#fbbf24';
+      cCtx.fillRect(xPR1 - 5, yG2TrimTop + 3, 10, 5);
+      cCtx.strokeStyle = '#d97706';
+      cCtx.lineWidth = 1;
+      cCtx.strokeRect(xPR1 - 5, yG2TrimTop + 3, 10, 5);
+      // Screw center slot
+      cCtx.strokeStyle = '#78350f';
+      cCtx.beginPath();
+      cCtx.moveTo(xPR1 - 3, yG2TrimTop + 5.5); cCtx.lineTo(xPR1 + 3, yG2TrimTop + 5.5);
+      cCtx.stroke();
+
+      // Trimmer Labels
+      cCtx.fillStyle = '#38bdf8';
+      cCtx.font = 'bold 10px ui-monospace, monospace';
+      cCtx.fillText('R_TRIM', xPR1 + 14, yG2TrimTop + 16);
+      cCtx.font = '9.5px ui-monospace, monospace';
+      cCtx.fillText('500', xPR1 + 14, yG2TrimTop + 28);
+      cCtx.fillStyle = '#94a3b8';
+      cCtx.font = '7.5px ui-monospace, monospace';
+      cCtx.fillText('(3296W CAL)', xPR1 + 14, yG2TrimTop + 38);
+
+      // Connecting Wire between R_TRIM and PR1
+      cCtx.strokeStyle = cWire;
+      cCtx.lineWidth = 2.5;
+      cCtx.beginPath();
+      cCtx.moveTo(xPR1, yG2TrimBot); cCtx.lineTo(xPR1, 330);
+      cCtx.stroke();
+
+      // 2. Main Potentiometer PR1 (2k rotary potentiometer)
       cCtx.strokeStyle = cComp;
       cCtx.lineWidth = 2.2;
       cCtx.beginPath();
-      cCtx.moveTo(xPR1, yADJNode); cCtx.lineTo(xPR1, 330);
-      cCtx.moveTo(xPR1, 420);      cCtx.lineTo(xPR1, yRailBot);
+      cCtx.moveTo(xPR1, 420); cCtx.lineTo(xPR1, yRailBot);
       cCtx.stroke();
 
       cCtx.fillStyle = '#070b13';
@@ -4272,6 +4450,92 @@ function drawCircuit() {
       // K. CAPACITOR C3 (10uF Output Polarized Cap)
       // -----------------------------------------------------------------------
       drawPolarizedCap(xC3, yRailTop, yRailBot, 'C3', '10uF');
+
+      // -----------------------------------------------------------------------
+      // K2. CURRENT LIMITER RESISTOR & POWER INDICATOR LED (R3 = 470 + LED1)
+      // -----------------------------------------------------------------------
+      const xLim = 1070;
+      const yLimTop = 165;
+      const yLimBot = 215;
+      const yLedAnode = 245;
+      const yLedCathode = 265;
+
+      // Top wire from VOUT rail down to R3 limiter
+      cCtx.strokeStyle = cWire;
+      cCtx.lineWidth = 2.5;
+      cCtx.beginPath();
+      cCtx.moveTo(xLim, yRailTop); cCtx.lineTo(xLim, yLimTop);
+      cCtx.stroke();
+      drawJunction(xLim, yRailTop);
+
+      // R3 Limiter Resistor Box (470 ohm)
+      cCtx.fillStyle = '#070b13';
+      cCtx.strokeStyle = cComp;
+      cCtx.lineWidth = 2.2;
+      cCtx.fillRect(xLim - 8, yLimTop, 16, yLimBot - yLimTop);
+      cCtx.strokeRect(xLim - 8, yLimTop, 16, yLimBot - yLimTop);
+
+      // Limiter Labels
+      cCtx.fillStyle = '#38bdf8';
+      cCtx.font = 'bold 10px ui-monospace, monospace';
+      cCtx.fillText('R3', xLim + 12, yLimTop + 16);
+      cCtx.font = '9.5px ui-monospace, monospace';
+      cCtx.fillText('470', xLim + 12, yLimTop + 30);
+      cCtx.fillStyle = '#94a3b8';
+      cCtx.font = '7px ui-monospace, monospace';
+      cCtx.fillText('(LIMITER)', xLim + 12, yLimTop + 42);
+
+      // Wire from R3 to LED1
+      cCtx.strokeStyle = cWire;
+      cCtx.lineWidth = 2.5;
+      cCtx.beginPath();
+      cCtx.moveTo(xLim, yLimBot); cCtx.lineTo(xLim, yLedAnode);
+      cCtx.stroke();
+
+      // LED1: Red 5mm Power Indicator Diode (pointing DOWN to GND)
+      cCtx.fillStyle = 'rgba(239, 68, 68, 0.35)';
+      cCtx.strokeStyle = '#ef4444';
+      cCtx.lineWidth = 2.2;
+      cCtx.beginPath();
+      cCtx.moveTo(xLim, yLedCathode);
+      cCtx.lineTo(xLim - 9, yLedAnode);
+      cCtx.lineTo(xLim + 9, yLedAnode);
+      cCtx.closePath();
+      cCtx.fill();
+      cCtx.stroke();
+
+      // Cathode Bar
+      cCtx.beginPath();
+      cCtx.moveTo(xLim - 9, yLedCathode); cCtx.lineTo(xLim + 9, yLedCathode);
+      cCtx.stroke();
+
+      // Emitted Light Photon Arrows (slanted up-right in amber/yellow)
+      cCtx.strokeStyle = '#fbbf24';
+      cCtx.lineWidth = 1.6;
+      cCtx.beginPath();
+      cCtx.moveTo(xLim + 7, yLedAnode + 4); cCtx.lineTo(xLim + 17, yLedAnode - 6);
+      cCtx.lineTo(xLim + 13, yLedAnode - 6);
+      cCtx.moveTo(xLim + 17, yLedAnode - 6); cCtx.lineTo(xLim + 17, yLedAnode - 2);
+      cCtx.moveTo(xLim + 11, yLedAnode + 10); cCtx.lineTo(xLim + 21, yLedAnode);
+      cCtx.lineTo(xLim + 17, yLedAnode);
+      cCtx.moveTo(xLim + 21, yLedAnode); cCtx.lineTo(xLim + 21, yLedAnode + 4);
+      cCtx.stroke();
+
+      // LED Labels
+      cCtx.fillStyle = '#ef4444';
+      cCtx.font = 'bold 10px ui-monospace, monospace';
+      cCtx.fillText('LED1', xLim + 12, yLedCathode + 14);
+      cCtx.fillStyle = '#f87171';
+      cCtx.font = '8px ui-monospace, monospace';
+      cCtx.fillText('RED 5mm', xLim + 12, yLedCathode + 25);
+
+      // Wire from LED1 cathode to bottom GND rail
+      cCtx.strokeStyle = cWire;
+      cCtx.lineWidth = 2.5;
+      cCtx.beginPath();
+      cCtx.moveTo(xLim, yLedCathode); cCtx.lineTo(xLim, yRailBot);
+      cCtx.stroke();
+      drawJunction(xLim, yRailBot);
 
       // -----------------------------------------------------------------------
       // L. OUTPUT CONNECTOR H2 (2-Pin Screw Terminal)
