@@ -82,7 +82,7 @@
               Schematic Capture &amp; Sourcing Circuit Diagrams <span class="text-sky-400">&bull; Group 1 Finals Hub</span>
             </h1>
             <p class="text-slate-300 text-xs sm:text-sm mt-1 max-w-4xl leading-relaxed">
-              Complete engineering design, live EasyEDA simulation, single-sided PCB layout, and bill of materials for our <strong>1.25V&ndash;12.0V (1.5A peak) Regulated DC Power Supply</strong>. Verified against Texas Instruments datasheets, tested with 0 DRC errors, and fabricated on a 3&times;5" single-sided copper PCB.
+              Complete engineering design, live EasyEDA simulation, single-sided PCB layout, and bill of materials for our <strong>1.25V&ndash;12.0V (1.5A peak) Regulated DC Power Supply</strong>. Verified against Texas Instruments datasheets, tested with 0 DRC errors, and fabricated on a 3&times;3" single-sided copper PCB.
             </p>
           </div>
 
@@ -162,7 +162,7 @@
             <span class="text-[10px] font-mono font-bold text-sky-300 uppercase">Part 6 (Leader) &bull; Live Demonstration</span>
             <div class="font-bold text-white text-sm">Jacob Iain Brazal</div>
             <div class="text-sky-300 font-semibold text-xs">Live EasyEDA Walkthrough &amp; PCB Conversion</div>
-            <p class="text-slate-300 text-[11px] leading-relaxed">Live software demo in EasyEDA Pro: placing parts, wiring the schematic, running live 0-error DRC, and converting to a 3&times;5" single-sided copper PCB layout.</p>
+            <p class="text-slate-300 text-[11px] leading-relaxed">Live software demo in EasyEDA Pro: placing parts, wiring the schematic, running live 0-error DRC, and converting to a 3&times;3" single-sided copper PCB layout.</p>
           </div>
         </div>
       </section>
@@ -447,9 +447,9 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
           <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
             <span class="text-[10px] font-mono font-bold text-sky-400 uppercase">1. Trace &amp; Substrate Specs</span>
-            <div class="font-bold text-white text-sm">30 mil Robust Copper Traces</div>
+            <div class="font-bold text-white text-sm">40&ndash;50 mil Heavy Copper Rails</div>
             <p class="text-slate-300 text-[11px] leading-relaxed">
-              Target board: <strong>3&times;5 inches (3000&times;5000 mil)</strong> single-sided copper clad. Traces thickened to 30 mil (0.76 mm) to prevent trace lifting or over-etching during home ferric chloride baths.
+              Target board: <strong>3&times;3 inches (3000&times;3000 mil)</strong> single-sided copper clad. High-current rails widened to 40&ndash;50 mil (1.0&ndash;1.27 mm), signal traces at 35 mil to prevent trace lifting or over-etching during home ferric chloride baths.
             </p>
           </div>
           <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
@@ -602,13 +602,13 @@
                 <td class="py-2 px-3 font-mono text-sky-400">Oct 9 (Fri)</td>
                 <td class="py-2 px-3 text-white">Group 1 Presentation &amp; Live Demo</td>
                 <td class="py-2 px-3 text-sky-200">Deliver in-class report &amp; live EasyEDA demonstration before Engr. Diano.</td>
-                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-sky-500 text-slate-950 font-black">TODAY</span></td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">DONE</span></td>
               </tr>
               <tr>
                 <td class="py-2 px-3 font-mono text-slate-400">Oct 14&ndash;16</td>
                 <td class="py-2 px-3">Hardware Assembly: Stages 1 &amp; 2</td>
                 <td class="py-2 px-3">Assemble rectifier bridge, filter cap, LM317 regulator, heatsink, and primary fuse.</td>
-                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400">UPCOMING</span></td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold border border-sky-500/30">NEXT UP</span></td>
               </tr>
               <tr>
                 <td class="py-2 px-3 font-mono text-slate-400">Oct 21&ndash;23</td>
@@ -937,6 +937,289 @@
         </div>
 
       </div>
+
+      <!-- COMPREHENSIVE ENGINEERING COMPARISON: GROUP 1 VS. GROUP 2 -->
+      <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-2xl space-y-4 mt-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <span class="text-amber-400">&#9878;</span> Comprehensive Engineering Comparison: Group 1 vs. Group 2
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">
+              Direct technical audit of ripple voltage, operating temperature, regulator headroom, component ratings, and circuit architecture.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-1.5 shrink-0">
+            <span class="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20">
+              Ripple: 8.3V &rarr; 3.8V (-54.5%)
+            </span>
+            <span class="text-[10px] font-mono font-bold text-sky-400 bg-sky-500/10 px-2.5 py-1 rounded-lg border border-sky-500/20">
+              Output: 1.25V &ndash; 12.00V Calibrated
+            </span>
+          </div>
+        </div>
+
+        <!-- Comparative Metric Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+          <div class="p-3.5 bg-slate-900/90 rounded-xl border border-slate-800 space-y-1.5">
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] font-mono font-bold text-amber-400 uppercase">1. Ripple Voltage Audit</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">54.5% C2 Drop</span>
+            </div>
+            <div class="font-bold text-white text-sm">3.79 V<sub>p-p</sub> vs. 8.33 V<sub>p-p</sub></div>
+            <p class="text-slate-300 text-[11px] leading-relaxed">
+              At 1.0A full load, Group 1's 1000&mu;F filter capacitor exhibits massive <strong>8.33 V<sub>p-p</sub></strong> ripple (&Delta;V = 1.0 / 0.12). Upgrading to Group 2's <strong>2200&mu;F 35V</strong> capacitor cuts ripple down to <strong>3.79 V<sub>p-p</sub> (&asymp; 3.8V)</strong>, keeping minimum unregulated DC at 16.0V (&gt; 14.5V regulator dropout threshold).
+            </p>
+          </div>
+
+          <div class="p-3.5 bg-slate-900/90 rounded-xl border border-slate-800 space-y-1.5">
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] font-mono font-bold text-rose-400 uppercase">2. Thermal Power Stress</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">133&deg;C Max Die</span>
+            </div>
+            <div class="font-bold text-white text-sm">7.63 W Peak Dissipation (at 1.25V)</div>
+            <p class="text-slate-300 text-[11px] leading-relaxed">
+              Maximum thermal stress occurs at minimum output: P<sub>D</sub> = (16.5V &minus; 1.25V) &times; 0.5A = <strong>7.63 W</strong>. Without cooling (&theta;<sub>ja</sub> = 65&deg;C/W), die temp would skyrocket to 495&deg;C (instant destruction). Group 2's finned TO-220 aluminum heatsink (&theta;<sub>total</sub> = 13.5&deg;C/W) clamps junction temperature to <strong>133&deg;C</strong>, safely under the 150&deg;C limit.
+            </p>
+          </div>
+
+          <div class="p-3.5 bg-slate-900/90 rounded-xl border border-slate-800 space-y-1.5">
+            <div class="flex justify-between items-center">
+              <span class="text-[10px] font-mono font-bold text-sky-400 uppercase">3. Voltage Dial Calibration</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-sky-500/20 text-sky-300">Exact 12.00V</span>
+            </div>
+            <div class="font-bold text-white text-sm">2k&Omega; Knob + 500&Omega; Trimmer Network</div>
+            <p class="text-slate-300 text-[11px] leading-relaxed">
+              A plain 5k&Omega; pot reaches 12.0V awkwardly at 80.8% rotation, wasting 20% travel. Group 2 pairs a front-panel <strong>2k&Omega; rotary pot</strong> with an internal <strong>500&Omega; multi-turn trimmer (3296W)</strong> in series. Technicians dial the trimmer once to lock the ceiling at exactly <strong>12.00 V DC</strong> while retaining the 1.250V floor.
+            </p>
+          </div>
+        </div>
+
+        <!-- Comprehensive Side-by-Side Comparison Table -->
+        <div class="overflow-x-auto rounded-xl border border-slate-800 mt-2">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-900/90 border-b border-slate-800 text-slate-300 font-mono text-[11px]">
+                <th class="py-2.5 px-3">Circuit Parameter / Metric</th>
+                <th class="py-2.5 px-3 text-amber-300">Group 1 (Baseline Design)</th>
+                <th class="py-2.5 px-3 text-sky-400">Group 2 (Optimized Design)</th>
+                <th class="py-2.5 px-3 text-emerald-400">Engineering Advantage &amp; Technical Significance</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/60 text-slate-300 text-[11px]">
+              <tr class="hover:bg-slate-900/30">
+                <td class="py-2 px-3 font-bold text-white">Step-Down Transformer (T1)</td>
+                <td class="py-2 px-3 font-mono text-slate-400">15.0V AC RMS, 1.0A (21.21V Peak)</td>
+                <td class="py-2 px-3 font-mono text-sky-300 font-semibold">18.0V AC RMS, 2.0A (25.46V Peak)</td>
+                <td class="py-2 px-3 text-slate-300">+3.6V extra DC headroom; operates coolly at 2A; prevents dropout under AC utility sags.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30">
+                <td class="py-2 px-3 font-bold text-white">Bridge Rectifier Diodes (D1&ndash;D4)</td>
+                <td class="py-2 px-3 font-mono text-slate-400">4x 1N4007 (1.0A cont., 30A surge)</td>
+                <td class="py-2 px-3 font-mono text-sky-300 font-semibold">4x 1N5408 (3.0A cont., 200A surge)</td>
+                <td class="py-2 px-3 text-slate-300"><strong>3&times; current rating</strong> and 6.6&times; surge safety margin during 2200&mu;F inrush; zero thermal strain.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30">
+                <td class="py-2 px-3 font-bold text-white">Bulk Filter Capacitor (C2)</td>
+                <td class="py-2 px-3 font-mono text-slate-400">1000&mu;F, 25V Electrolytic</td>
+                <td class="py-2 px-3 font-mono text-emerald-300 font-bold">2200&mu;F, 35V Electrolytic</td>
+                <td class="py-2 px-3 text-slate-300"><strong>+120% charge reservoir capacity</strong>; 35V rating safely withstanding 25.5V peak with &gt;37% safety de-rating.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30 bg-emerald-500/5">
+                <td class="py-2 px-3 font-bold text-white">Full-Load Ripple (&Delta;V<sub>ripple</sub> @ 1.0A)</td>
+                <td class="py-2 px-3 font-mono text-rose-400 font-bold">8.33 V<sub>p-p</sub> (Severe Ripple)</td>
+                <td class="py-2 px-3 font-mono text-emerald-400 font-black">3.79 V<sub>p-p</sub> (&asymp; 3.8 V<sub>p-p</sub>)</td>
+                <td class="py-2 px-3 text-emerald-300 font-semibold"><strong>54.5% ripple attenuation!</strong> Unregulated trough stays above 16.0V; eliminates hum on regulated rail.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30">
+                <td class="py-2 px-3 font-bold text-white">Light-Load Ripple (&Delta;V<sub>ripple</sub> @ 100mA)</td>
+                <td class="py-2 px-3 font-mono text-slate-400">0.833 V<sub>p-p</sub> (833 mV<sub>p-p</sub>)</td>
+                <td class="py-2 px-3 font-mono text-sky-300 font-bold">0.379 V<sub>p-p</sub> (379 mV<sub>p-p</sub>)</td>
+                <td class="py-2 px-3 text-slate-300">Ultra-clean DC feeding sensitive MCU logic and op-amp test circuits.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30">
+                <td class="py-2 px-3 font-bold text-white">Voltage Adjustment Network</td>
+                <td class="py-2 px-3 font-mono text-slate-400">Single 5k&Omega; Rotary Potentiometer</td>
+                <td class="py-2 px-3 font-mono text-sky-300 font-bold">2k&Omega; Rotary Pot + 500&Omega; Trimmer</td>
+                <td class="py-2 px-3 text-slate-300">Fine 3296W trimpot calibrates top end to <strong>exactly 12.00 V DC</strong> without clipping or 1.25V floor drift.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30">
+                <td class="py-2 px-3 font-bold text-white">LM317 Divider Current (I<sub>R1</sub>)</td>
+                <td class="py-2 px-3 font-mono text-slate-400">2.66 mA (with R1 = 470&Omega;)</td>
+                <td class="py-2 px-3 font-mono text-sky-300 font-bold">5.21 mA (with R1 = 240&Omega;)</td>
+                <td class="py-2 px-3 text-slate-300">Exceeds TI datasheet minimum load (2.5 mA) by &gt;108%, guaranteeing rock-solid regulation unloaded.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30">
+                <td class="py-2 px-3 font-bold text-white">Peak Thermal Dissipation (P<sub>D</sub>)</td>
+                <td class="py-2 px-3 font-mono text-slate-400">7.63 W (at 1.25V / 0.5A)</td>
+                <td class="py-2 px-3 font-mono text-amber-300 font-bold">7.63 W (Cooled by Finned Heatsink)</td>
+                <td class="py-2 px-3 text-slate-300">Mounted to finned TO-220 aluminum heatsink with silicone thermal paste; die clamped to 133&deg;C (&lt; 150&deg;C max).</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30">
+                <td class="py-2 px-3 font-bold text-white">PCB Board Substrate &amp; Layout</td>
+                <td class="py-2 px-3 font-mono text-slate-400">3&times;5" Standard Copper Clad</td>
+                <td class="py-2 px-3 font-mono text-sky-300 font-bold">3&times;3" Compact Single-Sided PCB</td>
+                <td class="py-2 px-3 text-slate-300">100% Bottom Layer Blue routing, 0 jumpers, 40&ndash;50 mil heavy power rails for toner-transfer FeCl<sub>3</sub> etching.</td>
+              </tr>
+              <tr class="hover:bg-slate-900/30 bg-sky-500/5 font-semibold">
+                <td class="py-2 px-3 font-bold text-white">Overall Circuit Verdict</td>
+                <td class="py-2 px-3 text-amber-300">Functional Baseline Prototype</td>
+                <td class="py-2 px-3 text-emerald-400 font-black">&#9733; Superior Optimized Circuit</td>
+                <td class="py-2 px-3 text-sky-200"><strong>Group 2 Wins:</strong> Higher safety margins, 54.5% lower ripple, precision 12.00V dial, and robust cooling.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- EASYEDA PRO PCB LAYOUT & FABRICATION SECTION (GROUP 2 INTEGRATED) -->
+      <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-2xl space-y-4 mt-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <span class="text-sky-400">&#129699;</span> EasyEDA Pro Single-Sided PCB Layout &amp; Routing Guide
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">
+              Engineered for toner transfer ferric chloride acid etching on single-sided copper clad.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <a href="Group%201%20PCB%20For%20Print.pdf" target="_blank" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-sky-500 hover:bg-sky-400 text-slate-950 font-black transition-all shadow">
+              &#128424; Open Print-Ready PCB PDF (1:1)
+            </a>
+            <a href="EasyEDA_LM317_Reference_Guide.png" target="_blank" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all">
+              &#128065; View Schematic Guide
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
+            <span class="text-[10px] font-mono font-bold text-sky-400 uppercase">1. Trace &amp; Substrate Specs</span>
+            <div class="font-bold text-white text-sm">40&ndash;50 mil Heavy Copper Rails</div>
+            <p class="text-slate-300 text-[11px] leading-relaxed">
+              Target board: <strong>3&times;3 inches (3000&times;3000 mil)</strong> single-sided copper clad. High-current and ground tracks widened to 40&ndash;50 mil (1.0&ndash;1.27 mm), signal traces at 35 mil to prevent trace lifting or over-etching during home ferric chloride baths.
+            </p>
+          </div>
+          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
+            <span class="text-[10px] font-mono font-bold text-emerald-400 uppercase">2. Zero Jumper Wires</span>
+            <div class="font-bold text-white text-sm">100% Bottom Layer Blue Routing</div>
+            <p class="text-slate-300 text-[11px] leading-relaxed">
+              Every single signal and ground trace routes cleanly on the <strong>Bottom Layer (Blue)</strong> with 0 unrouted nets and 0 top jumpers. Through-hole components standardized to DO-41, TO-220, radial, and axial.
+            </p>
+          </div>
+          <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
+            <span class="text-[10px] font-mono font-bold text-amber-400 uppercase">3. Ground Loop &amp; Heat Clearance</span>
+            <div class="font-bold text-white text-sm">Continuous Return Bus &amp; Heatsink Space</div>
+            <p class="text-slate-300 text-[11px] leading-relaxed">
+              Resolved diode bridge net loop by routing continuous bottom copper tracks between D2/D3 anodes and capacitor ground. Ample airflow clearance provided around the TO-220 heatsink. DRC confirms <strong>0 clearance errors</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- MASTER MILESTONE SCHEDULE & DELIVERABLES TRACK -->
+      <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-2xl space-y-3 mt-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <span class="text-purple-400">&#128197;</span> Master Milestone Schedule &bull; ECE 005 Laboratory
+            </h3>
+            <p class="text-xs text-slate-400">Timeline tracking all project phases from Multisim simulation to final physical hardware defense.</p>
+          </div>
+          <span class="text-xs font-mono font-bold text-purple-400 bg-purple-500/10 px-3 py-1 rounded-xl border border-purple-500/20 shrink-0">
+            Wednesdays &amp; Fridays Schedule
+          </span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-400 font-mono text-[11px]">
+                <th class="py-2 px-3">Date</th>
+                <th class="py-2 px-3">Class Milestone / Activity</th>
+                <th class="py-2 px-3">Target Group Action</th>
+                <th class="py-2 px-3 text-right">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/60 text-slate-300 text-[11px]">
+              <tr>
+                <td class="py-2 px-3 font-mono text-sky-400">Sep 30 (Wed)</td>
+                <td class="py-2 px-3">Asynchronous: BOM &amp; Circuit Timeline</td>
+                <td class="py-2 px-3">Completed Multisim schematic, initial BOM, and Gantt chart.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">DONE</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-sky-400">Oct 2 (Fri)</td>
+                <td class="py-2 px-3">Finals Reporting Briefing &amp; Sourcing</td>
+                <td class="py-2 px-3">Inspected transformer in store; received reporting topic.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">DONE</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-sky-400">Oct 5 (Mon)</td>
+                <td class="py-2 px-3">EasyEDA Capture &amp; Presentation Outline</td>
+                <td class="py-2 px-3">Verified live EasyEDA schematic with 0 ERC errors; finalized member roles.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">DONE</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-sky-400">Oct 7 (Wed)</td>
+                <td class="py-2 px-3">PCB Layout &amp; Etching Mask Export</td>
+                <td class="py-2 px-3">Completed 3&times;3" single-sided PCB layout, 0 DRC errors, exported etching PDF.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">DONE</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-sky-400">Oct 8 (Thu)</td>
+                <td class="py-2 px-3">Reporting Submission Due (11:59 PM)</td>
+                <td class="py-2 px-3">Submitted finalized PowerPoint deck and documentation to Canvas.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">DONE</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-sky-400">Oct 9 (Fri)</td>
+                <td class="py-2 px-3 font-bold text-white">In-Class Oral Presentation &amp; Live Demo</td>
+                <td class="py-2 px-3 text-sky-200">Delivered in-class oral report &amp; live EasyEDA demonstration before Engr. Diano.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">DONE</span></td>
+              </tr>
+              <tr class="bg-sky-500/5 font-semibold">
+                <td class="py-2 px-3 font-mono text-sky-400">Oct 14 (Wed)</td>
+                <td class="py-2 px-3 text-white">Hardware Assembly: Stage 1</td>
+                <td class="py-2 px-3 text-sky-200">Bench testing with EcoFlow; assemble rectifier bridge and 2200&mu;F filter stage.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold border border-sky-500/30">NEXT UP</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-slate-400">Oct 16 (Fri)</td>
+                <td class="py-2 px-3">Hardware Assembly: Stage 2</td>
+                <td class="py-2 px-3">Wire LM317 regulator with heatsink, potentiometer/trimmer divider, fuse &amp; switch.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400">UPCOMING</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-slate-400">Oct 21 (Wed)</td>
+                <td class="py-2 px-3">Enclosure Fabrication &amp; Display Integration</td>
+                <td class="py-2 px-3">Mount panel meter, LED, potentiometer, binding posts, transformer into project box.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400">UPCOMING</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-slate-400">Oct 23 (Fri)</td>
+                <td class="py-2 px-3">Full Load Testing &amp; Security Permit</td>
+                <td class="py-2 px-3">Verify voltage regulation under load; submit campus security permit for hardware.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400">UPCOMING</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-slate-400">Oct 27 (Tue)</td>
+                <td class="py-2 px-3">Final Documentation Submission</td>
+                <td class="py-2 px-3">Submit final report soft copy; print hard copy on short bond paper (Arial Narrow 12).</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400">UPCOMING</span></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-3 font-mono text-emerald-400 font-bold">Oct 28 (Wed)</td>
+                <td class="py-2 px-3 font-bold text-white">Final Project Defense &amp; Hardware Demo</td>
+                <td class="py-2 px-3 text-emerald-300">Live physical demonstration of completed Variable DC PSU in laboratory.</td>
+                <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">DEFENSE</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
 
       <!-- COMPLETE COMPONENT GUIDE & HARDWARE INVENTORY (18 COMPONENTS) -->
       <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-2xl space-y-4 mt-4">
@@ -1407,13 +1690,22 @@
                 <td class="p-2 text-center font-bold text-sky-300">1</td>
                 <td class="p-2 text-right font-black text-emerald-400">&#8369;0.00</td>
               </tr>
+              <tr class="hover:bg-slate-900/40">
+                <td class="p-2 text-center text-sky-400 font-bold">23</td>
+                <td class="p-2 text-center"><img src="bom_images/12_pcb.png" alt="Ferric Chloride" class="h-9 w-9 object-contain mx-auto rounded bg-slate-950 p-0.5 border border-slate-800"></td>
+                <td class="p-2 font-bold text-white">Ferric Chloride Liquid Etchant (FeCl3, 120ml)</td>
+                <td class="p-2 text-slate-400">Chemical Etchant Solution for Single-Sided PCB Acid Bath</td>
+                <td class="p-2 text-slate-400">120ml Liquid Bottle</td>
+                <td class="p-2 text-center">1</td>
+                <td class="p-2 text-right font-bold text-emerald-400">&#8369;65.00</td>
+              </tr>
               <tr class="bg-slate-900 font-bold text-white">
                 <td colspan="6" class="p-3 text-right font-mono text-xs">TOTAL ESTIMATED PROJECT BUDGET:</td>
-                <td class="p-3 text-right text-emerald-400 text-sm font-mono font-black">&#8369;1,181.00 PHP</td>
+                <td class="p-3 text-right text-emerald-400 text-sm font-mono font-black">&#8369;1,246.00 PHP</td>
               </tr>
               <tr class="bg-emerald-950/30 border-t border-emerald-500/30 font-bold text-white">
                 <td colspan="6" class="p-2.5 text-right font-mono text-xs text-emerald-300">ESTIMATED COST PER MEMBER (6):</td>
-                <td class="p-2.5 text-right text-emerald-300 text-sm font-mono font-black">&#8369;196.83 PHP</td>
+                <td class="p-2.5 text-right text-emerald-300 text-sm font-mono font-black">&#8369;207.67 PHP</td>
               </tr>
             </tbody>
           </table>
@@ -1513,15 +1805,16 @@
             <div>Two silicon diodes conduct per half-cycle: V<sub>drop</sub> = 2 &times; V<sub>D</sub> = 2 &times; 0.7V = 1.40V</div>
             <div>V<sub>rect_peak</sub> = V<sub>peak</sub> &minus; 1.40V = 21.21V &minus; 1.40V = <strong class="text-emerald-400">19.8132 V</strong></div>
 
-            <div class="text-sky-300 font-bold text-sm pt-2">C. Filter Capacitor C2 (1000&mu;F) Sizing &amp; Ripple Voltage:</div>
+            <div class="text-sky-300 font-bold text-sm pt-2">C. Filter Capacitor C2 (2200&mu;F) Sizing &amp; Ripple Voltage Analysis:</div>
             <div>Ripple formula for full-wave rectifier: &Delta;V<sub>ripple</sub> = I<sub>LOAD</sub> / (2 &times; f &times; C)</div>
-            <div>At I<sub>LOAD</sub> = 0.50 A and C = 1000&mu;F:</div>
-            <div>&Delta;V<sub>ripple</sub> = 0.50 / (2 &times; 60 &times; 1000&times;10<sup>&minus;6</sup>) = 0.50 / 0.12 = <strong class="text-amber-400">4.1667 V<sub>p-p</sub> (at full 0.5A load)</strong></div>
-            <div>At typical lab draw I<sub>LOAD</sub> = 100 mA: &Delta;V<sub>ripple</sub> = 0.10 / 0.12 = <strong class="text-emerald-400">0.8333 V<sub>p-p</sub></strong></div>
+            <div>At continuous full bench load I<sub>LOAD</sub> = 1.00 A and C = 2200&mu;F (f = 60 Hz):</div>
+            <div>&Delta;V<sub>ripple(2200&mu;F)</sub> = 1.00 / (2 &times; 60 &times; 2200&times;10<sup>&minus;6</sup>) = 1.00 / 0.264 = <strong class="text-emerald-400">3.7879 V<sub>p-p</sub> (&asymp; 3.8 V<sub>p-p</sub>)</strong></div>
+            <div class="text-slate-400 text-[11px]"><em>Note: Under identical 1.0A load with 1000&mu;F, &Delta;V<sub>ripple(1000&mu;F)</sub> = 1.00 / 0.12 = 8.33 V<sub>p-p</sub>! Upgrading to 2200&mu;F cuts ripple by over 54.5%, eliminating audible hum and preventing DC droop.</em></div>
+            <div>At typical lab draw I<sub>LOAD</sub> = 100 mA: &Delta;V<sub>ripple</sub> = 0.10 / 0.264 = <strong class="text-sky-400">0.3788 V<sub>p-p</sub> (&asymp; 379 mV<sub>p-p</sub>)</strong></div>
             <div>Minimum unregulated DC voltage feeding LM317:</div>
-            <div>V<sub>IN_min</sub> = V<sub>rect_peak</sub> &minus; &Delta;V<sub>ripple</sub> = 19.81V &minus; 4.17V = <strong class="text-cyan-400">15.64 V</strong></div>
+            <div>V<sub>IN_min</sub> = V<sub>rect_peak</sub> &minus; &Delta;V<sub>ripple</sub> = 19.81V &minus; 3.79V = <strong class="text-cyan-400">16.02 V</strong></div>
             <div>Required minimum headroom for 12.0V output: V<sub>OUT_max</sub> + V<sub>dropout</sub> = 12.0V + 2.5V = <strong>14.50 V</strong></div>
-            <div><em>Conclusion: Since 15.64V &gt; 14.50V, the LM317 remains in full, stable regulation across all loads!</em></div>
+            <div><em>Conclusion: Since 16.02V &gt; 14.50V, the LM317 remains in full, stable regulation across all loads!</em></div>
 
             <div class="text-sky-300 font-bold text-sm pt-2">D. Output Voltage Formula with R1 = 240&Omega; and PR1 (2k&Omega; Potentiometer):</div>
             <div>Standard LM317 equation: V<sub>OUT</sub> = V<sub>REF</sub> &times; (1 + PR<sub>1</sub> / R<sub>1</sub>) + I<sub>ADJ</sub> &times; PR<sub>1</sub></div>
